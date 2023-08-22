@@ -28,7 +28,7 @@ james.save!
 alvin = User.new(username: "alvin", address: "356-3 Muyacho kizu, Naruto shi, Tokushima ken", email: "ayaualvin@gmail.com", password: "123456")
 alvin.save!
 
-20.times do
+5.times do
   user = User.new(
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
@@ -36,6 +36,9 @@ alvin.save!
     address: Faker::Address.full_address,
     phone_number: Faker::PhoneNumber.cell_phone,
     birth_date: Faker::Date.birthday(min_age: 65, max_age: 95)
+    height: rand(140..200)
+    latitude: rand
+    longtitude:
   )
   user.save!
 end
