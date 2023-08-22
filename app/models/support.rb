@@ -1,3 +1,4 @@
 class Support < ApplicationRecord
-  has_many :users
+  belongs_to :elderly, class_name: "User"
+  belongs_to :trusted_user, class_name: "User"
 end
