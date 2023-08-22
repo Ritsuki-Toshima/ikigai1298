@@ -1,0 +1,8 @@
+<% @elderlies.each do |support| %>
+  <p class="card"><%= support.elderly.first_name %></p>
+  <p class="card"><%= support.elderly.last_name %></p>
+<% end %>
+<% @trusted_users.each do |support| %>
+  <p class="card"><%= support.trusted_user.first_name %></p>
+  <p class="card"><%= support.trusted_user.last_name %></p>
+<% end %>

@@ -1,0 +1,17 @@
+<h2>Create New Medicine</h2>
+<%= simple_form_for @medicine do |f| %>
+  <%= f.input :name, placeholder: 'Naproxen' %>
+  <%= f.input :description %>
+  <%= f.input :dosage,
+              label: "How many?<strong>(per day $)</strong>".html_safe,
+              input_html: { min: 0 } %>
+  <%= f.input :dosage_remaining,
+              label: "How many?",
+              input_html: { min: 0 } %>
+  <%= f.input :unit, collection: [ "g", "ml", "tablet"] %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :frequency %>
+  <%= f.submit "Create", class:'btn btn-info btn-block mt-2' %>
+<% end %>
+<%= link_to "Go Back", root_path, class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
