@@ -1,15 +1,19 @@
 class MedicinesController < ApplicationController
+  before_action :set_medicine, only: [:edit, :update]
+
   def index
-    @medicine = Medicine.all
+    @medicines = policy_scope(Medicine).all
   end
 
   def new
     @medicine = Medicine.new
+    authorize @medicine
   end
 
   def create
     @medicine = Medicine.new(medicine_params)
     @medicine.user = current_user
+    authorize @medicine
     if @medicine.save
       redirect_to medicines_path
     else
@@ -18,16 +22,20 @@ class MedicinesController < ApplicationController
   end
 
   def edit
-    @medicine = Medicine.find(params[:id])
   end
 
   def update
-    @medicine = Medicine.find(params[:id])
     if @medicine.update
       redirect_to medicines_path
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  private
+  def set_medicine
+    @medicine = Medicine.find(params[:id])
+    authorize @medicine
   end
 
   def medicine_params
