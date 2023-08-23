@@ -1,0 +1,6 @@
+<h2>Set the reminder</h2>
+<%= simple_form_for [@reminder] do |f| %>
+  <%= f.input :time_to_taken %>
+  <%= f.submit "Set reminder", class:'btn btn-info btn-block mt-2' %>
+<% end %>
+<%= link_to "Go Back", support_path, class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
