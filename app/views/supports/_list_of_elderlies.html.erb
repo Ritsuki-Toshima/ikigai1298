@@ -1,4 +1,4 @@
-<h1>List of elderlies</h1>
+<h5>Your elderlies</h1>
 
 <% supports.each do |support| %>
   <%= link_to "#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" , support_path(support), class: 'p-3 text-decoration-none text-black' %>
