@@ -1,11 +1,24 @@
 <div class="container">
   <% elderly = User.find(@support.elderly_id) %>
-  <p class="card"><%= elderly.first_name %></p>
-  <p class="card"><%= elderly.last_name %></p>
+  <h1><%= elderly.first_name.capitalize %> <%= elderly.last_name.capitalize %></h1>
   <%# <p class="card"><%= elderly.username %>
-  <p class="card"><%= elderly.email %></p>
-  <p class="card"><%= elderly.phone_number %></p>
-  <p class="card"><%= elderly.birth_date %></p>
-  <p class="card"><%= elderly.height %></p>
-  <p class="card"><%= elderly.address %></p>
+  <p class="card">Email: <%= elderly.email %></p>
+  <p class="card">Phone: <%= elderly.phone_number %></p>
+  <p class="card">DoB: <%= elderly.birth_date %></p>
+  <p class="card">Height: <%= elderly.height %>cm</p>
+  <p class="card">Home Address: <%= elderly.address %></p>
+  <h2>Medicines</h2>
+  <ul>
+    <% elderly.medicines.each do |medicine| %>
+      <li><%= medicine.name %></li>
+    <% end %>
+  </ul>
+  <h2>Appointments</h2>
+  <ul>
+    <% appointment = Appointment.find(elderly.id) %>
+    <li><%= appointment.name %></li>
+    <li><%= appointment.start_time %></li>
+    <li><%= appointment.end_time %></li>
+    <li><%= appointment.address %></li>
+  </ul>
 </div>
