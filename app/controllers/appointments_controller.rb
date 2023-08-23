@@ -11,6 +11,11 @@ class AppointmentsController < ApplicationController
     authorize @appointment
   end
 
+  def show
+    @appointment = Appointment.find(params[:id])
+    authorize @appointment
+  end
+
   def create
     @support = Support.find(params[:support_id])
     @appointment = Appointment.new(appointment_params)

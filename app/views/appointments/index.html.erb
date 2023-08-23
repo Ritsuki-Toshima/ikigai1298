@@ -1,4 +1,8 @@
 <% @appointments.each do |appointment| %>
-  <%= appointment.name  %>
-  <%= appointment.description %>
+  <% user = User.find(appointment.user_id) %>
+  <ul>
+    <li><%= user.first_name.capitalize %> <%= user.last_name.capitalize %></li>
+    <li> <%=link_to  appointment.name, support_appointment_path(id: appointment.id), class: 'p-3 text-decoration-none text-black'   %></li>
+    <li><%= link_to "View Appointment", support_appointment_path(id: appointment.id), class: 'p-3 text-decoration-none text-black' %></li>
+  </ul>
 <% end %>
