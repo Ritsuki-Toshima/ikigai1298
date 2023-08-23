@@ -17,7 +17,7 @@ class AppointmentsController < ApplicationController
     @appointment.user = current_user
     authorize @appointment
     if @appointment.save
-      redirect_to appointments_path
+      redirect_to support_path(@support)
     else
       render :new, status: :unprocessable_entity
     end
