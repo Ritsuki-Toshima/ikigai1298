@@ -1,0 +1,7 @@
+<h1>List of elderlies</h1>
+
+<% elderlies.each do |elderly| %>
+  <p class="card"><%= elderly.first_name %></p>
+  <p class="card"><%= elderly.last_name %></p>
+  <%= link_to elderly.first_name, support_path(elderly), class: 'p-3 text-decoration-none text-black' %>
+<% end %>
