@@ -6,6 +6,7 @@ class MedicinesController < ApplicationController
   end
 
   def new
+    @support = Support.find(params[:support_id])
     @medicine = Medicine.new
     authorize @medicine
   end
@@ -16,7 +17,7 @@ class MedicinesController < ApplicationController
     @medicine.user = current_user
     authorize @medicine
     if @medicine.save
-      redirect_to medicines_path
+      redirect_to support_path(@support)
     else
       render :new, status: :unprocessable_entity
     end
