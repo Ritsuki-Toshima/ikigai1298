@@ -1,7 +1,5 @@
 <h1>List of elderlies</h1>
 
 <% supports.each do |support| %>
-  <p class="card"><%= support.elderly.first_name %></p>
-  <p class="card"><%= support.elderly.last_name %></p>
-  <%= link_to support.elderly.first_name, support_path(support), class: 'p-3 text-decoration-none text-black' %>
+  <%= link_to "#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" , support_path(support), class: 'p-3 text-decoration-none text-black' %>
 <% end %>
