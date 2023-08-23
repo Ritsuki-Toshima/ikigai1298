@@ -11,6 +11,7 @@ class MedicinesController < ApplicationController
   end
 
   def create
+    @support = Support.find(params[:support_id])
     @medicine = Medicine.new(medicine_params)
     @medicine.user = current_user
     authorize @medicine
