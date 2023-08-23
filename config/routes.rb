@@ -5,14 +5,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :medicines, only: [:index, :new, :create] do
+  resources :medicines do
     resources :records, only: [:new, :create]
   end
   resources :supports, only: [:index, :show] do
-    resources :medicines, only: [:edit, :update]
+    resources :medicines
+    resources :appointments
   end
-
-  resources :appointments, only:  [:new, :create]
   resources :health_records, only: [:new, :create]
   get "/overviews", to: "users#overview", as: :overviews
 end
