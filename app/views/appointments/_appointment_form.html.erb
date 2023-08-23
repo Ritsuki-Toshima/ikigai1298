@@ -1,0 +1,10 @@
+<h2>Create New Appointments</h2>
+<%= simple_form_for [@support, @appointment] do |f| %>
+  <%= f.input :name, placeholder: 'Medical Check-up' %>
+  <%= f.input :description, placeholder: 'What is the appointment about?'%>
+  <%= f.input :start_time %>
+  <%= f.input :end_time %>
+  <%= f.input :address %>
+  <%= f.submit "Create a Medical Appointment", class:'btn btn-info btn-block mt-2' %>
+<% end %>
+<%= link_to "Back to Homepage", support_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
