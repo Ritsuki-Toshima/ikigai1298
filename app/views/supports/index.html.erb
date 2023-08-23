@@ -4,11 +4,5 @@
 <h1>I am an elderly</h1>
 <% else %>
 <h1>Hello <%= current_user.first_name.capitalize %>!</h1>
- <div class="search-box">
-      <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-        <input type="text" name="search[query]" id="search_query" placeholder="Search..." />
-        <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
-      <% end %>
-    </div>
 <%= render "list_of_elderlies", supports: @supports%>
 <% end %>
