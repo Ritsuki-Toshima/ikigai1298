@@ -2,21 +2,22 @@ class AppointmentsController < ApplicationController
   before_action :set_medicine, only: [:edit, :update]
 
   def index
-    @application = policy_scope(Application).all
+    @appointments = policy_scope(Appointment).all
   end
 
   def new
-    @application = Application.new
-    authroize @application
+    @support = Support.find(params[:support_id])
+    @appointment = Appointment.new
+    authorize @appointment
   end
 
   def create
     @support = Support.find(params[:support_id])
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
-    authorize @application
+    authorize @appointment
     if @appointment.save
-      redirect_to support_path(@support)
+      redirect_to appointments_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,6 +27,7 @@ class AppointmentsController < ApplicationController
 
   def set_appointment
     @appointment = Appointment.find(params[:id])
+    authorize @appointment
   end
 
   def appointment_params
