@@ -254,15 +254,27 @@ alvin_appointment.save!
 
 james_appointment = Appointment.new(
 name: "Medical Check-up",
-description: "Full body check annually. In particular if any significant changes regarding diabetes",
+description: "Annual check-up. In particular if any significant changes regarding diabetes",
 start_time: start_time,
 end_time: start_time + rand(1..4).hours,
-address: "2 Chome-3-8 Nakameguro, Meguro City, Tokyo 153-8934",
+address: "1 Chome-4-7 Iidabashi, Tokyo 153-8934",
 latitude: -90 + (180 * rand),
 longtitude: -180 + (360 * rand),
 user_id: james.id
 )
 james_appointment.save!
+
+james_appointment2 = Appointment.new(
+  name: "Visit Dentist",
+  description: "Teeth Whitening",
+  start_time: start_time,
+  end_time: start_time + rand(1..4).hours,
+  address: "1 Chome-4-7 Shinjuku, Tokyo 156-8934",
+  latitude: -90 + (180 * rand),
+  longtitude: -180 + (360 * rand),
+  user_id: james.id
+  )
+  james_appointment2.save!
 
 puts "created #{Appointment.count} Medical Appointments"
 
