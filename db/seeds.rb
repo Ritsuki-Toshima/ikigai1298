@@ -29,7 +29,6 @@ alvin = User.new(
   height: rand(140..200),
   latitude: -90 + (180 * rand),
   longtitude: -180 + (360 * rand)
-  elderly: true
 )
 alvin.save!
 
