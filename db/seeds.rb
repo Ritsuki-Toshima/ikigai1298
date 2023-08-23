@@ -261,6 +261,18 @@ user_id: james.id
 )
 james_appointment.save!
 
+james_appointment2 = Appointment.new(
+  name: "Visit Dentist",
+  description: "Teeth Whitening",
+  start_time: start_time,
+  end_time: start_time + rand(1..4).hours,
+  address: "1 Chome-4-7 Shinjuku, Tokyo 156-8934",
+  latitude: -90 + (180 * rand),
+  longtitude: -180 + (360 * rand),
+  user_id: james.id
+  )
+  james_appointment2.save!
+
 puts "created #{Appointment.count} Medical Appointments"
 
 puts "----------------------------------------------"

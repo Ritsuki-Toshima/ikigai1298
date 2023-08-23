@@ -14,11 +14,14 @@
     <% end %>
   </ul>
   <h2>Appointments</h2>
-  <ul>
-    <% appointment = Appointment.find(elderly.id) %>
-    <li><%= appointment.name %></li>
-    <li><%= appointment.start_time %></li>
-    <li><%= appointment.end_time %></li>
-    <li><%= appointment.address %></li>
-  </ul>
-</div>
+  <% appointments = Appointment.where(user_id: elderly.id) %>
+  <% appointments.each do |appointment| %>
+    <ul>
+      <li><%= appointment.name %>
+        <li><%= appointment.description %></li>
+        <li><%= appointment.start_time %> </li>
+        <li><%= appointment.end_time %> </li>
+        <li><%= appointment.address %> </li>
+      </ul>
+    <% end %>
+  </div>
