@@ -13,4 +13,11 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  def elderly?
+    if self.trusted_users != []
+      true
+    else
+      false
+    end
+  end
 end
