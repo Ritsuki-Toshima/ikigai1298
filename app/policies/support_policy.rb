@@ -5,8 +5,7 @@ class SupportPolicy < ApplicationPolicy
       scope.all
     end
   end
-
-  def show?
-    true
+    def show?
+      true
+    end
   end
-end

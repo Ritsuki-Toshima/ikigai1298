@@ -29,6 +29,7 @@ alvin = User.new(
   height: rand(140..200),
   latitude: -90 + (180 * rand),
   longtitude: -180 + (360 * rand)
+  elderly: true
 )
 alvin.save!
 
@@ -216,6 +217,8 @@ puts "Creating Supports"
 
 #Creating the supports
 
+# has_many :trusted_users, through: :supports_as_elderly, class_name: "User", foreign_key: :elderly_id
+
 alvin_trusted_user = Support.new(
   elderly_id: alvin.id,
   trusted_user_id: ritsuki.id
@@ -223,8 +226,8 @@ alvin_trusted_user = Support.new(
 alvin_trusted_user.save!
 
 james_trusted_user = Support.new(
-  trusted_user_id: ritsuki.id,
-  elderly_id: james.id
+  elderly_id: james.id,
+  trusted_user_id: ritsuki.id
 )
 james_trusted_user.save!
 
