@@ -244,7 +244,7 @@ alvin_appointment = Appointment.new(
   description: "Full body check annually. In particular if any significant changes regarding diabetes",
   start_time: start_time,
   end_time: start_time + rand(1..2).hours,
-  address: "913-14 Jogasawa, Mutsu shi, Aomori ken",
+  address: "1-291-8 Sarugakucho, Chiyoda ku, Tokyo to",
   latitude: 35.629519458799976,
   longitude: 139.6844641164838,
   user_id: alvin.id
@@ -256,7 +256,7 @@ name: "Medical Check-up",
 description: "Annual check-up. In particular if any significant changes regarding diabetes",
 start_time: start_time,
 end_time: start_time + rand(1..4).hours,
-address: "913-14 Jogasawa, Mutsu shi, Aomori ken",
+address: "1-291-8 Sarugakucho, Chiyoda ku, Tokyo to",
 latitude: 35.629519458799976,
 longitude: 139.6844641164838,
 user_id: james.id
@@ -268,7 +268,7 @@ james_appointment2 = Appointment.new(
   description: "Teeth Whitening",
   start_time: start_time,
   end_time: start_time + rand(1..4).hours,
-  address: "1 Chome-4-7 Shinjuku, Tokyo 156-8934",
+  address: "1-291-8 Sarugakucho, Chiyoda ku, Tokyo to",
   latitude: 35.63659824150726,
   longitude: 139.6906442178495,
   user_id: james.id

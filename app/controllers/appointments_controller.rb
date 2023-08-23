@@ -11,6 +11,10 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def show
+   raise
+  end
+
   def new
     @support = Support.find(params[:support_id])
     @appointment = Appointment.new
