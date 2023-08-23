@@ -3,6 +3,8 @@
 <% if current_user.elderly?  %>
 <h1>I am an elderly</h1>
 <% else %>
-<h1>Hello <%= current_user.first_name.capitalize %>!</h1>
+<h1 class="text-center">Hello <%= current_user.first_name.capitalize %>!</h1>
+<div class= "container">
 <%= render "list_of_elderlies", supports: @supports%>
 <% end %>
+</div>
