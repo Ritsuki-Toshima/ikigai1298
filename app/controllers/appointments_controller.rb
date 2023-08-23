@@ -3,6 +3,12 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = policy_scope(Appointment).all
+    @markers = @appointments.geocoded.map do |appointment|
+      {
+        lat: appointment.latitude,
+        lng: appointment.longitude
+      }
+    end
   end
 
   def new
