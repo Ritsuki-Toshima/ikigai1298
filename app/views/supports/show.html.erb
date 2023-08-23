@@ -7,21 +7,33 @@
   <p class="card">DoB: <%= elderly.birth_date %></p>
   <p class="card">Height: <%= elderly.height %>cm</p>
   <p class="card">Home Address: <%= elderly.address %></p>
-  <h2>Medicines</h2>
-  <ul>
-    <% elderly.medicines.each do |medicine| %>
-      <li><%= medicine.name %></li>
-    <% end %>
+  <ul class="nav tabs-underlined" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined active" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="true">MEDICINES</span>
+    </li>
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments-tab-pane" role="tab" aria-controls="appointments-tab-pane" aria-selected="false">APPOINTMENTS</span>
+    </li>
   </ul>
-  <h2>Appointments</h2>
-  <% appointments = Appointment.where(user_id: elderly.id) %>
-  <% appointments.each do |appointment| %>
-    <ul>
-      <li><%= appointment.name %>
-        <li><%= appointment.description %></li>
-        <li><%= appointment.start_time %> </li>
-        <li><%= appointment.end_time %> </li>
-        <li><%= appointment.address %> </li>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade py-3 show active" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
+      <ul>
+        <% elderly.medicines.each do |medicine| %>
+          <li><%= medicine.name %></li>
+        <% end %>
       </ul>
-    <% end %>
+    </div>
+    <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
+      <% appointments = Appointment.where(user_id: elderly.id) %>
+      <% appointments.each do |appointment| %>
+        <ul>
+          <li><%= appointment.name %>
+            <li><%= appointment.description %></li>
+            <li><%= appointment.start_time %> </li>
+            <li><%= appointment.end_time %> </li>
+            <li><%= appointment.address %> </li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
   </div>

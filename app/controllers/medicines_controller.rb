@@ -35,6 +35,7 @@ class MedicinesController < ApplicationController
   end
 
   private
+
   def set_medicine
     @medicine = Medicine.find(params[:id])
     authorize @medicine
