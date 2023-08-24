@@ -1,6 +1,7 @@
 class SupportsController < ApplicationController
   def index
     @users = User.all
+    @active_appointments = current_user.appointments.active
     # @elderlies = current_user.elderlies
     # @trusted_users = current_user.supports_as_trusted_user
     @supports = policy_scope(Support).where(trusted_user: current_user)
