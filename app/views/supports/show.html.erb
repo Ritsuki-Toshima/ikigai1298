@@ -1,11 +1,45 @@
 <div class="container">
-  <% elderly = User.find(@elderly.id) %>
-  <p class="card"><%= elderly.first_name %></p>
-  <p class="card"><%= elderly.last_name %></p>
   <%# <p class="card"><%= elderly.username %>
-  <p class="card"><%= elderly.email %></p>
-  <p class="card"><%= elderly.phone_number %></p>
-  <p class="card"><%= elderly.birth_date %></p>
-  <p class="card"><%= elderly.height %></p>
-  <p class="card"><%= elderly.address %></p>
-</div>
+  <p class="card">Email: <%= elderly.email %></p>
+  <p class="card">Phone: <%= elderly.phone_number %></p>
+  <p class="card">DoB: <%= elderly.birth_date %></p>
+  <p class="card">Height: <%= elderly.height %>cm</p>
+  <p class="card">Home Address: <%= elderly.address %></p>
+  <ul class="nav tabs-underlined" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined active" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="true">MEDICINES</span>
+    </li>
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments-tab-pane" role="tab" aria-controls="appointments-tab-pane" aria-selected="false">APPOINTMENTS</span>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade py-3 show active" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
+      <ul>
+        <% elderly.medicines.each do |medicine| %>
+          <li><%= medicine.name %></li>
+          <%= cl_image_tag medicine.photo.key, height: 300, width: 400, crop: :fill if medicine.photo.key? %>
+        <% end %>
+        <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
+      </ul>
+    </div>
+    <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
+      <% appointments = Appointment.where(user_id: elderly.id) %>
+      <% appointments.each do |appointment| %>
+        <ul>
+          <li><%= appointment.name %>
+            <li><%= appointment.description %></li>
+            <li><%= appointment.start_time %> </li>
+            <li><%= appointment.end_time %> </li>
+            <li><%= appointment.address %> </li>
+          </ul>
+        <% end %>
+        <div style="width: 100%; height: 600px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+        <%= link_to "Add Appointment", new_support_appointment_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
+      </div>
+    </div>
+  </div>

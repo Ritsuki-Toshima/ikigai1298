@@ -1,7 +1,22 @@
-<h1>List of elderlies</h1>
+<h5>Your elderlies</h5>
 
-<% elderlies.each do |elderly| %>
-  <p class="card"><%= elderly.first_name %></p>
-  <p class="card"><%= elderly.last_name %></p>
-  <%= link_to elderly.first_name, support_path(elderly), class: 'p-3 text-decoration-none text-black' %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <% supports.each do |support| %>
+      <div class="col-12 col-lg-4 m-3 rounded p-0" style="background-color: #8ECAE6;">
+        <%= link_to support_path(support), class: 'd-block p-0 text-decoration-none' do %>
+          <div class="d-flex">
+            <!-- Left column: Image -->
+            <div class="flex-shrink-0">
+              <img src="https://cdn.britannica.com/47/190747-050-08063967/Theresa-May-United-Kingdom.jpg" alt="" style="height: 200px;" class="m-0 p-0 rounded">
+            </div>
+            <!-- Right column: Name -->
+            <div class="d-flex align-items-center justify-content-end">
+              <p class="fs-3 text-black m-0 p-3"><%="#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -28,7 +28,7 @@ alvin = User.new(
   birth_date: "22/12/1945",
   height: rand(140..200),
   latitude: -90 + (180 * rand),
-  longtitude: -180 + (360 * rand)
+  longtitude: -180 + (360 * rand),
 )
 alvin.save!
 
@@ -216,6 +216,8 @@ puts "Creating Supports"
 
 #Creating the supports
 
+# has_many :trusted_users, through: :supports_as_elderly, class_name: "User", foreign_key: :elderly_id
+
 alvin_trusted_user = Support.new(
   elderly_id: alvin.id,
   trusted_user_id: ritsuki.id
@@ -223,8 +225,8 @@ alvin_trusted_user = Support.new(
 alvin_trusted_user.save!
 
 james_trusted_user = Support.new(
-  trusted_user_id: ritsuki.id,
-  elderly_id: james.id
+  elderly_id: james.id,
+  trusted_user_id: ritsuki.id
 )
 james_trusted_user.save!
 
@@ -242,24 +244,36 @@ alvin_appointment = Appointment.new(
   description: "Full body check annually. In particular if any significant changes regarding diabetes",
   start_time: start_time,
   end_time: start_time + rand(1..2).hours,
-  address: "2 Chome-3-8 Nakameguro, Meguro City, Tokyo 153-8934",
-  latitude: -90 + (180 * rand),
-  longtitude: -180 + (360 * rand),
+  address: "1-291-8 Sarugakucho, Chiyoda ku, Tokyo to",
+  latitude: 35.629519458799976,
+  longitude: 139.6844641164838,
   user_id: alvin.id
 )
 alvin_appointment.save!
 
 james_appointment = Appointment.new(
 name: "Medical Check-up",
-description: "Full body check annually. In particular if any significant changes regarding diabetes",
+description: "Annual check-up. In particular if any significant changes regarding diabetes",
 start_time: start_time,
 end_time: start_time + rand(1..4).hours,
-address: "2 Chome-3-8 Nakameguro, Meguro City, Tokyo 153-8934",
-latitude: -90 + (180 * rand),
-longtitude: -180 + (360 * rand),
+address: "1-291-8 Sarugakucho, Chiyoda ku, Tokyo to",
+latitude: 35.629519458799976,
+longitude: 139.6844641164838,
 user_id: james.id
 )
 james_appointment.save!
+
+james_appointment2 = Appointment.new(
+  name: "Visit Dentist",
+  description: "Teeth Whitening",
+  start_time: start_time,
+  end_time: start_time + rand(1..4).hours,
+  address: "1-291-8 Sarugakucho, Chiyoda ku, Tokyo to",
+  latitude: 35.63659824150726,
+  longitude: 139.6906442178495,
+  user_id: james.id
+  )
+  james_appointment2.save!
 
 puts "created #{Appointment.count} Medical Appointments"
 

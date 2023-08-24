@@ -6,17 +6,19 @@ class MedicinesController < ApplicationController
   end
 
   def new
+    @support = Support.find(params[:support_id])
     @medicine = Medicine.new
+    elderly = User.find(@support.elderly_id)
     authorize @medicine
   end
 
   def create
     @support = Support.find(params[:support_id])
     @medicine = Medicine.new(medicine_params)
-    @medicine.user = current_user
+    @medicine.user = User.find(@support.elderly_id)
     authorize @medicine
     if @medicine.save
-      redirect_to medicines_path
+      redirect_to support_path(@support)
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,12 +36,13 @@ class MedicinesController < ApplicationController
   end
 
   private
+
   def set_medicine
     @medicine = Medicine.find(params[:id])
     authorize @medicine
   end
 
   def medicine_params
-    params.require(:medicine).permit(:name, :description, :dosage, :dosage_remaining, :unit, :start_date, :end_date, :frequency)
+    params.require(:medicine).permit(:name, :description, :dosage, :dosage_remaining, :unit, :start_date, :end_date, :frequency, :photo)
   end
 end
