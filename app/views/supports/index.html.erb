@@ -14,6 +14,11 @@
     </div>
   </div>
   <div class= "container mt-3 ">
+    <div>
+      <% @supports.each do |support| %>
+        <p><%= support.elderly.first_name %>has <%= support.elderly.appointments.active.count %>appointments today!</p>
+      <% end %>
+    </div>
     <%= render "list_of_elderlies", supports: @supports%>
   <% end %>
 </div>

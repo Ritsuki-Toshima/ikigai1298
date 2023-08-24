@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :elderlies, through: :supports_as_trusted_user, class_name: "User", foreign_key: :trusted_user_id
   has_many :medicines, dependent: :destroy
   has_many :reminders, through: :medicines
+  has_many :appointments, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
