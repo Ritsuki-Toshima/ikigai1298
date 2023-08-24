@@ -8,13 +8,14 @@ class MedicinesController < ApplicationController
   def new
     @support = Support.find(params[:support_id])
     @medicine = Medicine.new
+    elderly = User.find(@support.elderly_id)
     authorize @medicine
   end
 
   def create
     @support = Support.find(params[:support_id])
     @medicine = Medicine.new(medicine_params)
-    @medicine.user = current_user
+    @medicine.user = User.find(@support.elderly_id)
     authorize @medicine
     if @medicine.save
       redirect_to support_path(@support)

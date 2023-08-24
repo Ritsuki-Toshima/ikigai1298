@@ -18,6 +18,7 @@ class AppointmentsController < ApplicationController
   def new
     @support = Support.find(params[:support_id])
     @appointment = Appointment.new
+    elderly = User.find(@support.elderly_id)
     authorize @appointment
   end
 
@@ -29,7 +30,7 @@ class AppointmentsController < ApplicationController
   def create
     @support = Support.find(params[:support_id])
     @appointment = Appointment.new(appointment_params)
-    @appointment.user = current_user
+    @appointment.user = User.find(@support.elderly_id)
     authorize @appointment
     if @appointment.save
       redirect_to support_path(@support)
