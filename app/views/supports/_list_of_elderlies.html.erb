@@ -1,11 +1,11 @@
-<h5>Your elderlies</h1>
+<h5>My Old Pals</h1>
 
 <div class="container">
   <div class="row justify-content-center">
 <% supports.each do |support| %>
-    <div class="col-12 col-lg-4 m-3 rounded" style="background-color: #8ECAE6;">
+    <div class="col-12 col-lg-4 m-3 p-0 rounded" style="background-color: #8ECAE6;">
       <!-- This div is centered and takes 6 columns -->
-      <img src="https://cdn.britannica.com/47/190747-050-08063967/Theresa-May-United-Kingdom.jpg" alt="" style="height: 200px;">
+      <img src="https://cdn.britannica.com/47/190747-050-08063967/Theresa-May-United-Kingdom.jpg" alt="" style="height: 200px;" class="rounded">
   <%= link_to "#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" , support_path(support), class: 'ms-3 fs-2 text-decoration-none text-black' %>
     </div>
 <% end %>
