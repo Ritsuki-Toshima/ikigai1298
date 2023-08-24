@@ -20,7 +20,7 @@
       <ul>
         <% elderly.medicines.each do |medicine| %>
           <li><%= medicine.name %></li>
-          <%= cl_image_tag medicine.photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag medicine.photo.key, height: 300, width: 400, crop: :fill if medicine.photo.key? %>
         <% end %>
         <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
       </ul>
