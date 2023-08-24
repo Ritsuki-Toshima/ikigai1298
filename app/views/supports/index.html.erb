@@ -1,8 +1,32 @@
 <% if current_user.elderly?  %>
-<h1>I am an elderly</h1>
+  <div class="profile-card text-center">
+    <h1>My profile</h1>
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar", alt: "avatar" %>
+    <h3><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> (<%= current_user.age %>)</h3>
+  </div>
+  <div class="container">
+    <div class="function-btn-container">
+      <%= link_to overviews_path, class: "square-btn" do %>
+        <i class="fa-solid fa-capsules"></i>
+        <span>Medicine</span>
+      <% end %>
+      <%= link_to overviews_path, class: "square-btn" do %>
+        <i class="fa-solid fa-capsules"></i>
+        <span>Appointment</span>
+      <% end %>
+      <%= link_to overviews_path, class: "square-btn" do %>
+        <i class="fa-solid fa-capsules"></i>
+        <span>Health</span>
+      <% end %>
+      <%= link_to overviews_path, class: "square-btn" do %>
+        <i class="fa-solid fa-capsules"></i>
+        <span>Gorilla</span>
+      <% end %>
+    </div>
+  </div>
 <% else %>
-<h1 class="text-center">Hello <%= current_user.first_name.capitalize %>!</h1>
-<div class= "container">
-<%= render "list_of_elderlies", supports: @supports%>
-<% end %>
+  <h1 class="text-center">Hello <%= current_user.first_name.capitalize %>!</h1>
+  <div class= "container">
+    <%= render "list_of_elderlies", supports: @supports%>
+  <% end %>
 </div>
