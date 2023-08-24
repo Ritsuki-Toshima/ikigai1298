@@ -5,6 +5,8 @@
   <%= f.input :start_time %>
   <%= f.input :end_time %>
   <%= f.input :address %>
-  <%= f.submit "Create a Medical Appointment", class:'btn btn-info btn-block mt-2' %>
+  <div class="d-flex justify-content-center mt-4 mb-3">
+    <%= link_to "Back to Homepage", support_path(@support), class:'btn btn-outline-info btn-block mt-2 mx-3 go-back-btn' %>
+    <%= f.submit "Create a Medical Appointment", class:'btn btn-info btn-block mt-2 mx-3' %>
+  </div>
 <% end %>
-<%= link_to "Back to Homepage", support_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>

@@ -1,6 +1,12 @@
 <h2>Set the reminder</h2>
 <%= simple_form_for [@reminder] do |f| %>
-  <%= f.input :time_to_taken %>
-  <%= f.submit "Set reminder", class:'btn btn-info btn-block mt-2' %>
+  <%= f.time_select :time_to_taken, class: "form-control" %>
+  <%= f.submit "ADD", class:'btn btn-info btn-block mt-2' %>
 <% end %>
-<%= link_to "Go Back", support_path, class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
+<ul>
+  <% @reminders.each do |reminder| %>
+    <li>
+      <%= reminder.time_to_taken.strftime("%H:%M:%S") %>
+    </li>
+  <% end %>
+</ul>
