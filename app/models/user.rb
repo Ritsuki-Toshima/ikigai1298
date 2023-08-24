@@ -1,3 +1,5 @@
+require 'date'
+
 class User < ApplicationRecord
   has_many :supports_as_elderly, class_name: "Support", foreign_key: :elderly_id
   has_many :trusted_users, through: :supports_as_elderly, class_name: "User", foreign_key: :elderly_id
@@ -19,5 +21,11 @@ class User < ApplicationRecord
     else
       false
     end
+  end
+
+  def age
+    today = Date.today
+    age = today.year - self.birth_date.year - (today.strftime('%m%d') < self.birth_date.strftime('%m%d') ? 1 : 0)
+    age
   end
 end
