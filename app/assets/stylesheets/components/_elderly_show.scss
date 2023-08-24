@@ -1,0 +1,27 @@
+// .container {
+//   padding: 20px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   min-height: 100vh;
+// }
+
+// .profile-info-card {
+//   position: relative;
+//   width: 400px;
+//   background-color: #fff;
+//   border-radius: 5px;
+//   box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+//   overflow: hidden;
+// }
+
+// .profile-info-card:before {
+//   content: '';
+//   position: absolute;
+//   width: 100%;
+//   height: 270px;
+//   top: 0;
+//   left: 0;
+//   background-image: linear-gradient(to top, #219EBC, #023047);
+//   clip-path: circle(400px at 50% -48.5%);
+// }
