@@ -2,11 +2,25 @@
 <%= simple_form_for [@support, @appointment] do |f| %>
   <%= f.input :name, placeholder: 'Medical Check-up' %>
   <%= f.input :description, placeholder: 'What is the appointment about?'%>
-  <%= f.input :start_time %>
-  <%= f.input :end_time %>
+  <%= f.input :start_time,
+              as: :date,
+              label: 'Date',
+              html5:true %>
+  <div class="d-flex justify-content-center">
+    <div class="w-50">
+      <%= f.input :start_time, as: :time, label: 'Start Time' %>
+    </div>
+    <div class="w-50">
+      <%= f.input :end_time, as: :time, label: 'End Time' %>
+    </div>
+  </div>
   <%= f.input :address %>
-  <div class="d-flex justify-content-center mt-4 mb-3">
-    <%= link_to "Back to Homepage", support_path(@support), class:'btn btn-outline-info btn-block mt-2 mx-3 go-back-btn' %>
-    <%= f.submit "Create a Medical Appointment", class:'btn btn-info btn-block mt-2 mx-3' %>
+  <div class="d-flex mt-4 mb-3">
+    <div>
+      <%= link_to "Back to Homepage", support_path(@support), class:'btn btn-outline-info btn-block' %>
+    </div>
+    <div class="ms-3">
+      <%= f.submit "Create a Medical Appointment", class:'btn btn-info btn-block' %>
+    </div>
   </div>
 <% end %>

@@ -6,7 +6,8 @@ class AppointmentsController < ApplicationController
     @markers = @appointments.geocoded.map do |appointment|
       {
         lat: appointment.latitude,
-        lng: appointment.longitude
+        lng: appointment.longitude,
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
@@ -21,6 +22,11 @@ class AppointmentsController < ApplicationController
   def show
     @appointment = Appointment.find(params[:id])
     authorize @appointment
+    @marker = {
+        lat: @appointment.latitude,
+        lng: @appointment.longitude,
+        marker_html: render_to_string(partial: "marker")
+      }
   end
 
   def create
