@@ -1,6 +1,24 @@
 <div class= "mt-0" style= "width: 100%;">
-  <% if current_user.elderly?  %>
-    <h1>I am an elderly</h1>
+<% if current_user.elderly?  %>
+  <div class="container">
+    <h1>Welcome <%= current_user.first_name.capitalize %>!</h1>
+    <ul class="nav tabs-underlined" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <span class="nav-link tab-underlined active" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments-tab-pane" role="tab" aria-controls="appointments-tab-pane" aria-selected="true">MY APPOINTMENTS</span>
+      </li>
+      <li class="nav-item" role="presentation">
+        <span class="nav-link tab-underlined" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="false">MY MEDICINES</span>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade py-3 show active" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
+        <%= render "elderly_appointments", appointments: @appointments %>
+      </div>
+      <div class="tab-pane fade py-3" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
+        <%= render "elderly_medicines", medicines: @medicines %>
+      </div>
+    </div>
+  </div>
   <% else %>
     <div class=" border-bottom border-primary p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
       <div class="d-flex justify-content-center">
@@ -14,6 +32,13 @@
     </div>
   </div>
   <div class= "container mt-3 ">
+    <div>
+      <% @supports.each do |support| %>
+        <p><%= support.elderly.first_name %>has <%= support.elderly.appointments.active.count %>appointments today!</p>
+      <% end %>
+    </div>
     <%= render "list_of_elderlies", supports: @supports%>
   <% end %>
 </div>
+
+

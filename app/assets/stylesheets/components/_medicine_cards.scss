@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins';
+}
+
+.medicine-container {
+  position: relative;
+}
+
+.medicine-container .card {
+  position: relative;
+  justify-content: center;
+  width: 320px;
+  height: 350px;
+  background: #219EBC;
+  margin: 15px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.medicine-container .card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  clip-path: circle(180px at 75% 25%);
+  transition: 0.5s ease-in-out;
+}
+
+
+// .medicine-container .card:hover:before {
+//   clip-path: circle(300px at 80% -20%);
+// }
+
+.medicine-container .card .card-img {
+  position: absolute;
+  transform: translateX(10%);
+  z-index: 10000;
+  width: 100%;
+  height: 200px;
+  top: 23%;
+  right: 23%;
+}
+
+.medicine-container .card .card-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  transition: 1s;
+  z-index: 10;
+  font-size: 1.6em;
+  font-weight: 800;
+  right: 5%;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.container .card .card-content .medicine-name {
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: black;
+  border: 2px solid #023047;
+  background-color: #023047;
+  color: white;
+  text-align: left;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 30px;
+  width: 90%;
+  word-wrap: break-word;
+}
+
+.container .card .card-content .medicine-name {
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: black;
+  border: 2px solid #023047;
+  background-color: #023047;
+  color: white;
+  text-align: left;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 35px;
+  width: 90%;
+  word-wrap: break-word;
+  bottom: 30%;
+}
+
+.container .card .card-content .medicine-dosage,
+.container .card .card-content .medicine-remaining-dosage,
+.container .card .card-content .medicine-frequency {
+  display: inline-block;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin: 5px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: lightgrey;
+  color: #023047;
+  font-size: 0.7em;
+  font-weight: bold;
+}
