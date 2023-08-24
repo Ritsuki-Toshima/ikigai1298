@@ -1,10 +1,10 @@
 <div class="container">
-  <%# <p class="card"><%= elderly.username %>
-  <p class="card">Email: <%= elderly.email %></p>
-  <p class="card">Phone: <%= elderly.phone_number %></p>
-  <p class="card">DoB: <%= elderly.birth_date %></p>
-  <p class="card">Height: <%= elderly.height %>cm</p>
-  <p class="card">Home Address: <%= elderly.address %></p>
+  <p class="card"><%= @support.elderly.first_name %> <%= @support.elderly.last_name %></p>
+  <p class="card">Email: <%= @support.elderly.email %></p>
+  <p class="card">Phone: <%= @support.elderly.phone_number %></p>
+  <p class="card">DoB: <%= @support.elderly.birth_date %></p>
+  <p class="card">Height: <%= @support.elderly.height %>cm</p>
+  <p class="card">Home Address: <%= @support.elderly.address %></p>
   <ul class="nav tabs-underlined" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <span class="nav-link tab-underlined active" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="true">MEDICINES</span>
@@ -16,7 +16,7 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade py-3 show active" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
       <ul>
-        <% elderly.medicines.each do |medicine| %>
+        <% @support.elderly.medicines.each do |medicine| %>
           <li><%= medicine.name %></li>
           <%= cl_image_tag medicine.photo.key, height: 300, width: 400, crop: :fill if medicine.photo.key? %>
         <% end %>
@@ -24,7 +24,7 @@
       </ul>
     </div>
     <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
-      <% appointments = Appointment.where(user_id: elderly.id) %>
+      <% appointments = Appointment.where(user_id: @support.elderly.id) %>
       <% appointments.each do |appointment| %>
         <ul>
           <li><%= appointment.name %>
