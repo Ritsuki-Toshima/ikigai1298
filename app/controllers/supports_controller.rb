@@ -11,20 +11,22 @@ class SupportsController < ApplicationController
     authorize @support
     @appointments = Appointment.where(user_id: @support.elderly_id)
     authorize @appointments
-    if @appointments.length > 1
-    @markers = @appointments.geocoded.map do |appointment|
-      {
-        lat: appointment.latitude,
-        lng: appointment.longitude,
-        marker_html: render_to_string(partial: "marker")
-      }
-    end
-    elsif @appointments.length == 1
-      @markers = {
+    @appointment = @appointments.first
+    authorize @appointment
+    if @appointments.length == 1
+      @marker = {
         lat: @appointment.latitude,
         lng: @appointment.longitude,
         marker_html: render_to_string(partial: "marker")
       }
+    elsif @appointments.length > 1
+      @markers = @appointments.geocoded.map do |appointment|
+        {
+        lat: appointment.latitude,
+        lng: appointment.longitude,
+        marker_html: render_to_string(partial: "marker")
+        }
+      end
     end
   end
 end
