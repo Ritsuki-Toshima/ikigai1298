@@ -1,0 +1,13 @@
+<div class="row justify-content-center">
+  <% @medicines = Medicine.where(user: current_user) %>
+  <% @medicines.each do |medicine| %>
+    <div class="col-12 col-lg-4 m-3 rounded p-0" style="background-color: #8ECAE6;">
+      <%# <%= link_to support_medicine_path(medicine.user, medicine), class: 'p-3 text-decoration-none text-black' do %>
+        <div class="align-items-center justify-content-end">
+          <p class="fs-3 text-black m-0 p-3"><%="#{medicine.name}" %></p>
+          <p class="fs-3 text-black m-0 p-3">Dosage: <%="#{medicine.dosage}" %>, Remaining: <%="#{medicine.dosage_remaining}" %></p>
+        </div>
+        <%# <% end %>
+      </div>
+    <% end %>
+  </div>
