@@ -38,8 +38,8 @@
             data-controller="map"
             data-map-markers-value="<%= @markers.to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+          <%= link_to "Add Appointment", new_support_appointment_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
         </div>
-        <%= link_to "Add Appointment", new_support_appointment_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
       </div>
     </div>
-  </div>
