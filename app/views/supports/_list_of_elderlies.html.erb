@@ -1,9 +1,9 @@
-<h5>Your elderlies</h5>
+<h5>Care Recipients:</h5>
 
 <div class="container">
   <div class="row justify-content-center">
     <% supports.each do |support| %>
-      <div class="col-12 col-lg-4 m-3 rounded p-0" style="background-color: #8ECAE6;">
+      <div class="col-12 col-lg-4 m-3 rounded p-0 border border-dark" style="background-color: #8ECAE6;">
         <%= link_to support_path(support), class: 'd-block p-0 text-decoration-none' do %>
           <div class="d-flex">
             <!-- Left column: Image -->
