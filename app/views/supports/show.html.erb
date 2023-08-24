@@ -26,6 +26,7 @@
               <%# <%= cl_image_tag apparel.photo.key, class: 'img' if apparel.photo.key? %>
               <div class="card-img">
                 <%= image_tag 'blood-pressure.jpg', style: 'width: 250px; height: 250px;' %>
+                <%= cl_image_tag medicine.photo.key, height: 300, width: 400, crop: :fill if medicine.photo.key? %>
               </div>
               <div class="card-content list-unstyled">
                 <li class="medicine-name"><%= medicine.name %></li>
@@ -51,12 +52,12 @@
             <li><%= appointment.end_time %> </li>
             <li><%= appointment.address %> </li>
           </ul>
-          <div style="width: 100%; bheight: 600px;"
+        <% end %>
+        <div style="width: 100%; height: 600px;"
             data-controller="map"
             data-map-markers-value="<%= @markers.to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
-        <% end %>
+        </div>
         <%= link_to "Add Appointment", new_support_appointment_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
       </div>
     </div>
