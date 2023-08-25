@@ -30,8 +30,6 @@ alvin = User.new(
   latitude: -90 + (180 * rand),
   longtitude: -180 + (360 * rand),
 )
-file = File.open("db/images/old_man.jpg")
-alvin.photo.attach(io: file, filename: "old_man.jpg")
 alvin.save!
 
 james = User.new(
@@ -44,7 +42,7 @@ james = User.new(
   phone_number: "012-2313-1234",
   birth_date: "11/05/1955",
   height: rand(140..200),
-  latitude: -90 + (180 * rand),
+  latitude: -90 + (180 * rand),r
   longtitude: -180 + (360 * rand)
 )
 james.save!
