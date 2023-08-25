@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="navigation">
-    <ul class="nav tabs-underlined nav-bar" id="myTab" role="tablist">
+    <ul class="nav tabs-underlined nav-bar d-flex justify-content-center" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <span class="nav-link tab-underlined active" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="true">MEDICINES</span>
       </li>
@@ -48,35 +48,33 @@
         <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
       </ul>
     </div>
-  </div>
-  <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
-    <%= month_calendar(events: @appointments, end_attribute: :end_time) do |date, appointments| %>
-      <%= date %>
-      <% appointments.each do |appointment| %>
-        <div class="appointment">
-          <!--<p><%= appointment.name %></p>
+    <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
+      <%= month_calendar(events: @appointments, end_attribute: :end_time) do |date, appointments| %>
+        <%= date %>
+        <% appointments.each do |appointment| %>
+          <div class="appointment">
+            <!--<p><%= appointment.name %></p>
           <small><%= appointment.time %></small>-->
-          <i class="fa-regular fa-hospital" style="color: #219EBC;"></i>
-        </div>
-      <% end %>
-    <% end %>
-    <% appointments = Appointment.where(user_id: elderly.id) %>
-    <ul class="list-unstyled">
-      <div class="cards mb-2">
-        <div class="appointment-container">
-          <div class="row">
-            <% appointments.each do |appointment| %>
-              <div class="text-center font-weight-bold">
-                <li class="appointment-title"><%= appointment.name %>
-                  <li><%= appointment.start_time %> </li>
-                  <li><%= appointment.end_time %> </li>
-                  <li><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></li>
-                </div>
-              <% end %>
-            </div>
+            <i class="fa-regular fa-hospital" style="color: #219EBC;"></i>
           </div>
-        </ul>
+        <% end %>
+      <% end %>
+      <% appointments = Appointment.where(user_id: elderly.id) %>
+      <ul class="list-unstyled">
+        <div class="cards mb-2">
+          <div class="appointment-container">
+            <div class="row">
+              <% appointments.each do |appointment| %>
+                <div class="text-center font-weight-bold">
+                  <li class="appointment-title"><%= appointment.name %>
+                    <li><%= appointment.start_time %> </li>
+                    <li><%= appointment.end_time %> </li>
+                    <li><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></li>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</div>
