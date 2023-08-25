@@ -1,5 +1,5 @@
 <% if current_user.elderly?  %>
-<div class="container">
+  <div class="container">
     <h1>Welcome <%= current_user.first_name.capitalize %>!</h1>
     <ul class="nav tabs-underlined" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
@@ -20,24 +20,28 @@
       </div>
     </div>
   </div>
-  <% else %>
-    <div class=" border-bottom border-primary p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
-      <div class="d-flex justify-content-center">
-        <div class="me-3">
-          <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 30px;"/>
-        </div>
-        <div class= "p-0">
-          <h5 class="text-center mb-3 mt-1">Hello <%= current_user.first_name.capitalize %>!</h5>
-        </div>
+<% else %>
+  <div class=" border-bottom border-primary p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
+    <div class="d-flex justify-content-center">
+      <div class="me-3">
+        <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 30px;"/>
+      </div>
+      <div class= "p-0">
+        <h5 class="text-center mb-3 mt-1">Hello <%= current_user.first_name.capitalize %>!</h5>
       </div>
     </div>
   </div>
   <div class= "container mt-3 ">
-    <div class= "border">
-      <% @supports.each do |support| %>
-        <p  class= "text-center m-0"><%= support.elderly.first_name.capitalize %> has <%= support.elderly.appointments.active.count %> appointments today!</p>
-      <% end %>
-    </div>
+    <% @supports.each do |support| %>
+      <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+        <span><strong>Reminder🔔 </strong>
+          <p><%= support.elderly.first_name.capitalize %> has <%= support.elderly.appointments.active.count %> appointments today!</p>
+        </span>
+        <a data-bs-dismiss="alert" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </a>
+      </div>
+    <% end %>
     <%= render "list_of_elderlies", supports: @supports%>
   <% end %>
 </div>

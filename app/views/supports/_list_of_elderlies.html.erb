@@ -7,7 +7,7 @@
           <div class="d-flex">
             <!-- Left column: Image -->
             <div class="flex-shrink-0">
-              <img src="https://cdn.britannica.com/47/190747-050-08063967/Theresa-May-United-Kingdom.jpg" alt="" style="height: 200px;" class="m-0 p-0 rounded">
+                  <%= cl_image_tag support.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.photo.key? %>
             </div>
             <!-- Right column: Name -->
             <div class="d-flex align-items-center justify-content-end">
