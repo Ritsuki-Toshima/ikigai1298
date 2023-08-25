@@ -1,5 +1,8 @@
 require 'twilio-ruby'
 
+require "twilio-ruby"
+
+
 class SendSmsService
   def initialize(user, message)
     @user = user
@@ -8,14 +11,14 @@ class SendSmsService
   end
 
   def call
-    client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
+    client = Twilio::REST::Client.new(ENV.fetch('ACCOUNT_SID', nil), ENV.fetch('AUTH_TOKEN', nil))
     client.messages.create(
-      from: ENV['TWILIO_NUMBER'], # Your Twilio number
-      to: user.phone_number, # User mobile phone number
-      body: message
+      from: ENV.fetch('TWILIO_NUMBER', nil), # Your Twilio number
+      to: @user.phone_number, # User mobile phone number
+      body: @message
     )
   end
 end
 
-# you could use this a controller or anywhere
-SendSmsService.new(instance_of_a_user, 'hello').call
+# you could use this a controller or anywhere =>
+# SendSmsService.new(instance_of_a_user, 'insert message here').call

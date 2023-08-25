@@ -35,6 +35,7 @@ class AppointmentsController < ApplicationController
     authorize @appointment
     if @appointment.save
       redirect_to support_path(@support)
+      SendSmsService.new(@appointment.user, 'Please check the Ikigai App - you have a new appointment scheduled').call
     else
       render :new, status: :unprocessable_entity
     end
