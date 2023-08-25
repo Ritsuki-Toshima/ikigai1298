@@ -30,6 +30,8 @@ alvin = User.new(
   latitude: -90 + (180 * rand),
   longtitude: -180 + (360 * rand),
 )
+file = File.open("db/images/old_man.jpg")
+alvin.photo.attach(io: file, filename: "old_man.jpg")
 alvin.save!
 
 james = User.new(
