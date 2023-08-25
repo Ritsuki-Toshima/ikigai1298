@@ -15,7 +15,6 @@ class AppointmentsController < ApplicationController
   def new
     @support = Support.find(params[:support_id])
     @appointment = Appointment.new
-    elderly = User.find(@support.elderly_id)
     authorize @appointment
   end
 
