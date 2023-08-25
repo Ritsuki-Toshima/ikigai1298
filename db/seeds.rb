@@ -80,8 +80,8 @@ puts "----------------------------------------------"
 puts "Creating Medicines"
 
 alvin_medicine_1 = Medicine.new(
-  name: "Lisinopril",
-  description: "An ACE inhibitor used to treat high blood pressure and heart failure.",
+  name: "Chloesterol",
+  description: "Chloeserol",
   dosage: 1,
   dosage_remaining: 38,
   unit: "tablets",
@@ -90,11 +90,13 @@ alvin_medicine_1 = Medicine.new(
   frequency: 1,
   user_id: alvin.id
   )
-alvin_medicine_1.save!
+  file = File.open("db/images/chloesterol.jpg")
+  alvin_medicine_1.photo.attach(io: file, filename: "chloesterol.jpg")
+  alvin_medicine_1.save!
 
 alvin_medicine_2 = Medicine.new(
-  name: "Metformin",
-  description: "A medication for type 2 diabetes that helps lower blood sugar levels.",
+  name: "Liver Support",
+  description: "For Liver Support",
   dosage: 2,
   dosage_remaining: 102,
   unit: "tablets",
@@ -103,11 +105,13 @@ alvin_medicine_2 = Medicine.new(
   frequency: 2,
   user_id: alvin.id
   )
+file = File.open("db/images/liver_support.jpg")
+alvin_medicine_2.photo.attach(io: file, filename: "liver_support.jpg")
 alvin_medicine_2.save!
 
 alvin_medicine_3 = Medicine.new(
-  name: "Atorvastatin",
-  description: "A statin used to lower cholesterol levels and reduce the risk of cardiovascular diseases.",
+  name: "Astaxanthin",
+  description: "For feed supplement as food colorant for salmon, crabs, shrimp, chickens and egg production",
   dosage: 1,
   dosage_remaining: 56,
   unit: "tablets",
@@ -116,11 +120,13 @@ alvin_medicine_3 = Medicine.new(
   frequency: 1,
   user_id: alvin.id
   )
+file = File.open("db/images/Astaxanthin.jpg")
+alvin_medicine_3.photo.attach(io: file, filename: "Astaxanthin.jpg")
 alvin_medicine_3.save!
 
 alvin_medicine_4 = Medicine.new(
-  name: "Losartan",
-  description: "An angiotensin II receptor blocker (ARB) used to treat hypertension and diabetic nephropathy.",
+  name: "Bone Strength",
+  description: "For Bone Strength",
   dosage: 1,
   dosage_remaining: 83,
   unit: "tablets",
@@ -129,11 +135,13 @@ alvin_medicine_4 = Medicine.new(
   frequency: 1,
   user_id: alvin.id
   )
+file = File.open("db/images/bone_strength.jpg")
+alvin_medicine_4.photo.attach(io: file, filename: "bone_strength.jpg")
 alvin_medicine_4.save!
 
 alvin_medicine_5 = Medicine.new(
-  name: "Levothyroxine",
-  description: "A synthetic thyroid hormone used to treat hypothyroidism (underactive thyroid)",
+  name: "Calcium & Magnesium",
+  description: "General Health",
   dosage: 1,
   dosage_remaining: 72,
   unit: "tablets",
@@ -142,6 +150,8 @@ alvin_medicine_5 = Medicine.new(
   frequency: 1,
   user_id: alvin.id
   )
+file = File.open("db/images/cal_mg.jpg")
+alvin_medicine_5.photo.attach(io: file, filename: "cal_mg.jpg")
 alvin_medicine_5.save!
 
 james_medicine_1 = Medicine.new(

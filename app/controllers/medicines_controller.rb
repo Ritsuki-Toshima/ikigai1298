@@ -8,7 +8,6 @@ class MedicinesController < ApplicationController
   def new
     @support = Support.find(params[:support_id])
     @medicine = Medicine.new
-    elderly = User.find(@support.elderly_id)
     authorize @medicine
   end
 
