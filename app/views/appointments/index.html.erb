@@ -1,13 +1,21 @@
-<% @appointments.each do |appointment| %>
-  <% user = User.find(appointment.user_id) %>
-  <ul>
-    <li><%= user.first_name.capitalize %> <%= user.last_name.capitalize %></li>
-    <li> <%=link_to  appointment.name, support_appointment_path(id: appointment.id), class: 'p-3 text-decoration-none text-black'   %></li>
-    <li><%= link_to "View Appointment", support_appointment_path(id: appointment.id), class: 'p-3 text-decoration-none text-black' %></li>
-  </ul>
-<% end %>
-<div style="width: 100%; height: 600px;"
+<div class="container">
+  <h1>My charges' appointments</h1>
+  <% @appointments.each do |appointment| %>
+    <% user = User.find(appointment.user_id) %>
+    <div class="col-12 col-lg-4 m-3 rounded p-0" style="background-color: #8ECAE6;">
+      <%= link_to support_appointment_path(id: appointment.id), class: 'p-3 text-decoration-none text-black' do %>
+        <div class="align-items-center justify-content-end">
+          <p class="fs-3 text-black m-0 p-3"><%= user.first_name.capitalize %> <%= user.last_name.capitalize %></p>
+          <p class="fs-3 text-black m-0 p-3"><%="#{appointment.name}" %></p>
+          <p class="fs-3 text-black m-0 p-3"><%="#{appointment.start_time.strftime("%b %e, %l:%M %p")}" %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <h2>View Locations on Map</h2>
+  <div style="width: 100%; height: 600px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
