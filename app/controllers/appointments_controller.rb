@@ -36,7 +36,7 @@ class AppointmentsController < ApplicationController
     authorize @appointment
     if @appointment.save
       redirect_to support_path(@support)
-      SendSmsService.new(@appointment.user, "Dear #{@appointment.user.first_name.capitalize}, #{@trusted_user.first_name.capitalize} added a new #{@appointment.name} appointment for you on #{@appointment.start_time.strftime('%A, %b %d')} at #{@appointment.start_time.strftime('%l:%M %p')}. Check out the Ikigai app at: https://ikigai1298-c2bc721aa13b.herokuapp.com").call
+      SendSmsService.new(@appointment.user, "Dear #{@appointment.user.first_name.capitalize}, #{@trusted_user.first_name.capitalize} added a new appointment for you on #{@appointment.start_time.strftime('%A, %b %d')} at #{@appointment.start_time.strftime('%l:%M %p')}. Check out the Ikigai app at: https://ikigai1298-c2bc721aa13b.herokuapp.com").call
     else
       render :new, status: :unprocessable_entity
     end
