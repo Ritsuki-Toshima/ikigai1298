@@ -5,7 +5,9 @@
       <span class="calendar-title btn btn-primary"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
       <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: 'btn btn-outline-primary' %>
     </div>
-    <%= link_to 'New appointment', new_support_appointment_path(@support), class: 'btn btn-outline-warning' %>
+    <%= link_to new_support_appointment_path(@support), class: 'btn btn-outline-warning' do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
   </div>
   <table class="table table-striped">
     <thead>
