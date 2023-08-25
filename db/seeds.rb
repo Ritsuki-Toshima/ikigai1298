@@ -42,7 +42,7 @@ james = User.new(
   phone_number: "012-2313-1234",
   birth_date: "11/05/1955",
   height: rand(140..200),
-  latitude: -90 + (180 * rand),
+  latitude: -90 + (180 * rand),r
   longtitude: -180 + (360 * rand)
 )
 james.save!
