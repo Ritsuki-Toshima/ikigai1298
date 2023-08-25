@@ -8,6 +8,11 @@ class SupportsController < ApplicationController
   end
 
   def show
+    # These lines are for displaying calendar
+    # -----------------------------------------------------------------------------------------------------------
+    start_date = params.fetch(:start_date, Date.today).to_date
+    @appointments = Appointment.where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+    # -----------------------------------------------------------------------------------------------------------
     @support = current_user.supports_as_trusted_user.find(params[:id])
     authorize @support
     @appointments = Appointment.where(user_id: @support.elderly_id)

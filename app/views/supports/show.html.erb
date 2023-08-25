@@ -52,6 +52,15 @@
     </div>
   </div>
   <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
+    <%= month_calendar(events: @appointments, end_attribute: :end_time) do |date, appointments| %>
+      <%= date %>
+      <% appointments.each do |appointment| %>
+        <div class="appointment">
+          <p><%= appointment.name %></p>
+          <small><%= appointment.time %></small>
+        </div>
+      <% end %>
+    <% end %>
     <% appointments = Appointment.where(user_id: elderly.id) %>
     <ul class="list-unstyled">
       <div class="cards">
