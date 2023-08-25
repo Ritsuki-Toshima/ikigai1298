@@ -1,6 +1,7 @@
 <% if current_user.elderly?  %>
-<div class="container">
+  <div class="container">
     <h1>Welcome <%= current_user.first_name.capitalize %>!</h1>
+    <h2>Today's Date: <%= Time.now.strftime(" %A, %b %e - %l:%M %p")  %></h2>
     <ul class="nav tabs-underlined" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <span class="nav-link tab-underlined active" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments-tab-pane" role="tab" aria-controls="appointments-tab-pane" aria-selected="true">MY APPOINTMENTS</span>
@@ -20,24 +21,24 @@
       </div>
     </div>
   </div>
-  <% else %>
-    <div class=" border-bottom border-primary p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
-      <div class="d-flex justify-content-center">
-        <div class="me-3">
-          <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 30px;"/>
-        </div>
-        <div class= "p-0">
-          <h5 class="text-center mb-3 mt-1">Hello <%= current_user.first_name.capitalize %>!</h5>
-        </div>
+<% else %>
+  <div class=" border-bottom border-primary p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
+    <div class="d-flex justify-content-center">
+      <div class="me-3">
+        <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 30px;"/>
+      </div>
+      <div class= "p-0">
+        <h5 class="text-center mb-3 mt-1">Hello <%= current_user.first_name.capitalize %>!</h5>
       </div>
     </div>
   </div>
-  <div class= "container mt-3 ">
-    <div class= "border">
-      <% @supports.each do |support| %>
-        <p  class= "text-center m-0"><%= support.elderly.first_name.capitalize %> has <%= support.elderly.appointments.active.count %> appointments today!</p>
-      <% end %>
-    </div>
-    <%= render "list_of_elderlies", supports: @supports%>
-  <% end %>
+</div>
+<div class= "container mt-3 ">
+  <div class= "border">
+    <% @supports.each do |support| %>
+      <p  class= "text-center m-0"><%= support.elderly.first_name.capitalize %> has <%= support.elderly.appointments.active.count %> appointments today!</p>
+    <% end %>
+  </div>
+  <%= render "list_of_elderlies", supports: @supports%>
+<% end %>
 </div>
