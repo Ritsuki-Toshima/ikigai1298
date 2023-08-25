@@ -1,6 +1,12 @@
-<ul>
-  <li><%= @appointment.name  %></li>
-  <li><%= @appointment.description %></li>
-  <li><%= @appointment.address %></li>
-</ul>
+<div class="container">
+  <ul>
+    <li><%= @appointment.name  %></li>
+    <li><%= @appointment.description %></li>
+    <li><%= @appointment.address %></li>
+  </ul>
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
