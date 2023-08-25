@@ -18,6 +18,7 @@ class MedicinesController < ApplicationController
     authorize @medicine
     if @medicine.save
       redirect_to support_path(@support)
+      SendSmsService.new(@medicine.user, 'Please check the Ikigai App - you have a new medicine').call
     else
       render :new, status: :unprocessable_entity
     end
