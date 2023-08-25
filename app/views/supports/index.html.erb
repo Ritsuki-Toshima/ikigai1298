@@ -32,13 +32,18 @@
       </div>
     </div>
   </div>
-</div>
-<div class= "container mt-3 ">
-  <div class= "border">
+  <div class= "container mt-3 ">
     <% @supports.each do |support| %>
-      <p  class= "text-center m-0"><%= support.elderly.first_name.capitalize %> has <%= support.elderly.appointments.active.count %> appointments today!</p>
+      <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+        <span><strong>Reminder🔔 </strong>
+          <p><%= support.elderly.first_name.capitalize %> has <%= support.elderly.appointments.active.count %> appointments today!</p>
+        </span>
+        <a data-bs-dismiss="alert" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </a>
+      </div>
     <% end %>
-  </div>
-  <%= render "list_of_elderlies", supports: @supports%>
-<% end %>
+    <%= render "list_of_elderlies", supports: @supports%>
+  <% end %>
+
 </div>
