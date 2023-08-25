@@ -54,14 +54,15 @@
       <%= date %>
       <% appointments.each do |appointment| %>
         <div class="appointment">
-          <p><%= appointment.name %></p>
-          <small><%= appointment.time %></small>
+          <!--<p><%= appointment.name %></p>
+          <small><%= appointment.time %></small>-->
+          <i class="fa-regular fa-hospital" style="color: #219EBC;"></i>
         </div>
       <% end %>
     <% end %>
     <% appointments = Appointment.where(user_id: elderly.id) %>
     <ul class="list-unstyled">
-      <div class="cards">
+      <div class="cards mb-2">
         <div class="appointment-container">
           <div class="row">
             <% appointments.each do |appointment| %>
@@ -74,7 +75,6 @@
               <% end %>
             </div>
           </div>
-          <%= link_to "Add Appointment", new_support_appointment_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
         </ul>
       </div>
     </div>
