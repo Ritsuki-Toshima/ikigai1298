@@ -1,6 +1,6 @@
 <div class="container">
   <div class="profile-info-card">
-    <%= image_tag 'old_man.jpg', class: 'profile-photo'%>
+    <%= image_tag 'old-man.jpg', class: 'profile-photo'%>
     <% elderly = User.find(@support.elderly_id) %>
     <h1><%= elderly.first_name.capitalize %> <%= elderly.last_name.capitalize %></h1>
     <%# <p class="card"><%= elderly.username %>
