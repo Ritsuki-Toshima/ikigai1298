@@ -1,8 +1,6 @@
 <div class="container">
   <div class="profile-info-card">
-    <div class="profile-photo">
-      <%# <%= image_tag 'old_man.jpg', style: 'width: 300px; height: 200px;' %>
-    </div>
+    <%= image_tag 'old_man.jpg', class: 'profile-photo'%>
     <% elderly = User.find(@support.elderly_id) %>
     <h1><%= elderly.first_name.capitalize %> <%= elderly.last_name.capitalize %></h1>
     <%# <p class="card"><%= elderly.username %>
@@ -32,15 +30,15 @@
             <div class="row">
               <% elderly.medicines.each do |medicine| %>
                 <div class="card">
-                  <%# <%= cl_image_tag apparel.photo.key, class: 'img' if apparel.photo.key? %>
                   <%= cl_image_tag medicine.photo.key, class: 'card-img', crop: :fill if medicine.photo.key? %>
                   <div class="card-content list-unstyled">
                     <li class="medicine-name"><%= medicine.name %></li>
                   </div>
                   <div class="card-content d-flex justify-content-center">
-                    <li class="medicine-dosage"><%= medicine.dosage %> <%= medicine.unit %></li>
-                    <li class="medicine-remaining-dosage"><%= medicine.dosage_remaining %> <%= medicine.unit %></li>
-                    <li class="medicine-frequency mb-5"><%= medicine.frequency %>times a day</li>
+                    <li class="medicine-dosage"><%= medicine.dosage %> <%= medicine.unit %><br>
+                      per day</li>
+                    <li class="medicine-frequency mb-5"><%= medicine.frequency %> times <br>
+                      per day</li>
                   </div>
                 </div>
               <% end %>
@@ -72,12 +70,12 @@
                   <li><%= appointment.start_time %> </li>
                   <li><%= appointment.end_time %> </li>
                   <li><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></li>
-                </ul>
-              </div>
-            <% end %>
-            <%= link_to "Add Appointment", new_support_appointment_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
+                </div>
+              <% end %>
+            </div>
           </div>
-        </div>
+          <%= link_to "Add Appointment", new_support_appointment_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
+        </ul>
       </div>
     </div>
   </div>
