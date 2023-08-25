@@ -39,7 +39,7 @@ james = User.new(
   last_name: "lau",
   gender: "male",
   address: "Big Ben Westminster, London SW1A 0AA, UK",
-  phone_number: "012-2313-1234",
+  phone_number: "+817044676711",
   birth_date: "11/05/1955",
   height: rand(140..200),
   latitude: -90 + (180 * rand),
@@ -56,7 +56,7 @@ ritsuki = User.new(
   last_name: "toshima",
   gender: "male",
   address: "2 Chome-11-3 Meguro, Meguro City, Tokyo 153-0063",
-  phone_number: "+818092908767"
+  phone_number: "+818048168800"
 )
 ritsuki.save!
 
