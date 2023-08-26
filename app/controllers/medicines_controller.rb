@@ -15,10 +15,11 @@ class MedicinesController < ApplicationController
     @support = Support.find(params[:support_id])
     @medicine = Medicine.new(medicine_params)
     @medicine.user = User.find(@support.elderly_id)
+    @trusted_user = User.find(@support.trusted_user_id)
     authorize @medicine
     if @medicine.save
       redirect_to support_path(@support)
-      SendSmsService.new(@medicine.user, 'Please check the Ikigai App - you have a new medicine').call
+      SendSmsService.new(@medicine.user, "Dear #{@medicine.user.first_name.capitalize}, #{@trusted_user.first_name.capitalize} added a new medicine for you. Check out the Ikigai app at: https://ikigai1298-c2bc721aa13b.herokuapp.com").call
     else
       render :new, status: :unprocessable_entity
     end
