@@ -48,33 +48,51 @@
         <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 mb-5 go-back-btn' %>
       </ul>
     </div>
+    <% appointments = Appointment.where(user_id: elderly.id) %>
     <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
-      <%= month_calendar(events: @appointments, end_attribute: :end_time) do |date, appointments| %>
-        <%= date %>
+      <%= month_calendar(events: appointments, end_attribute: :end_time) do |date, appointments| %>
+        <div class="appointments-calendar-day">
+          <%= date %>
+          <div class="appointment-icons-container">
+            <% appointments.each do |appointment| %>
+              <div class="appointment-icon" data-appointment-id="<%= appointment.id %>">
+                <i class="fa-regular fa-hospital" style="color: #219EBC;"></i>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div class="appointment-details-container">
         <% appointments.each do |appointment| %>
-          <div class="appointment">
-            <!--<p><%= appointment.name %></p>
-          <small><%= appointment.time %></small>-->
-            <i class="fa-regular fa-hospital" style="color: #219EBC;"></i>
+          <div class="appointment-details" data-appointment-id="<%= appointment.id %>" style="display: none;">
+            <p class="appointment-title"><%= appointment.name %></p>
+            <p><%= appointment.start_time %></p>
+            <p><%= appointment.end_time %></p>
+            <p><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></p>
           </div>
         <% end %>
-      <% end %>
-      <% appointments = Appointment.where(user_id: elderly.id) %>
-      <ul class="list-unstyled">
-        <div class="cards mb-5">
-          <div class="appointment-container">
-            <div class="row">
-              <% appointments.each do |appointment| %>
-                <div class="text-center font-weight-bold">
-                  <li class="appointment-title"><%= appointment.name %>
-                    <li><%= appointment.start_time %> </li>
-                    <li><%= appointment.end_time %> </li>
-                    <li><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></li>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </ul>
-        </div>
       </div>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const appointmentIcons = document.querySelectorAll('.appointment-icon');
+
+        appointmentIcons.forEach(icon => {
+      icon.addEventListener('click', function () {
+        const appointmentId = this.dataset.appointmentId;
+        const appointmentDetails = document.querySelector(`.appointment-details[data-appointment-id="${appointmentId}"]`);
+
+        if (appointmentDetails) {
+          if (appointmentDetails.style.display === 'none' || appointmentDetails.style.display === '') {
+            document.querySelectorAll('.appointment-details').forEach(details => {
+              details.style.display = 'none';
+            });
+            appointmentDetails.style.display = 'block';
+          } else {
+            appointmentDetails.style.display = 'none';
+          }
+        }
+      });
+        });
+      });
+    </script>
