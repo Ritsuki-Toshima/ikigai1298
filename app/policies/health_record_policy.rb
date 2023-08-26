@@ -4,17 +4,17 @@ class HealthRecordPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
-    def show?
-      true
-    end
+  def show?
+    true
+  end
 
-    def new?
-      true
-    end
+  def new?
+    true
+  end
 
-    def cretae?
-      true
-    end
+  def cretae?
+    true
   end
 end

@@ -1,7 +1,6 @@
 class HealthRecordsController < ApplicationController
   def index
     @health_records = policy_scope(HealthRecord).all
-    authorize @health_records
   end
 
   def show
