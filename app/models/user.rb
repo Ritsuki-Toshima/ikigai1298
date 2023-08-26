@@ -34,7 +34,9 @@ class User < ApplicationRecord
 
   private
 
-  def send_welcome_notification
+  def send_comment_notification
+    Rails.application.routes.default_url_options[:host] = 'localhost:3000'
     CommentNotification.with(post: @post).deliver(current_user)
+    raise
   end
 end

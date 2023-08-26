@@ -7,6 +7,7 @@ class CommentNotification < Noticed::Base
   # Add your delivery methods
   #
   deliver_by :database
+  deliver_by :action_cable
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
@@ -22,6 +23,7 @@ class CommentNotification < Noticed::Base
   end
 
   def url
-    post_path(params[:post])
+    # post_path(params[:post])
+    Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   end
 end
