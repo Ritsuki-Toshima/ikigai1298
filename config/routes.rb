@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   resources :supports, only: [:index, :show] do
     resources :medicines
     resources :appointments
-    end
-  resources :health_records, only: [:new, :create]
+    resources :health_records
+  end
   resources :reminders, only: [:edit, :create]
   get "/overviews", to: "users#overview", as: :overviews
 end
