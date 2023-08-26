@@ -86,3 +86,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "cable_ready", "~> 5.0"
