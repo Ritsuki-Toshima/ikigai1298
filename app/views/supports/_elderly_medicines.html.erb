@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
   <% @medicines = Medicine.where(user: current_user) %>
-  <% @medicines.each do |medicine| %>
+  <% @medicines.order(created_at: :desc).each do |medicine| %>
     <div class="col-12 col-lg-4 m-3 rounded p-0" style="background-color: #8ECAE6;">
       <%# <%= link_to support_medicine_path(medicine.user, medicine), class: 'p-3 text-decoration-none text-black' do %>
         <div class="align-items-center justify-content-end">
