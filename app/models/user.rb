@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :medicines, dependent: :destroy
   has_many :reminders, through: :medicines
   has_many :appointments, dependent: :destroy
+  has_many :notifications, as: :recipient, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
@@ -16,6 +17,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  after_create_commit :send_comment_notification
   def elderly?
     if self.trusted_users != []
       true
@@ -28,5 +30,11 @@ class User < ApplicationRecord
     today = Date.today
     age = today.year - self.birth_date.year - (today.strftime('%m%d') < self.birth_date.strftime('%m%d') ? 1 : 0)
     age
+  end
+
+  private
+
+  def send_welcome_notification
+    CommentNotification.with(post: @post).deliver(current_user)
   end
 end
