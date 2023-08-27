@@ -61,7 +61,12 @@ gem 'geocoder'
 gem 'bootstrap-datepicker-rails'
 gem "simple_calendar", "~> 2.4"
 gem 'twilio-ruby'
+<<<<<<< HEAD
 gem 'noticed'
+=======
+gem "chartkick"
+gem "groupdate"
+>>>>>>> master
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

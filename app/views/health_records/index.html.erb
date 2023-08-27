@@ -1,5 +1,8 @@
-<h1>Health Records</h1>
-<canvas
-  data-controller="chart"
-  data-chart-data-value='{ "labels": ["January", "February", "March", "April", "May", "June", "July"], "datasets": [{ "label": "My First dataset", "backgroundColor": "transparent", "borderColor": "#3B82F6", "data": [37, 83, 78, 54, 12, 5, 99] }] }'
-></canvas>
+<div class="container">
+  <h1>Health Records</h1>
+  <%= link_to new_support_health_record_path(@support), class: 'btn btn-outline-warning' do %>
+    <i class="fa-solid fa-plus"></i>
+  <% end %>
+  <%= render "elderly_health_record", health_record: @health_records %>
+  <%# <%= line_chart @health_records.group_by_day(:created_at) %>
+</div>

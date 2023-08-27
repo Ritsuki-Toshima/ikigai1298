@@ -295,26 +295,27 @@ puts "----------------------------------------------"
 puts "Creating Health Records"
 
 # Creating the health records
-alvin_health_record = HealthRecord.new(
-  mood_status: rand(1..5),
-  weight: rand(45..120),
-  sys: rand(100..140),
-  dia: rand(60..120),
-  pulse: rand(40..80),
-  user_id: alvin.id
+10.times do
+  alvin_health_record = HealthRecord.new(
+    mood_status: rand(1..5),
+    weight: rand(45..120),
+    sys: rand(100..140),
+    dia: rand(60..120),
+    pulse: rand(40..80),
+    user_id: alvin.id
   )
-alvin_health_record.save!
+  alvin_health_record.save!
 
-james_health_record = HealthRecord.new(
-  mood_status: rand(1..5),
-  weight: rand(45..120),
-  sys: rand(100..140),
-  dia: rand(60..120),
-  pulse: rand(40..80),
-  user_id: james.id
+  james_health_record = HealthRecord.new(
+    mood_status: rand(1..5),
+    weight: rand(45..120),
+    sys: rand(100..140),
+    dia: rand(60..120),
+    pulse: rand(40..80),
+    user_id: james.id
   )
-james_health_record.save!
-
+  james_health_record.save!
+end
 puts "Created #{HealthRecord.count} Health Records"
 
 # Creating the reminders
