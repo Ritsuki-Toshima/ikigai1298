@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  notifications:
+  new_comment:
+  message: "Test Message No.5"

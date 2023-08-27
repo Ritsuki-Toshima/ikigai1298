@@ -19,7 +19,7 @@ class TestNotification < Noticed::Base
   # Define helper methods to make rendering easier.
   #
   def message
-    "A system notification"
+    "Good morning Alvin, please remember to take the following medicines."
   end
   # def message
   #   t(".message")
