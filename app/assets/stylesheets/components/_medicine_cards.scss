@@ -6,13 +6,12 @@
 .medicine-container {
   position: relative;
   overflow: scroll;
-  opacity: 0.95;
 }
 
 .medicine-container .card {
   position: relative;
   justify-content: center;
-  min-width: 330px;
+  min-width: 275px;
   height: 300px;
   background: #219EBC;
   margin-bottom: 10px;
@@ -72,30 +71,14 @@
   background-color: #023047;
   color: white;
   text-align: left;
-  border-radius: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 30px;
-  width: 90%;
-  word-wrap: break-word;
-}
-
-.container .card .card-content .medicine-name {
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: black;
-  border: 2px solid #023047;
-  background-color: #023047;
-  color: white;
-  text-align: left;
   border-radius: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-left: 35px;
+  padding-left: 28px;
   width: 90%;
   word-wrap: break-word;
   bottom: 30%;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .container .card .card-content .medicine-dosage,
@@ -104,7 +87,7 @@
   display: inline-block;
   font-weight: 600;
   padding: 5px 10px;
-  margin: 5px;
+  margin: 8px;
   border: 1px solid transparent;
   border-radius: 10px;
   background-color: lightgrey;
