@@ -1,0 +1,33 @@
+<% @health_records = HealthRecord.where(user: current_user) %>
+<% mood_array = ["", "😞", "🙁", "🙂", "😊", "😆"] %>
+<% @health_records.each do |health_record| %>
+  <div class="health-profile">
+    <span style="font-size: 32px;">
+      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 64px;"/>
+      <%= health_record.user.first_name.capitalize %> <%= health_record.user.last_name.capitalize %> (<%= health_record.user.age %>)
+      <%= mood_array[health_record.mood_status] %>
+    </span>
+  </div>
+  <div class="health-record-card" style="font-size: 48px;">
+    <div class="health_info d-flex align-items-center">
+      <i class="fa-solid fa-circle-chevron-up me-3" style="color: #e22f22;"></i>
+      <h2 style="font-size: 40px; margin: 0px;">SYS</h2>
+      <div style="margin-left: auto;"><%= health_record.sys %></div>
+    </div>
+    <div class="health_info d-flex align-items-center">
+      <i class="fa-solid fa-circle-chevron-down me-3" style="color: #0d5be3;"></i>
+      <h2 style="font-size: 40px; margin: 0px;">DIA</h2>
+      <div style="margin-left: auto;"><%= health_record.dia %></div>
+    </div>
+    <div class="health_info d-flex align-items-center">
+      <i class="fa-solid fa-heart-pulse me-3" style="color: #f2392c;"></i>
+      <h2 style="font-size: 40px; margin: 0px;">PULSE</h2>
+      <div style="margin-left: auto;"><%= health_record.pulse %></div>
+    </div>
+    <div class="health_info d-flex align-items-center">
+      <i class="fa-solid fa-weight-scale me-3" style="color: #4b86ec;"></i>
+      <h2 style="font-size: 40px; margin: 0px;">WEIGHT</h2>
+      <div style="margin-left: auto;"><%= health_record.weight %></div>
+    </div>
+  </div>
+<% end %>
