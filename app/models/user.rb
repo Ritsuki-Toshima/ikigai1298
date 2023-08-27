@@ -9,11 +9,8 @@ class User < ApplicationRecord
   has_many :medicines, dependent: :destroy
   has_many :reminders, through: :medicines
   has_many :appointments, dependent: :destroy
-<<<<<<< HEAD
   has_many :notifications, as: :recipient, dependent: :destroy
-=======
   has_many :health_records, dependent: :destroy
->>>>>>> master
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
