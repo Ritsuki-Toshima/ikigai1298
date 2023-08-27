@@ -109,6 +109,7 @@ GEM
       aws_cf_signer
       rest-client (>= 2.0.0)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
     debug (1.8.0)
@@ -143,6 +144,10 @@ GEM
     geocoder (1.8.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hotwire-rails (0.1.3)
+      rails (>= 6.0.0)
+      stimulus-rails
+      turbo-rails
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -243,6 +248,10 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis (5.0.7)
+      redis-client (>= 0.9.0)
+    redis-client (0.16.0)
+      connection_pool
     regexp_parser (2.8.1)
     reline (0.3.8)
       io-console (~> 0.5)
@@ -280,6 +289,12 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
+    stimulus_reflex (3.4.1)
+      cable_ready (>= 4.5)
+      nokogiri
+      rack
+      rails (>= 5.2)
+      redis
     thor (1.2.2)
     thread-local (1.1.0)
     tilt (2.2.0)
@@ -335,6 +350,7 @@ DEPENDENCIES
   faker
   font-awesome-sass (~> 6.1)
   geocoder
+  hotwire-rails
   importmap-rails
   jbuilder
   noticed
@@ -348,6 +364,7 @@ DEPENDENCIES
   simple_form!
   sprockets-rails
   stimulus-rails
+  stimulus_reflex
   turbo-rails
   twilio-ruby
   tzinfo-data

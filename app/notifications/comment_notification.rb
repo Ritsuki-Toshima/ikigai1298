@@ -19,7 +19,7 @@ class CommentNotification < Noticed::Base
   # Define helper methods to make rendering easier.
   #
   def message
-    t("Test")
+    t("Gary created this test notification")
   end
 
   def url

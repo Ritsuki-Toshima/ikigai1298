@@ -7,6 +7,7 @@ class TestNotification < Noticed::Base
   # Add your delivery methods
   #
   deliver_by :database
+  deliver_by :system, class: "DeliveryMethods::System", channel: "NotificationChannel"
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
