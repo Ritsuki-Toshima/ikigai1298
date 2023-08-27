@@ -15,10 +15,22 @@
                 as: :date,
                 start_year: Date.today.year,
                 end_year: Date.today.year + 10 %>
+   <div data-controller="datepicker">
+    <%= f.input :start_date,
+          as: :string,
+          label: 'Start Date',
+          input_html: { data: { datepicker_target: "datePickerStart"}, placeholder: 'click me'} %>
+
   <%= f.input :end_date, as: :date,
                 as: :date,
                 start_year: Date.today.year,
                 end_year: Date.today.year + 10 %>
+
+    <%= f.input :end_date,
+          as: :string,
+          label: 'End Date',
+          input_html: { data: { datepicker_target: "datePickerEnd"}, placeholder: 'click me'} %>
+  </div>
   <%= f.input :photo, as: :file %>
   <div class="d-flex mt-4 mb-3">
     <%= link_to "Go Back", support_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
