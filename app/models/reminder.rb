@@ -1,4 +1,4 @@
 class Reminder < ApplicationRecord
   belongs_to :medicine
-  validates :time_to_taken, :dosage, presence: true
+  validates :time_to_taken, presence: true
 end
