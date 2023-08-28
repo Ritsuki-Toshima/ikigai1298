@@ -4,24 +4,21 @@ class HealthRecordsController < ApplicationController
   end
 
   def show
-    @health_record = HealthRecord.find(params[:id])
+    @health_record = HealthRecord.find(:id)
     authorize @health_record
   end
 
   def new
-    @support = Support.find(params[:support_id])
     @health_record = HealthRecord.new
     authorize @health_record
   end
 
   def create
-    @support = Support.find(params[:support_id])
     @health_record = HealthRecord.new(health_record_params)
-    @health_record.user = User.find(@support.elderly_id)
-    @trusted_user = User.find(@support.trusted_user_id)
+    @health_record.user_id = current_user.id
     authorize @health_record
     if @health_record.save
-      redirect_to support_health_records_path(@support)
+      redirect_to health_records_path
     else
       render :new, status: :unprocessable_entity
     end

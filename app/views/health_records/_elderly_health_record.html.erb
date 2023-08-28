@@ -1,12 +1,18 @@
 <% @health_records = HealthRecord.where(user: current_user) %>
 <% @health_record_today = HealthRecord.find_by(user: current_user, date: Date.today) %>
-<% mood_array = ["", "😞", "🙁", "🙂", "😊", "😆"] %>
+<% mood_icons = ["", "fa-regular fa-face-laugh-beam", "fa-regular fa-face-smile", "fa-regular fa-face-meh", "fa-regular fa-face-frown", "fa-regular fa-face-tired"] %>
 <% if @health_record_today %>
+  <div class="d-flex justify-content-between align-items-center mt-2">
+    <h1>Health Records</h1>
+    <%= link_to new_health_record_path, class: 'btn btn-outline-warning' do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
+  </div>
   <div class="health-profile">
     <span style="font-size: 32px;">
       <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 64px;"/>
       <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> (<%= current_user.age %>)
-      <%= mood_array[@health_record_today.mood_status] %>
+      <i class="<%= mood_icons[@health_record_today.mood_status] %>"></i>
     </span>
   </div>
   <div class="health-record-card" style="font-size: 48px;">
@@ -33,8 +39,18 @@
   </div>
   <%= render "graph_tabs" %>
 <% else %>
-  <div>
-    <p>You don't have any record today</p>
+  <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+    <span><strong>🔔You don't have any record today</strong>
+    </span>
+    <a data-bs-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
+  <div class="d-flex justify-content-between align-items-center mt-2">
+    <h1>Health Records</h1>
+    <%= link_to new_health_record_path, class: 'btn btn-outline-warning' do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
   </div>
   <div class="health-profile">
     <span style="font-size: 32px;">
