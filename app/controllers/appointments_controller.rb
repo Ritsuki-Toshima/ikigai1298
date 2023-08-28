@@ -33,6 +33,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @appointment.user = User.find(@support.elderly_id)
     @trusted_user = User.find(@support.trusted_user_id)
+    @appointment.end_time = @appointment.start_time + 1.hour
     authorize @appointment
     if @appointment.save
       redirect_to support_path(@support)
