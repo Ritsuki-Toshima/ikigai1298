@@ -1,8 +1,20 @@
 <h2>New health Record</h2>
 <%= simple_form_for [@support, @health_record] do |f| %>
   <%= f.input :mood_status,
-              placeholder: 'Naproxen',
-              label: "How do you feel today?" %>
+              label: "How are you feeling today?",
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'category-wrapper',
+              item_wrapper_class: 'category-item my-1',
+              input_html: {class: 'category-selector'},
+              collection: [
+              [raw("<div class='category-icon'><i class='fas fa-user-tie'></i> Business</div>"), "business"],
+              [raw("<div class='category-icon'><i class='fas fa-champagne-glasses'></i> Party</div>"), "party"],
+              [raw("<div class='category-icon'><i class='fas fa-sun'></i>Holiday</div> "), "holiday"],
+              [raw("<div class='category-icon'><i class='fas fa-ring'></i> Wedding</div>"), "wedding"],
+              [raw("<div class='category-icon'><i class='fas fa-shirt'></i> Casual</div>"), "casual"],
+              [raw("<div class='category-icon'><i class='fas fa-otter'></i> Other</div>"), "other"]
+              ] %>
   <%= f.input :photo, as: :file %>
   <div class="d-flex mt-4 mb-3">
     <%= link_to "Go Back", support_path(@support), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
