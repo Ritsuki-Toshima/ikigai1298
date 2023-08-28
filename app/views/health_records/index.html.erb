@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Health Records</h1>
-  <%= link_to new_support_health_record_path(@support), class: 'btn btn-outline-warning' do %>
+  <%= link_to new_support_health_record_path(@health_records), class: 'btn btn-outline-warning' do %>
     <i class="fa-solid fa-plus"></i>
   <% end %>
   <%= render "elderly_health_record", health_record: @health_records %>

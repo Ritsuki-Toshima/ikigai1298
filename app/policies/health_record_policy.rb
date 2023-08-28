@@ -14,7 +14,7 @@ class HealthRecordPolicy < ApplicationPolicy
     true
   end
 
-  def cretae?
+  def create?
     true
   end
 end
