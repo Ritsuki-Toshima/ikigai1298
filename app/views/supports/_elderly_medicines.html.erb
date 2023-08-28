@@ -1,13 +1,44 @@
-<div class="row justify-content-center">
-  <% @medicines = Medicine.where(user: current_user) %>
-  <% @medicines.order(created_at: :desc).each do |medicine| %>
-    <div class="col-12 col-lg-4 m-3 rounded p-0" style="background-color: #8ECAE6;">
-      <%# <%= link_to support_medicine_path(medicine.user, medicine), class: 'p-3 text-decoration-none text-black' do %>
-        <div class="align-items-center justify-content-end">
-          <p class="fs-3 text-black m-0 p-3"><%="#{medicine.name}" %></p>
-          <p class="fs-3 text-black m-0 p-3">Dosage: <%="#{medicine.dosage}" %>, Remaining: <%="#{medicine.dosage_remaining}" %></p>
+<div class="tab-pane fade py-3 show active" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
+  <ul class="list-unstyled">
+    <div class="cards">
+      <div class="medicine-container">
+        <div class="d-flex">
+          <% @medicines = Medicine.where(user: current_user) %>
+          <% @medicines.order(created_at: :desc).each do |medicine| %>
+            <div class="card <%= medicine.status %>">
+              <%= cl_image_tag medicine.photo.key, class: 'card-img', crop: :fill if medicine.photo.key? %>
+              <div class="card-content list-unstyled">
+                <li class="medicine-name"><%= medicine.name %></li>
+              </div>
+              <div class="card-content d-flex justify-content-center">
+                <li class="medicine-dosage"><%= medicine.dosage %> <%= medicine.unit %><br>
+                  per day</li>
+                <li class="medicine-frequency mb-5"><%= medicine.frequency %> times <br>
+                  per day</li>
+                <% if medicine.status == "pending" %>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <%= simple_form_for medicine do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'taken'} %>
+                      <%= f.submit 'TAKEN', class: 'btn btn-success mx-3', data: { turbo_confirm: "Are you sure?" } %>
+                    <% end %>
+                    <%= simple_form_for medicine do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'lost'} %>
+                      <%= f.submit 'LOST', class: 'btn btn-danger mx-3', data: { turbo_confirm: "Are you sure?" } %>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <!-- Display Status-->
+                  <h3 class='medicine-tag'><strong><%= medicine.status.upcase %></strong></h3>
+                  <%= simple_form_for medicine do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'pending'} %>
+                    <%= f.submit 'RESET', class: 'btn btn-warning mx-3', data: { turbo_confirm: "Are you sure?" } %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <%# <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  </ul>
+</div>

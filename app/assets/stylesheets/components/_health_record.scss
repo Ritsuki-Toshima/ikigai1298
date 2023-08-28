@@ -8,3 +8,56 @@
 .tabs-underlined .tab-underlined {
   margin: 8px 14px
 }
+
+
+
+// This is for form
+.category-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 0 0 18%;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector+label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.category-selector:checked+label {
+  color: black !important;
+  background-color: #30d2f2;
+  font-weight: bold;
+}
+
+.category-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-icon i {
+  margin-right: 8px;
+}
+
+.form-check-label.collection_radio_buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

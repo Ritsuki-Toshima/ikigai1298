@@ -12,7 +12,7 @@ class SendSmsService
     client = Twilio::REST::Client.new(ENV.fetch('ACCOUNT_SID', nil), ENV.fetch('AUTH_TOKEN', nil)) # SID & AUTH TOKEN
     client.messages.create(
       from: ENV.fetch('TWILIO_NUMBER', nil), # Your Twilio number
-      to: @user.phone_number, # User mobile phone number
+      to:  @user.phone_number, # User mobile phone number
       body: @message
     )
   end

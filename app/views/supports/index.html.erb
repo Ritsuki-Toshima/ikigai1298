@@ -2,22 +2,22 @@
   <div class="container">
     <h1>Welcome <%= current_user.first_name.capitalize %>!</h1>
     <h2>Today's Date: <%= Time.now.strftime(" %A, %b %e - %l:%M %p")  %></h2>
-    <ul class="nav tabs-underlined" id="myTab" role="tablist">
+    <ul class="nav tabs-underlined flex-nowrap" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <span class="nav-link tab-underlined active" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments-tab-pane" role="tab" aria-controls="appointments-tab-pane" aria-selected="true">MY APPOINTMENTS</span>
+        <span class="nav-link tab-underlined active" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="true">MY MEDICINES </span>
       </li>
       <li class="nav-item" role="presentation">
-        <span class="nav-link tab-underlined" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="false">MY MEDICINES</span>
+        <span class="nav-link tab-underlined" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments-tab-pane" role="tab" aria-controls="appointments-tab-pane" aria-selected="false">MY APPOINTMENTS</span>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade py-3 show active" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
+      <div class="tab-pane fade py-3 show active" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
         <%# <%= link_to "Add Appointment", new_support_appointment_path(current_user.id), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
-        <%= render "elderly_appointments", appointments: @appointments %>
-      </div>
-      <div class="tab-pane fade py-3" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
-        <%# <%= link_to "Add Medicine", new_support_medicine_path(support_id: current_user.id), class:'btn btn-outline-info btn-block mt-2 go-back-btn'%>
         <%= render "elderly_medicines", medicines: @medicines %>
+      </div>
+      <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
+        <%# <%= link_to "Add Medicine", new_support_medicine_path(support_id: current_user.id), class:'btn btn-outline-info btn-block mt-2 go-back-btn'%>
+        <%= render "elderly_appointments", appointments: @appointments %>
       </div>
     </div>
   </div>
@@ -45,5 +45,4 @@
     <% end %>
     <%= render "list_of_elderlies", supports: @supports%>
   <% end %>
-
 </div>

@@ -29,7 +29,7 @@
           <div class="medicine-container">
             <div class="d-flex">
               <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
-                <div class="card">
+                <div class="card <%= medicine.status %>">
                   <%= cl_image_tag medicine.photo.key, class: 'card-img', crop: :fill if medicine.photo.key? %>
                   <div class="card-content list-unstyled">
                     <li class="medicine-name"><%= medicine.name %></li>
@@ -69,8 +69,7 @@
         <% appointments.each do |appointment| %>
           <div class="appointment-details" data-appointment-id="<%= appointment.id %>" style="display: none;">
             <p class="appointment-title"><%= appointment.name %></p>
-            <p><%= appointment.start_time %></p>
-            <p><%= appointment.end_time %></p>
+            <p><%= appointment.start_time.strftime("%b %d %l:%M %p") %> - <%= appointment.end_time.strftime("%l:%M %p") %></p>
             <p><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></p>
           </div>
         <% end %>
