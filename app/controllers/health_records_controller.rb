@@ -16,6 +16,10 @@ class HealthRecordsController < ApplicationController
   def create
     @health_record = HealthRecord.new(health_record_params)
     @health_record.user_id = current_user.id
+    health_data = GoogleVisionService.new("https://www.citizen-systems.com/fileadmin/images/healthcare/category/Wrist_Blood_Pressure_Monitor.jpg").call
+    @health_record.sys = health_data[0]
+    @health_record.dia = health_data[1]
+    @health_record.pulse = health_data[2]
     authorize @health_record
     if @health_record.save
       redirect_to health_records_path
@@ -27,6 +31,6 @@ class HealthRecordsController < ApplicationController
   private
 
   def health_record_params
-    params.require(:health_record).permit(:mood_status, :weight, :sys, :dia, :pulse)
+    params.require(:health_record).permit(:mood_status, :weight, :sys, :dia, :pulse, :photo)
   end
 end
