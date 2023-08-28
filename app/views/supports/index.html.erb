@@ -1,5 +1,5 @@
 <% if current_user.elderly?  %>
-  <div class="container">
+  <div class="container" data-controller="notification-subcription">
     <h1>Welcome <%= current_user.first_name.capitalize %>!</h1>
     <h2>Today's Date: <%= Time.now.strftime(" %A, %b %e - %l:%M %p")  %></h2>
     <ul class="nav tabs-underlined" id="myTab" role="tablist">
@@ -45,5 +45,4 @@
     <% end %>
     <%= render "list_of_elderlies", supports: @supports%>
   <% end %>
-
 </div>

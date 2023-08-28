@@ -9,7 +9,7 @@ class CommentNotification < Noticed::Base
   #
   deliver_by :database #, debug: true # format: :to_database,
   deliver_by :action_cable #, debug: true # format: :to_action_cable
-  deliver_by :system, class: "DeliveryMethods::System", channel: "NotificationsChannel"
+  deliver_by :system, class: "DeliveryMethods::System", channel: "NotificationChannel"
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
@@ -35,7 +35,7 @@ class CommentNotification < Noticed::Base
   # end
 
   def message
-    t(".message")
+    t("Anything here....")
   end
 
   def url

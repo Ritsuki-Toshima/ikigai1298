@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  # after_create_commit :send_comment_notification
+  after_create_commit :send_comment_notification
 
   after_create do
     cable_ready["visitors"].console_log(message: "Welcome to the site!")
@@ -43,6 +43,12 @@ class User < ApplicationRecord
   private
 
   def send_comment_notification
+    raise
+    ActionCable.server.broadcast("notification_channel", {
+      title: self.title,
+      body: self.body
+    })
+    # how to process JSON - ActionCable.render
     # @user = current_user
     # @notification = CommentNotification.with(comment: @comment)
     # CommentNotification.with(post: @post).deliver(@user)

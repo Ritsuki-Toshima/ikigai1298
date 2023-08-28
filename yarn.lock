@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.2.tgz#5acd38242e8bde4f9986e7913c8fdf49d3aa199f"
   integrity sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==
 
+"@rails/actioncable@^7.0.7-2":
+  version "7.0.7-2"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.7-2.tgz#c2a28d64720d2b44e421a1b3790070d5fc3f2da2"
+  integrity sha512-7irihOFG//9Z4kBuiwH+VqSfiCdOLcuhC0/y7QcxOC9R08QE5Hq7N+ex2o3SkqiszbmMh7tlj88V+y+Kt/TPmA==
+
 cable_ready@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-5.0.1.tgz#1cef5991cf7a064d09971ed7d87c614dec2ee1e1"
