@@ -49,7 +49,7 @@
     <canvas
       data-controller="chart"
       data-chart-data-value='{ "labels": ["6days ago", "5days ago", "4days ago", "3days ago", "2days ago", "yesterday", "today"],
-                              "datasets": [{ "label": "PULSE", "backgroundColor": "transparent", "borderColor": "#3B82F6",S
+                              "datasets": [{ "label": "PULSE", "backgroundColor": "transparent", "borderColor": "#3B82F6",
                               "data": [
                                       <%= @health_records.find_by(date: 6.days.ago.to_date)&.pulse || 0 %>,
                                       <%= @health_records.find_by(date: 5.days.ago.to_date)&.pulse || 0 %>,
