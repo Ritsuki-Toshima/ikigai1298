@@ -1,13 +1,13 @@
 class RemindersController < ApplicationController
   before_action :set_reminder, only: [:edit, :update]
   def index
-    @reminder = Reminder.all
+    @reminders = Reminder.all
   end
 
   def new
     @medicine = Medicine.find(params[:medicine_id])
     @reminder = Reminder.new
-    @reminders = Reminder.all
+    @reminders = Reminder.where(medicine_id: params[:medicine_id])
     authorize @reminder
   end
 
@@ -16,7 +16,7 @@ class RemindersController < ApplicationController
     @reminder = Reminder.new(reminder_params)
     authorize @reminder
     if @reminder.save
-      redirect_to new_medicine_reminder_path(@medicine)
+      redirect_to new_medicine_reminder_path(@medicine), notice: 'Reminder added successfully.'
     else
       render :new, status: :unprocessable_entity
     end
