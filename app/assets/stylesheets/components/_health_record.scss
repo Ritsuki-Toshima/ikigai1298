@@ -1,4 +1,10 @@
 .nav-display {
+  display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+  width: 100%;
+}
+
+.tabs-underlined .tab-underlined {
+  margin: 8px 14px
 }
