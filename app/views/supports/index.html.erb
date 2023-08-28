@@ -34,7 +34,7 @@
   </div>
   <div class= "container mt-3 ">
     <% @supports.each do |support| %>
-      <div class="flash flash-warning fade show" role="alert">
+      <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
         <span><strong>Reminder🔔 </strong>
           <p><%= support.elderly.first_name.capitalize %> has <%= support.elderly.appointments.active.count %> appointments today!</p>
         </span>
