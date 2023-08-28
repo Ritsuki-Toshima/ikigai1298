@@ -11,8 +11,8 @@ class HealthRecordsController < ApplicationController
 
   def new
     @support = Support.find(params[:support_id])
-    @appointment = Appointment.new
-    authorize @appointment
+    @health_record = HealthRecord.new
+    authorize @health_record
   end
 
   def create
