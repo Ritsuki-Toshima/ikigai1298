@@ -11,15 +11,15 @@
                   class: "form-control" %>
   </div>
   <%= f.input :frequency, placeholder: "3 times in a day" %>
-   <div data-controller="datepicker">
+  <div data-controller="medicinedatepicker">
     <%= f.input :start_date,
           as: :string,
           label: 'Start Date',
-          input_html: { data: { datepicker_target: "datePickerStart"}, placeholder: 'click me'} %>
+          input_html: { data: { medicinedatepicker_target: "datePickerStart"}, placeholder: 'click me'} %>
     <%= f.input :end_date,
           as: :string,
           label: 'End Date',
-          input_html: { data: { datepicker_target: "datePickerEnd"}, placeholder: 'click me'} %>
+          input_html: { data: { medicinedatepicker_target: "datePickerEnd"}, placeholder: 'click me'} %>
   </div>
   <%= f.input :photo, as: :file %>
   <div class="d-flex mt-4 mb-3">
