@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
 ActiveRecord::Schema[7.0].define(version: 2023_08_28_045938) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_08_27_075722) do
+>>>>>>> Stashed changes
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_045938) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date"
+    t.text "ocr_text"
     t.index ["user_id"], name: "index_health_records_on_user_id"
   end
 
@@ -82,6 +87,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_045938) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_medicines_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.text "image_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reminders", force: :cascade do |t|
