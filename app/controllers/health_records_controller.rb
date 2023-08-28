@@ -16,6 +16,7 @@ class HealthRecordsController < ApplicationController
   def create
     @health_record = HealthRecord.new(health_record_params)
     @health_record.user_id = current_user.id
+    @health_record.date = Date.today
     authorize @health_record
     if @health_record.save
       redirect_to health_records_path
