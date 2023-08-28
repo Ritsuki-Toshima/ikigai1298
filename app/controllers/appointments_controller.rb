@@ -3,6 +3,8 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = policy_scope(Appointment).all
+    @support = Support.find(params[:support_id])
+    @appointments = @support.elderly.appointments
     @markers = @appointments.geocoded.map do |appointment|
       {
         lat: appointment.latitude,
@@ -10,12 +12,6 @@ class AppointmentsController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
-  end
-
-  def new
-    @support = Support.find(params[:support_id])
-    @appointment = Appointment.new
-    authorize @appointment
   end
 
   def show
@@ -26,6 +22,12 @@ class AppointmentsController < ApplicationController
         lng: @appointment.longitude,
         marker_html: render_to_string(partial: "marker")
       }
+  end
+
+  def new
+    @support = Support.find(params[:support_id])
+    @appointment = Appointment.new
+    authorize @appointment
   end
 
   def create

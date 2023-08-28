@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :appointments
     resources :health_records
   end
+  resources :appointments, only: [:show]
   resources :medicines, only: [] do
     resources :reminders, only: [:new, :create]
   end

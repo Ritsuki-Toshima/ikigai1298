@@ -1,6 +1,5 @@
 class HealthRecordsController < ApplicationController
   def index
-    # @support = Support.find(params[:support_id])
     @health_records = policy_scope(HealthRecord).where(user: current_user)
   end
 
