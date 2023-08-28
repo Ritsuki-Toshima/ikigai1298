@@ -8,7 +8,7 @@
               html5:true %>
   <div data-controller="datepicker">
     <%= f.input :start_time,
-          as: :string,
+          as: :date,
           label: 'Date',
           input_html: { data: { datepicker_target: "datePickerStart"}, placeholder: 'click me'} %>
   </div>
