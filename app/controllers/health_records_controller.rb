@@ -16,8 +16,6 @@ class HealthRecordsController < ApplicationController
   def create
     @health_record = HealthRecord.new(health_record_params)
     @health_record.user_id = current_user.id
-    @health_record.user = User.find(@support.elderly_id)
-    @trusted_user = User.find(@support.trusted_user_id)
     health_data = GoogleVisionService.new("https://www.citizen-systems.com/fileadmin/images/healthcare/category/Wrist_Blood_Pressure_Monitor.jpg").call
     @health_record.sys = health_data[0]
     @health_record.dia = health_data[1]
