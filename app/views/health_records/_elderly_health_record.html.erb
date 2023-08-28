@@ -1,7 +1,7 @@
 <% @health_records = HealthRecord.where(user: current_user) %>
-<% @health_record_today = HealthRecord.where(user: current_user, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day) %>
+<% @health_record_today = HealthRecord.find_by(user: current_user, date: Date.today) %>
 <% mood_array = ["", "😞", "🙁", "🙂", "😊", "😆"] %>
-<% if @health_record_today.any? %>
+<% if @health_record_today %>
   <div class="health-profile">
     <span style="font-size: 32px;">
       <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 64px;"/>
@@ -31,8 +31,11 @@
       <div style="margin-left: auto;"><%= @health_record_today.weight %></div>
     </div>
   </div>
+  <%= render "graph_tabs" %>
 <% else %>
-  <p>You don't have any record today</p>
+  <div>
+    <p>You don't have any record today</p>
+  </div>
   <div class="health-profile">
     <span style="font-size: 32px;">
       <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 64px;"/>
@@ -63,7 +66,3 @@
   </div>
   <%= render "graph_tabs" %>
 <% end %>
-<canvas
-  data-controller="chart"
-  data-chart-data-value='{ "labels": ["January", "February", "March", "April", "May", "June", "July"], "datasets": [{ "label": "My First dataset", "backgroundColor": "transparent", "borderColor": "#3B82F6", "data": [37, 83, 78, 54, 12, 5, 99] }] }'
-></canvas>
