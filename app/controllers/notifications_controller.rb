@@ -11,16 +11,7 @@ class NotificationsController < ApplicationController
   end
 
   def create
-    @notification = Notification.new
-    authorize @notification
-    if @notification.save
-      NotificationChannel.broadcast_to(
-        @current_user,
-        render_to_string(partial: "notification", locals: { notification: @notification })
-      )
-      head :ok
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @notifications = policy_scope(Notification).all
+    NotificationChannel.broadcast_to(current_user, title: 'New things!', body: 'All the news fit to print')
   end
 end
