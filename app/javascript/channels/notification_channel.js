@@ -10,8 +10,9 @@ createConsumer().subscriptions.create("NotificationChannel", {
 
   },
 
+
   received(data) {
     console.log(data);
-    if (data.cableReady) CableReady.perform(data.operations);
+    new Notification(data.title, { body: data.body })
   },
 });
