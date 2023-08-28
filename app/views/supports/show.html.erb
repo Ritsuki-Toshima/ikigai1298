@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="appointments">
   <div class="profile-info-card">
     <%= image_tag 'old-man.jpg', class: 'profile-photo'%>
     <% elderly = User.find(@support.elderly_id) %>
@@ -73,6 +73,5 @@
         <% end %>
       </div>
     </div>
+  </div>
 </div>
-</div>
-          <%= javascript_include_tag 'appointments' %>

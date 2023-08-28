@@ -1,5 +1,9 @@
+import { Controller } from "@hotwired/stimulus"
 
-document.addEventListener('DOMContentLoaded', function () {
+// Connects to data-controller="appointments"
+export default class extends Controller {
+  connect() {
+console.log("HELLO")
   const appointmentIcons = document.querySelectorAll('.appointment-icon');
 
   appointmentIcons.forEach(icon => {
@@ -18,6 +22,8 @@ icon.addEventListener('click', function () {
     }
   }
 });
-  });
 });
 
+
+  }
+}
