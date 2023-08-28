@@ -95,3 +95,17 @@
   font-size: 0.7em;
   font-weight: bold;
 }
+
+.pending {
+  background-color: #8ECAE6;
+}
+
+.taken {
+  background-color: lightgreen !important;
+  opacity: 0.85;
+}
+
+.lost {
+  background-color: #E76161 !important;
+  opacity: 0.85;
+}
