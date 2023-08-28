@@ -3,8 +3,8 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = policy_scope(Appointment).all
-    @support = Support.find(params[:support_id])
-    @appointments = @support.elderly.appointments
+    # @support = Support.find(params[:support_id])
+    # @appointments = @support.elderly.appointments
     @markers = @appointments.geocoded.map do |appointment|
       {
         lat: appointment.latitude,
