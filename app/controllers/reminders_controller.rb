@@ -14,6 +14,7 @@ class RemindersController < ApplicationController
   def create
     @medicine = Medicine.find(params[:medicine_id])
     @reminder = Reminder.new(reminder_params)
+    @reminder.medicine = @medicine
     authorize @reminder
     if @reminder.save
       redirect_to new_medicine_reminder_path(@medicine), notice: 'Reminder added successfully.'
@@ -41,6 +42,6 @@ class RemindersController < ApplicationController
   end
 
   def reminder_params
-    params.require(:reminder).permit(:dosage, :time_to_taken)
+    params.require(:reminder).permit(:time_to_taken)
   end
 end
