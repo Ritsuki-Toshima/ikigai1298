@@ -29,7 +29,7 @@
           <div class="medicine-container">
             <div class="d-flex">
               <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
-                <div class="card">
+                <div class="card <%= medicine.status %>">
                   <%= cl_image_tag medicine.photo.key, class: 'card-img', crop: :fill if medicine.photo.key? %>
                   <div class="card-content list-unstyled">
                     <li class="medicine-name"><%= medicine.name %></li>
