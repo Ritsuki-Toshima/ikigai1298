@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="appointments">
   <div class="profile-info-card">
     <%= image_tag 'old-man.jpg', class: 'profile-photo'%>
     <% elderly = User.find(@support.elderly_id) %>
@@ -73,26 +73,5 @@
         <% end %>
       </div>
     </div>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const appointmentIcons = document.querySelectorAll('.appointment-icon');
-
-        appointmentIcons.forEach(icon => {
-      icon.addEventListener('click', function () {
-        const appointmentId = this.dataset.appointmentId;
-        const appointmentDetails = document.querySelector(`.appointment-details[data-appointment-id="${appointmentId}"]`);
-
-        if (appointmentDetails) {
-          if (appointmentDetails.style.display === 'none' || appointmentDetails.style.display === '') {
-            document.querySelectorAll('.appointment-details').forEach(details => {
-              details.style.display = 'none';
-            });
-            appointmentDetails.style.display = 'block';
-          } else {
-            appointmentDetails.style.display = 'none';
-          }
-        }
-      });
-        });
-      });
-    </script>
+  </div>
+</div>
