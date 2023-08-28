@@ -29,8 +29,8 @@ class MedicinesController < ApplicationController
   end
 
   def update
-    if @medicine.update
-      redirect_to medicines_path
+    if @medicine.update(medicine_params)
+      redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,6 +44,6 @@ class MedicinesController < ApplicationController
   end
 
   def medicine_params
-    params.require(:medicine).permit(:name, :description, :dosage, :dosage_remaining, :unit, :start_date, :end_date, :frequency, :photo)
+    params.require(:medicine).permit(:name, :description, :dosage, :dosage_remaining, :unit, :start_date, :end_date, :frequency, :status, :photo)
   end
 end

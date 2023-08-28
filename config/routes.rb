@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :health_records
   end
   resources :appointments, only: [:show]
-  resources :medicines, only: [] do
+  resources :medicines, only: [:update] do
     resources :reminders, only: [:new, :create]
   end
   resources :reminders, only: [:edit, :create]
