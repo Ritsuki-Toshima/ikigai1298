@@ -3,7 +3,7 @@ import { createConsumer } from "@rails/actioncable";
 
 createConsumer().subscriptions.create("NotificationChannel", {
   connected() {
-    console.log("What do I do now?");
+    console.log("Connected to channel");
   },
 
   disconnected() {
@@ -11,6 +11,7 @@ createConsumer().subscriptions.create("NotificationChannel", {
   },
 
   received(data) {
+    console.log(data);
     if (data.cableReady) CableReady.perform(data.operations);
   },
 });

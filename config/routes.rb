@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :reminders, only: [:edit, :create]
   get "/overviews", to: "users#overview", as: :overviews
   resources :notifications, only: [:index, :show, :new, :create]
+  get "/pages", to: "pages#home"
 end

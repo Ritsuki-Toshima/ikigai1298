@@ -8,7 +8,7 @@ class DeliveryMethods::System < Noticed::DeliveryMethods::Base
       options: {
         body: notification.message
       }
-    ).broadcast_to(recipient)
+    ).broadcast_to(current_user)
   end
 
   def channel
