@@ -18,8 +18,8 @@ export default class extends Controller {
 
   connect() {
     console.log(this);
-    flatpickr(this.datePickerStartTarget, {minDate: "today"})
-    flatpickr(this.datePickerEndTarget, {minDate: "today"})
+    flatpickr(this.datePickerStartTarget, { enableTime: true, minDate: "today"})
+    flatpickr(this.datePickerEndTarget, { enableTime: true, minDate: "today"})
 
     // flatpickr(".anotherSelector");
   }
