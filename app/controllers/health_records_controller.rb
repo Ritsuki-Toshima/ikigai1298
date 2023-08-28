@@ -1,6 +1,7 @@
 class HealthRecordsController < ApplicationController
   def index
-    @health_records = policy_scope(HealthRecord).all
+    # @support = Support.find(params[:support_id])
+    @health_records = policy_scope(HealthRecord).where(user: current_user)
   end
 
   def show
@@ -29,7 +30,7 @@ class HealthRecordsController < ApplicationController
 
   private
 
-  def health_records_params
+  def health_record_params
     params.require(:health_record).permit(:mood_status, :weight, :sys, :dia, :pulse)
   end
 end
