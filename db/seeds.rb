@@ -296,7 +296,7 @@ puts "Creating Health Records"
 
 # Creating the health records
 7.times do |i|
-  date = Date.today - i.days
+  date = Date.today - (i + 1).days
   alvin_health_record = HealthRecord.new(
     mood_status: rand(1..5),
     weight: rand(45..120),

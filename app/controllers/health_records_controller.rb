@@ -18,13 +18,13 @@ class HealthRecordsController < ApplicationController
     @health_record.user_id = current_user.id
     @health_record.date = Date.today
 
-    health_data = GoogleVisionService.new("https://www.citizen-systems.com/fileadmin/images/healthcare/category/Wrist_Blood_Pressure_Monitor.jpg").call
+  authorize @health_record
+  if @health_record.save
+    health_data = GoogleVisionService.new(@health_record.photo.url).call
     @health_record.sys = health_data[0]
     @health_record.dia = health_data[1]
     @health_record.pulse = health_data[2]
-
-    authorize @health_record
-    if @health_record.save
+    @health_record.save
       redirect_to health_records_path
     else
       render :new, status: :unprocessable_entity
