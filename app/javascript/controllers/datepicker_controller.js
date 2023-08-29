@@ -13,13 +13,13 @@ import { Controller } from "@hotwired/stimulus"
 import flatpickr from "flatpickr";
 
 export default class extends Controller {
-  static targets = ["datePickerStart", "datePickerEnd"];
+  static targets = ["datePickerStart"];
 
 
   connect() {
     console.log(this);
     flatpickr(this.datePickerStartTarget, { enableTime: true, minDate: "today"})
-    flatpickr(this.datePickerEndTarget, { enableTime: true, minDate: "today"})
+
 
     // flatpickr(".anotherSelector");
   }
