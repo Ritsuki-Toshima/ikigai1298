@@ -22,20 +22,23 @@
       <% end %>
     </div>
     <div class="bd-callout">
-      <h5>Medicine schedule</h5>
+      <h5>Today's medication</h5>
       <% @medicine_user = Medicine.where(user: current_user) %>
+      <% @all_user_reminders = [] %>
       <% @medicine_user.each do |medicine_user| %>
-        <% medicine_user.reminders %>
+        <% @all_user_reminders << medicine_user.reminders %>
       <% end %>
-      <% @reminders_today = Reminder.where(time_to_taken: Date.today.beginning_of_day..Date.today.end_of_day) %>
+      <% @reminders_today = @all_user_reminders.flat_map(&:to_a).select do |reminder| %>
+        <% reminder.time_to_taken.to_date == Date.today %>
+      <% end %>
       <% if @reminders_today != [] %>
         <ul>
-          <% @appointments_today.each do |appointment_today| %>
-            <li><%= appointment_today.name %><%= appointment_today.start_time.strftime("%l:%M %p") %></li>
+          <% @reminders_today.each do |remidner_today| %>
+            <li><%= reminder_today.medicine %><%= reminder_today.time_to_taken.strftime("%l:%M %p") %></li>
           <% end %>
         </ul>
       <% else %>
-        <p style="margin: 0px;">You don't have any reminder of medicine today.</p>
+        <p style="margin: 0px;">You don't have any medication today.</p>
       <% end %>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
