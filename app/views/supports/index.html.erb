@@ -9,13 +9,13 @@
       <p><%= Time.now.strftime("%A %d %B") %></p>
     </div>
     <div class="bd-callout">
-      <% @appointments_today = Appointment.where(user: current_user, start_time: Date.today) %>
+      <% @appointments_today = Appointment.where(user: current_user, start_time: Date.today.beginning_of_day..Date.today.end_of_day) %>
       <% if @appointments_today != [] %>
         <% @appointments_today.each do |appointment_today| %>
           <%= appointment_today.name %>
         <% end %>
       <% else %>
-        <p>You don't have any appointment today.</p>
+        <p style="margin: 0px;">You don't have any appointment today.</p>
       <% end %>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">

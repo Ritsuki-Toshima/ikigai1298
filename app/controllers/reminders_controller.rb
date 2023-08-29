@@ -5,6 +5,7 @@ class RemindersController < ApplicationController
   end
 
   def new
+    @support = current_user.supports_as_trusted_user.first ##to be changed if multiply caregivers
     @medicine = Medicine.find(params[:medicine_id])
     @reminder = Reminder.new
     @reminders = Reminder.where(medicine_id: params[:medicine_id])
