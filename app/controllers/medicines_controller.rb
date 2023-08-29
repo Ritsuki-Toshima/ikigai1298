@@ -18,7 +18,7 @@ class MedicinesController < ApplicationController
     @trusted_user = User.find(@support.trusted_user_id)
     authorize @medicine
     if @medicine.save
-      redirect_to support_path(@support)
+      redirect_to new_medicine_reminder_path(@medicine)
       SendSmsService.new(@medicine.user, "Dear #{@medicine.user.first_name.capitalize}, #{@trusted_user.first_name.capitalize} added a new medicine for you. Check out the Ikigai app at: https://ikigai1298-c2bc721aa13b.herokuapp.com").call
     else
       render :new, status: :unprocessable_entity
@@ -29,8 +29,13 @@ class MedicinesController < ApplicationController
   end
 
   def update
-    if @medicine.update
-      redirect_to medicines_path
+    if @medicine.update(medicine_params)
+      redirect_to root_path
+      @supports = Support.where(elderly_id: current_user.id)
+      @support = @supports.first
+      @trusted_users = User.where(id: @support.trusted_user_id)
+      @trusted_user = @trusted_users.first
+      SendSmsService.new(@trusted_user, "Dear #{@trusted_user.first_name.capitalize}, #{current_user.first_name.capitalize} has lost one of their medicines. Check out the Ikigai app at: https://ikigai1298-c2bc721aa13b.herokuapp.com").call if @medicine.status == 'lost'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,6 +49,6 @@ class MedicinesController < ApplicationController
   end
 
   def medicine_params
-    params.require(:medicine).permit(:name, :description, :dosage, :dosage_remaining, :unit, :start_date, :end_date, :frequency, :photo)
+    params.require(:medicine).permit(:name, :description, :dosage, :dosage_remaining, :unit, :start_date, :end_date, :frequency, :status, :photo)
   end
 end

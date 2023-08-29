@@ -295,27 +295,34 @@ puts "----------------------------------------------"
 puts "Creating Health Records"
 
 # Creating the health records
-10.times do
+7.times do |i|
+  date = Date.today - i.days
   alvin_health_record = HealthRecord.new(
     mood_status: rand(1..5),
     weight: rand(45..120),
     sys: rand(100..140),
     dia: rand(60..120),
     pulse: rand(40..80),
-    user_id: alvin.id
+    user_id: alvin.id,
+    date: date
   )
   alvin_health_record.save!
+end
 
+7.times do |i|
+  date = Date.today - (i + 1).days
   james_health_record = HealthRecord.new(
     mood_status: rand(1..5),
     weight: rand(45..120),
     sys: rand(100..140),
     dia: rand(60..120),
     pulse: rand(40..80),
-    user_id: james.id
+    user_id: james.id,
+    date: date
   )
   james_health_record.save!
 end
+
 puts "Created #{HealthRecord.count} Health Records"
 
 # Creating the reminders

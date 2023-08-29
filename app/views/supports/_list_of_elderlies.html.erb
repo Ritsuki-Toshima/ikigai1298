@@ -7,11 +7,11 @@
           <div class="d-flex">
             <!-- Left column: Image -->
             <div class="flex-shrink-0">
-                  <%= cl_image_tag support.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.photo.key? %>
+              <%= cl_image_tag support.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.photo.key? %>
             </div>
             <!-- Right column: Name -->
             <div class="d-flex align-items-center justify-content-end">
-              <p class="fs-3 text-black m-0 p-3"><%="#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" %></p>
+              <p class="fs-2 text-black m-0 p-3"><%="#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" %></p>
             </div>
           </div>
         <% end %>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="appointments">
   <div class="profile-info-card">
     <%= image_tag 'old-man.jpg', class: 'profile-photo'%>
     <% elderly = User.find(@support.elderly_id) %>
@@ -29,7 +29,7 @@
           <div class="medicine-container">
             <div class="d-flex">
               <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
-                <div class="card">
+                <div class="card <%= medicine.status %>">
                   <%= cl_image_tag medicine.photo.key, class: 'card-img', crop: :fill if medicine.photo.key? %>
                   <div class="card-content list-unstyled">
                     <li class="medicine-name"><%= medicine.name %></li>
@@ -66,33 +66,11 @@
         <% appointments.each do |appointment| %>
           <div class="appointment-details" data-appointment-id="<%= appointment.id %>" style="display: none;">
             <p class="appointment-title"><%= appointment.name %></p>
-            <p><%= appointment.start_time %></p>
-            <p><%= appointment.end_time %></p>
+            <p><%= appointment.start_time.strftime("%b %d %l:%M %p") %> - <%= appointment.end_time.strftime("%l:%M %p") %></p>
             <p><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></p>
           </div>
         <% end %>
       </div>
     </div>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const appointmentIcons = document.querySelectorAll('.appointment-icon');
-
-        appointmentIcons.forEach(icon => {
-      icon.addEventListener('click', function () {
-        const appointmentId = this.dataset.appointmentId;
-        const appointmentDetails = document.querySelector(`.appointment-details[data-appointment-id="${appointmentId}"]`);
-
-        if (appointmentDetails) {
-          if (appointmentDetails.style.display === 'none' || appointmentDetails.style.display === '') {
-            document.querySelectorAll('.appointment-details').forEach(details => {
-              details.style.display = 'none';
-            });
-            appointmentDetails.style.display = 'block';
-          } else {
-            appointmentDetails.style.display = 'none';
-          }
-        }
-      });
-        });
-      });
-    </script>
+  </div>
+</div>
