@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     NotificationChannel.broadcast_to(
       current_user,
       title: 'New things!',
-      body: 'All the news fit to print'
+      body: 'Please remember to take your medicines'
     )
   end
 end
