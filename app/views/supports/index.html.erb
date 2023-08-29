@@ -3,10 +3,59 @@
     <h1>Welcome <%= current_user.first_name.capitalize %>!</h1>
     <div class="text-center">
       <div class="d-flex justify-content-center align-items-center">
-        <i class="fa-regular fa-clock" style="font-size: 32px;"></i>
+        <i class="fa-regular fa-clock me-2" style="font-size: 36px;"></i>
         <h2 style="font-size: 50px;"><%= Time.now.strftime("%l:%M") %> <span style="font-size: 24px;"><%= Time.now.strftime("%p") %></span></h2>
       </div>
       <p><%= Time.now.strftime("%A %d %B") %></p>
+    </div>
+
+    <div class="bd-callout">
+      <% @appointments_today = Appointment.where(user: current_user, start_time: Date.today) %>
+      <% if @appointments_today != [] %>
+        <% @appointments_today.each do |appointment_today| %>
+          <%= appointment_today.name %>
+        <% end %>
+      <% else %>
+        <p>You don't have any appointment today.</p>
+      <% end %>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div style="display: flex; flex-direction: row;">
+        <div style="margin: 10px; text-align: center;">
+          <%= link_to health_records_path, class: "square-btn", style: "background-color: orange; display: inline-block; text-align: center; padding: 20px;" do %>
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <i class="fa-solid fa-capsules" style="font-size: 72px;"></i>
+              <span style="display: block; font-size: 20px;">Medication</span>
+            </div>
+          <% end %>
+        </div>
+        <div style="margin: 10px; text-align: center;">
+          <%= link_to health_records_path, class: "square-btn", style: "background-color: blue; display: inline-block; text-align: center; padding: 20px;" do %>
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <i class="fa-solid fa-calendar-days" style="font-size: 72px;"></i>
+              <span style="display: block; font-size: 20px;">Appointment</span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: row;">
+        <div style="margin: 10px; text-align: center;">
+          <%= link_to health_records_path, class: "square-btn", style: "background-color: red; display: inline-block; text-align: center; padding: 20px;" do %>
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <i class="fa-solid fa-heart" style="font-size: 72px;"></i>
+              <span style="display: block; font-size: 17px;">Health Record</span>
+            </div>
+          <% end %>
+        </div>
+        <div style="margin: 10px; text-align: center;">
+          <%= link_to health_records_path, class: "square-btn", style: "background-color: green; display: inline-block; text-align: center; padding: 20px;" do %>
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <i class="fa-regular fa-message" style="font-size: 72px;"></i>
+              <span style="display: block; font-size: 20px;">Chat</span>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <ul class="nav tabs-underlined flex-nowrap" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
@@ -18,11 +67,9 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade py-3 show active" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
-        <%# <%= link_to "Add Appointment", new_support_appointment_path(current_user.id), class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
         <%= render "elderly_medicines", medicines: @medicines %>
       </div>
       <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
-        <%# <%= link_to "Add Medicine", new_support_medicine_path(support_id: current_user.id), class:'btn btn-outline-info btn-block mt-2 go-back-btn'%>
         <%= render "elderly_appointments", appointments: @appointments %>
       </div>
     </div>
