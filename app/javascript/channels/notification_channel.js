@@ -13,6 +13,13 @@ createConsumer().subscriptions.create("NotificationChannel", {
 
   received(data) {
     console.log(data);
-    new Notification(data.title, { body: data.body })
+    const el = document.getElementById("notification")
+    el.insertAdjacentHTML("afterBegin",
+      `<div class="alert alert-info alert-dismissible fade show m-1" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <p>Hello Alvin: ${data.body}</p>
+      </div>`
+    )
+    // Notification.new(data.title, { body: data.body })
   },
 });
