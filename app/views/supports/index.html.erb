@@ -13,6 +13,7 @@
       <% if @appointments_today != [] %>
         <% @appointments_today.each do |appointment_today| %>
           <%= appointment_today.name %>
+          <%= appointment_today.start_time.strftime("%l:%M") %>
         <% end %>
       <% else %>
         <p style="margin: 0px;">You don't have any appointment today.</p>
