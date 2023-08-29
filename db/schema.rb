@@ -96,8 +96,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_094709) do
     t.datetime "updated_at", null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
 
-    create_table "posts", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.text "image_description"

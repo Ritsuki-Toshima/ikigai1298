@@ -30,15 +30,16 @@
             <div class="d-flex">
               <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
                 <div class="card <%= medicine.status %>">
-                  <%= cl_image_tag medicine.photo.key, class: 'card-img', crop: :fill if medicine.photo.key? %>
+                  <%= cl_image_tag medicine.photo.key, class: 'medicine-image ms-3 mt-5', crop: :fill if medicine.photo.key? %>
                   <div class="card-content list-unstyled">
                     <li class="medicine-name"><%= medicine.name %></li>
                   </div>
                   <div class="card-content d-flex justify-content-center">
-                    <li class="medicine-dosage"><%= medicine.dosage %> <%= medicine.unit %><br>
-                      per day</li>
-                    <li class="medicine-frequency mb-5"><%= medicine.frequency %> times <br>
-                      per day</li>
+                    <p class="m-1">Taken at:</p>
+                    <% medicine.reminders.each do |reminder| %>
+                      <p class="m-1"><%= reminder.time_to_taken.strftime("%l:%M %p") %></p>
+                    <% end %>
+                    <a type="button" class="mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">info</a>
                   </div>
                 </div>
               <% end %>
@@ -74,3 +75,21 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<% elderly.medicines.order(created_at: :desc).each do |medicine| %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm"> <!-- Added modal-lg class for larger size -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <li class="medicine-dosage"><%= medicine.dosage %> <%= medicine.unit %> per day</li>
+          <li class="medicine-frequency mb-5"><%= medicine.frequency %> times per day</li>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<!-- Modal -->
