@@ -8,7 +8,6 @@
       </div>
       <p><%= Time.now.strftime("%A %d %B") %></p>
     </div>
-
     <div class="bd-callout">
       <% @appointments_today = Appointment.where(user: current_user, start_time: Date.today) %>
       <% if @appointments_today != [] %>
