@@ -1,13 +1,17 @@
-<div class="row justify-content-center">
-  <% @appointments = Appointment.where(user: current_user).sort_by {|appointment| appointment[:start_time] } %>
-  <% @appointments.each do |appointment| %>
-    <div class="col-12 col-lg-4 m-3 rounded p-0" style="background-color: #8ECAE6;">
-      <%= link_to appointment_path(appointment), class: 'p-3 text-decoration-none text-black' do %>
-        <div class="align-items-center justify-content-end">
-          <p class="fs-3 text-black m-0 p-3"><%="#{appointment.name}" %></p>
-          <p class="fs-3 text-black m-0 p-3"><%="#{appointment.start_time.strftime(" %A, %b %e %l:%M %p")}" %></p>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+<div class="container">
+  <h2>Click on the Appointment Card for More Details and a Map of the Location</h2>
+  <div class="row justify-content-center">
+    <% @appointments = Appointment.where(user: current_user).sort_by {|appointment| appointment[:start_time] } %>
+    <% @appointments.each do |appointment| %>
+      <div class="col-12 col-lg-4 m-3 rounded p-0" style="background-color: #8ECAE6;">
+        <%= link_to appointment_path(appointment), class: 'p-3 text-decoration-none text-black' do %>
+          <div class="align-items-center justify-content-end">
+            <p class="fs-3 text-black m-0 p-3"><%="#{appointment.name}" %></p>
+            <p class="fs-3 text-black m-0 p-3"><%="#{appointment.start_time.strftime(" %A, %b %e %l:%M %p")}" %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%# --------------------------------------------------------------- %>
 </div>

@@ -1,7 +1,13 @@
 <% if current_user.elderly?  %>
   <div class="container">
     <h1>Welcome <%= current_user.first_name.capitalize %>!</h1>
-    <h2>Today's Date: <%= Time.now.strftime(" %A, %b %e - %l:%M %p")  %></h2>
+    <div class="text-center">
+      <div class="d-flex justify-content-center align-items-center">
+        <i class="fa-regular fa-clock" style="font-size: 32px;"></i>
+        <h2 style="font-size: 50px;"><%= Time.now.strftime("%l:%M") %> <span style="font-size: 24px;"><%= Time.now.strftime("%p") %></span></h2>
+      </div>
+      <p><%= Time.now.strftime("%A %d %B") %></p>
+    </div>
     <ul class="nav tabs-underlined flex-nowrap" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <span class="nav-link tab-underlined active" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="true">MY MEDICINES </span>
