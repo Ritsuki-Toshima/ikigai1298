@@ -39,9 +39,6 @@
                       per day</li>
                     <li class="medicine-frequency mb-5"><%= medicine.frequency %> times <br>
                       per day</li>
-                    <% medicine.reminders.each do |reminder| %>
-                      <li><%= reminder.time_to_taken %></li>
-                    <% end %>
                   </div>
                 </div>
               <% end %>
