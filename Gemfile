@@ -61,6 +61,7 @@ gem 'geocoder'
 gem 'bootstrap-datepicker-rails'
 gem "simple_calendar", "~> 2.4"
 gem 'twilio-ruby'
+gem 'noticed'
 gem "chartkick"
 gem "groupdate"
 
@@ -87,3 +88,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "cable_ready", "~> 5.0"

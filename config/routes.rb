@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   devise_for :users
   root to: "supports#index"
 
@@ -18,4 +19,6 @@ Rails.application.routes.draw do
   resources :appointments, only: [:show]
   resources :reminders, only: [:edit, :create]
   get "/overviews", to: "users#overview", as: :overviews
+  resources :notifications, only: [:index, :show, :new, :create]
+  get "/pages", to: "pages#home"
 end
