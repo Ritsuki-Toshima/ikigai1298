@@ -24,7 +24,7 @@ attr_reader :image_url
               "type": "DOCUMENT_TEXT_DETECTION"
             }
           ],
-          "image": {
+        "image": {
             "source": {
               "imageUri": @image_url
             }

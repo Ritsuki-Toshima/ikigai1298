@@ -234,16 +234,16 @@ alvin_trusted_user = Support.new(
   elderly_id: alvin.id,
   trusted_user_id: ritsuki.id
 )
-file = URI.open('https://img.freepik.com/premium-photo/portrait-handsome-european-senior-old-man-showing-thumbs-up-gesture-isolated-white-background-free-space_136401-2023.jpg')
-alvin_trusted_user.photo.attach(io: file, filename: 'alvin.png', content_type: 'image/png')
+file = URI.open('db/images/oldman.jpg')
+alvin_trusted_user.photo.attach(io: file, filename: 'oldman.jpg', content_type: 'image/jpg')
 alvin_trusted_user.save!
 
 james_trusted_user = Support.new(
   elderly_id: james.id,
   trusted_user_id: ritsuki.id
 )
-file = URI.open('https://media.licdn.com/dms/image/C4D12AQFjIcnUzqTjQg/article-cover_image-shrink_600_2000/0/1521548569266?e=2147483647&v=beta&t=VPujYA7Iz9tQit2N_8OXO6JyqvZsh6X-KW1WD07Dv-4')
-james_trusted_user.photo.attach(io: file, filename: 'james.png', content_type: 'image/png')
+file = URI.open('db/images/oldwoman.jpg')
+james_trusted_user.photo.attach(io: file, filename: 'oldwoman.jpg', content_type: 'image/jpg')
 james_trusted_user.save!
 
 puts "Created #{Support.count} Supports"
