@@ -8,7 +8,7 @@ class HealthRecordsController < ApplicationController
   end
 
   def show
-    @health_record = @health_records.last
+    @health_record = @health_records.where(user_id: params[:user_id]).last
     authorize @health_record
   end
 

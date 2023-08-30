@@ -1,3 +1,4 @@
+<% @elderly = User.find(params[:user_id]) if params[:user_id] %>
 <% if @health_records.last.date == Date.today %>
   <% mood_icons = ["", "fa-regular fa-face-laugh-beam", "fa-regular fa-face-smile", "fa-regular fa-face-meh", "fa-regular fa-face-frown", "fa-regular fa-face-tired"] %>
   <div class="d-flex justify-content-center align-items-center mt-2">
@@ -31,7 +32,7 @@
   <%= render "graph_tabs" %>
 <% else %>
   <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-    <span><strong>🔔 You don't have any record today</strong>
+    <span><strong>🔔 <%= params[:user_id].nil? ? "You" : @elderly.first_name.capitalize %> don't have any record today</strong>
     </span>
     <a data-bs-dismiss="alert" aria-label="Close">
       <i class="fas fa-times"></i>
@@ -45,8 +46,8 @@
   </div>
   <div class="health-profile">
     <span style="font-size: 32px;">
-      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 64px;"/>
-      <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> (<%= current_user.age %>)
+      <%# <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 64px;"/> %>
+      <%= params[:user_id].nil? ? current_user.first_name.capitalize : @elderly.first_name.capitalize %> <%= params[:user_id].nil? ? current_user.last_name.capitalize : @elderly.last_name.capitalize %> (<%= params[:user_id].nil? ? current_user.age : @elderly.age  %>)
     </span>
   </div>
   <div class="health-record-card" style="font-size: 48px;">
