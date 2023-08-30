@@ -9,16 +9,16 @@ body {
   align-items: center;
   min-width: 330px;
   height: 130px;
-  margin-top: 65px;
+  margin-top: 80px;
   background: rgb(90, 181, 210);
-  background: linear-gradient(180deg, rgba(90, 181, 210, 0.7695592885591737) 6%, rgba(142, 202, 230, 0.556674134497549) 48%, rgba(255, 255, 255, 1) 90%);
+  background: linear-gradient(180deg, rgba(90, 181, 210, 0.606235419045596) 18%, rgba(142, 202, 230, 0.20466061589598972) 53%, rgba(255, 255, 255, 0.6849755765259109) 86%);
   border-radius: 16px;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
 
   p {
     position: absolute;
     top: -19%;
-    left: 50%;
+    left: 46%;
     color: white;
     font-size: 16;
     font-family: verdana;
@@ -26,6 +26,12 @@ body {
     border-radius: 4px;
     padding: 8px 8px;
     background-color: #023947;
+  }
+
+  .elderly-pro-info {
+    position: absolute;
+    top: -20%;
+    left: 75%;
   }
 }
 
@@ -56,4 +62,33 @@ body {
   transform: translate(-40%, -70%);
   height: 220px;
   width: 170px;
+}
+
+
+.health-record-status {
+  position: absolute;
+  top: 40%;
+  right: 4%;
+  transform: translateY(-50%);
+}
+
+
+.health-record-completed,
+.health-record-completed {
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: green;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+}
+
+.missing-health-record,
+.missing-medicine-record {
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: red;
+  border: 1px solid #ccc;
+  border-radius: 16px;
 }

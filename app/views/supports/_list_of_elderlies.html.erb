@@ -1,15 +1,50 @@
-<h5 class="text-center mt-4 index-divider">YOUR LOVED ONES <i class="fa-solid fa-person"></i></h5>
+<h5 class="text-center mt-4 index-divider">YOUR LOVED ONES  <i class="fa-solid fa-person"></i></h5>
 <div class="container">
   <% supports.each do |support| %>
-    <div class="elderly-pro">
+    <% statuses = [] %>
+    <%  support.elderly.medicines.each do |medicine| %>
+      <% statuses << medicine.status %>
+    <% end %>
+    <div class="elderly-pro <%=statuses.all?('taken')%>">
       <p class="elderly-pro-content"><%="#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" %></p>
-      <%= link_to support_path(support), class: 'd-block p-0 text-decoration-none' do %>
-        <div class="elderly-pro-icon">
-          <%= cl_image_tag support.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.photo.key? %>
-        </div>
-        <div class="elderly-pro-info">
-        </div>
+      <div class="elderly-pro-info">
+        <% mood_status = support.elderly.health_records.last.mood_status %>
+        <% case mood_status.to_i %>
+        <% when 1 %>
+        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-laugh-beam'></i></div>") %>
+        <% when 2 %>
+        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-smile'></i></div>") %>
+        <% when 3 %>
+        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-meh'></i></div>") %>
+        <% when 4 %>
+        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-frown'></i></div>") %>
+        <% when 5 %>
+        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-tired'></i></div>") %>
+      <% else %>
+        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-meh-blank'></i></div>") %>
       <% end %>
     </div>
-  <% end %>
+    <%= link_to support_path(support), class: 'd-block p-0 text-decoration-none' do %>
+      <div class="elderly-pro-icon">
+        <%= cl_image_tag support.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.photo.key? %>
+      </div>
+      <div class="health-record-status">
+        <div class="mt-5 mb-3">
+          <% if statuses.empty? || statuses.any?('pending') %>
+            <span class="missing-medicine-record text-center">Missing Medicine Record</span>
+          <% elsif statuses.all?('taken') %>
+            <span class="medicine-completed text-center">Medicine Completed</span>
+          <% end %>
+        </div>
+        <div>
+          <% if support.elderly.health_records.last.date == Date.today %>
+            <span class="health-record-completed text-center">Health Record Completed</span>
+          <% else %>
+            <span class="missing-health-record text-center">Missing Health Record</span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 </div>
