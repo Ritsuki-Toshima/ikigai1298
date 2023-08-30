@@ -11,14 +11,18 @@ Rails.application.routes.draw do
     resources :medicines
     resources :appointments
   end
-  resources :appointments, only: [:index, :show]
+
   resources :medicines, only: [:update] do
     resources :reminders, only: [:new, :create]
   end
+
+  resources :appointments, only: [:index, :show]
   resources :health_records
-  resources :appointments, only: [:show]
+  resources :medicines, only: [:index]
   resources :reminders, only: [:edit, :create]
+
   get "/overviews", to: "users#overview", as: :overviews
+
   resources :notifications, only: [:index, :show, :new, :create]
   get "/pages", to: "pages#home"
 end

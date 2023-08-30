@@ -1,4 +1,4 @@
-<% if current_user.elderly?  %>
+<% if current_user.elderly? %>
   <div>Your appointments</div>
   <% appointments = Appointment.where(user_id: current_user.id) %>
   <%= month_calendar(events: appointments, end_attribute: :end_time) do |date, appointments| %>

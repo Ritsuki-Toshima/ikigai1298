@@ -56,7 +56,8 @@ ritsuki = User.new(
   last_name: "toshima",
   gender: "male",
   address: "2 Chome-11-3 Meguro, Meguro City, Tokyo 153-0063",
-  phone_number: "+818048168800"
+  phone_number: "+818048168800",
+  birth_date: "12/09/1997",
 )
 ritsuki.save!
 
@@ -67,7 +68,8 @@ gary = User.new(
   last_name: "topping",
   gender: "male",
   address: "2-24-12 Shibuya, Shibuya-ku, Tokyo",
-  phone_number: "+817031380309"
+  phone_number: "+817031380309",
+  birth_date: "15/08/1989",
 )
 gary.save!
 

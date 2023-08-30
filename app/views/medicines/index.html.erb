@@ -1,4 +1,9 @@
-<% @medicines.each do |medicine| %>
-  <%= medicine.name  %><br>
-  <%= medicine.description %>
+<% if current_user.elderly? %>
+  <% medicines = Medicine.where(user_id: current_user.id) %>
+  <%= render "supports/elderly_medicines", medicines: medicines %>
+<% else %>
+  <% @medicines.each do |medicine| %>
+    <%= medicine.name  %><br>
+    <%= medicine.description %>
+  <% end %>
 <% end %>
