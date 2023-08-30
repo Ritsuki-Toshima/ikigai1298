@@ -12,6 +12,7 @@
       <p><i class="fa-solid fa-house" style="color: #ffffff;"></i>  <%= elderly.address %></p>
     </div>
   </div>
+  <%= link_to "View Health Record", health_record_path, class: "btn btn-promary" %>
   <div class="navigation">
     <ul class="nav tabs-underlined nav-bar d-flex justify-content-center" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
@@ -75,7 +76,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal -->
 <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,3 +93,4 @@
   </div>
 <% end %>
 <!-- Modal -->
+<%# ELderly Health Record %>
