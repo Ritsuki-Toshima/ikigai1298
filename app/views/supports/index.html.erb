@@ -60,7 +60,7 @@
       <div class="next-health-record-card">
         <% @health_today = HealthRecord.where(user: current_user, start_time: Date.today.beginning_of_day..Date.today.end_of_day) %>
         <% if @health_today %>
-          <p>Yeah</p>
+          <p>Input your record today.</p>
         <% else %>
           <p>You haven't updated today's health record</p>
         <% end %>
