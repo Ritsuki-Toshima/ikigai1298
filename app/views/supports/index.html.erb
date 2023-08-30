@@ -34,7 +34,32 @@
         <p style="margin: 0px;">You don't have any medication today.</p>
       <% end %>
     </div>
+    <div style="margin: 10px; text-align: center;">
+      <%= link_to medicines_path, class: "square-btn", style: "background-color: orange; text-align: center; padding: 20px;" do %>
+        <div style="display: flex; align-items: center; justify-content: between;">
+          <i class="fa-solid fa-capsules me-3" style="font-size: 72px;"></i>
+          <span style="display: block; font-size: 28px;">Medication</span>
+        </div>
+      <% end %>
+    </div>
+    <div style="margin: 10px; text-align: center;">
+      <%= link_to appointments_path, class: "square-btn", style: "background-color: blue; text-align: center; padding: 20px;" do %>
+        <div style="display: flex; align-items: center; justify-content: between;">
+          <i class="fa-solid fa-calendar-days me-3" style="font-size: 72px;"></i>
+          <span style="display: block; font-size: 28px;">Appointment</span>
+        </div>
+      <% end %>
+    </div>
+    <div style="margin: 10px; text-align: center;">
+      <%= link_to health_records_path, class: "square-btn", style: "background-color: red; text-align: center; padding: 20px;" do %>
+        <div style="display: flex; align-items: center; justify-content: between;">
+          <i class="fa-solid fa-heart me-3" style="font-size: 72px;"></i>
+          <span style="display: block; font-size: 28px;">Health Record</span>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>
 <% else %>
   <div class=" border-bottom border-primary p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
     <div class="d-flex justify-content-center">
