@@ -17,12 +17,16 @@
     <%= render 'shared/ios_pwa_links' %>
   </head>
   <body class="position-relative">
-    <%= render "shared/navbar" %>
+    <% unless params[:controller] == "pages"  && params[:action] == "home"%>
+      <%= render "shared/navbar" %>
+    <% end %>
     <div id="notification" class="position-absolute top-50 start-50"></div>
     <%= render "shared/flashes" %>
     <div class="content">
       <%= yield %>
     </div>
-    <%= render "shared/footer" %>
+    <% unless params[:controller] == "pages"  && params[:action] == "home"%>
+      <%= render "shared/footer" %>
+    <% end %>
   </body>
 </html>
