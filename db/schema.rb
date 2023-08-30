@@ -65,7 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_062327) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "ocr_text"
     t.date "date"
     t.index ["user_id"], name: "index_health_records_on_user_id"
   end
