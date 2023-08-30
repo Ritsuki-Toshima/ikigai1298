@@ -12,6 +12,13 @@
       <p><i class="fa-solid fa-house" style="color: #ffffff;"></i>  <%= elderly.address %></p>
     </div>
   </div>
+  <div class="d-flex justify-content-center mt-4 mb-4">
+    <div>
+      <%= link_to health_records_path(user_id: elderly.id), class: 'd-block p-0 text-decoration-none' do %>
+        <i class="fa-solid fa-heart-pulse fa-2xl" style="color: #eb0510;"></i>
+      <% end %>
+    </div>
+  </div>
   <div class="navigation">
     <ul class="nav tabs-underlined nav-bar d-flex justify-content-center" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">

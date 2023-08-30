@@ -1,39 +1,38 @@
-<% @health_records = HealthRecord.where(user: current_user) %>
-<% @health_record_today = HealthRecord.last %>
-<% mood_icons = ["", "fa-regular fa-face-laugh-beam", "fa-regular fa-face-smile", "fa-regular fa-face-meh", "fa-regular fa-face-frown", "fa-regular fa-face-tired"] %>
-<% if @health_record_today %>
+<% @elderly = User.find(params[:user_id]) if params[:user_id] %>
+<% if @health_records.last.date == Date.today %>
+  <% mood_icons = ["", "fa-regular fa-face-laugh-beam", "fa-regular fa-face-smile", "fa-regular fa-face-meh", "fa-regular fa-face-frown", "fa-regular fa-face-tired"] %>
   <div class="d-flex justify-content-center align-items-center mt-2">
     <h1 class= "col-12">Health Record</h1>
   </div>
   <div class="health-record-card" style="font-size: 38px;">
-      <div class="health_info d-flex align-items-center">
+    <div class="health_info d-flex align-items-center">
       <i class="fa-regular fa-face-meh-blank me-3" style="color: #eeff00;"></i>
       <h2 style="font-size: 40px; margin: 0px;">MOOD</h2>
       <div style="margin-left: auto;">
-        <i class="<%= mood_icons[@health_record_today.mood_status] %>"></i>
+        <i class="<%= mood_icons[@health_records.last.mood_status] %>"></i>
       </div>
-      </div>
+    </div>
     <div class="health_info d-flex align-items-center">
       <i class="fa-solid fa-circle-chevron-up me-3" style="color: #e22f22;"></i>
       <h2 style="font-size: 40px; margin: 0px;">SYS</h2>
-      <div style="margin-left: auto;"><%= @health_record_today.sys %></div>
+      <div style="margin-left: auto;"><%= @health_records.last.sys %></div>
     </div>
     <div class="health_info d-flex align-items-center">
       <i class="fa-solid fa-circle-chevron-down me-3" style="color: #0d5be3;"></i>
       <h2 style="font-size: 40px; margin: 0px;">DIA</h2>
-      <div style="margin-left: auto;"><%= @health_record_today.dia %></div>
+      <div style="margin-left: auto;"><%= @health_records.last.dia %></div>
     </div>
     <div class="health_info d-flex align-items-center">
       <i class="fa-solid fa-heart-pulse me-3" style="color: #f2392c;"></i>
       <h2 style="font-size: 40px; margin: 0px;">PULSE</h2>
-      <div style="margin-left: auto;"><%= @health_record_today.pulse %></div>
+      <div style="margin-left: auto;"><%= @health_records.last.pulse %></div>
     </div>
   </div>
   <h1 class= "col-12 mt-3">Weekly</h1>
   <%= render "graph_tabs" %>
 <% else %>
   <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-    <span><strong>🔔 You don't have any record today</strong>
+    <span><strong>🔔 <%= params[:user_id].nil? ? "You" : @elderly.first_name.capitalize %> don't have any record today</strong>
     </span>
     <a data-bs-dismiss="alert" aria-label="Close">
       <i class="fas fa-times"></i>
@@ -47,8 +46,8 @@
   </div>
   <div class="health-profile">
     <span style="font-size: 32px;">
-      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 64px;"/>
-      <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> (<%= current_user.age %>)
+      <%# <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 64px;"/> %>
+      <%= params[:user_id].nil? ? current_user.first_name.capitalize : @elderly.first_name.capitalize %> <%= params[:user_id].nil? ? current_user.last_name.capitalize : @elderly.last_name.capitalize %> (<%= params[:user_id].nil? ? current_user.age : @elderly.age  %>)
     </span>
   </div>
   <div class="health-record-card" style="font-size: 48px;">
