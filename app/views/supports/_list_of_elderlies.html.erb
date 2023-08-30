@@ -1,21 +1,15 @@
-<h5 class="text-center mt-5">YOUR LOVED ONES</h5>
+<h5 class="text-center mt-4 index-divider">YOUR LOVED ONES</h5>
 <div class="container">
-  <div class="row justify-content-center">
-    <% supports.each do |support| %>
-      <div class="col-12 col-lg-4 m-2 rounded p-0" style="background-color: #023047; width: 330px;">
-        <%= link_to support_path(support), class: 'd-block p-0 text-decoration-none' do %>
-          <div class="d-flex">
-            <!-- Left column: Image -->
-            <div class="flex-shrink-0">
-              <%= cl_image_tag support.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.photo.key? %>
-            </div>
-            <!-- Right column: Name -->
-            <div class="d-flex align-items-center justify-content-end">
-              <p class="fs-2 text-white m-0 p-3"><%="#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" %></p>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <% supports.each do |support| %>
+    <div class="elderly-pro">
+      <%= link_to support_path(support), class: 'd-block p-0 text-decoration-none' do %>
+        <div class="elderly-pro-icon">
+          <%= cl_image_tag support.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.photo.key? %>
+        </div>
+        <div class="elderly-pro-content">
+          <p class="fs-2 text-black m-0 p-3"><%="#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>

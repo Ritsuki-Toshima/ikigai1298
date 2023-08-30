@@ -26,25 +26,18 @@
     <div class="tab-pane fade py-3 show active" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
       <ul class="list-unstyled">
         <div class="cards">
-          <div class="medicine-container">
-            <div class="d-flex">
-              <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
-                <div class="card <%= medicine.status %>">
-                  <%= cl_image_tag medicine.photo.key, class: 'medicine-image ms-3 mt-5', crop: :fill if medicine.photo.key? %>
-                  <div class="card-content list-unstyled">
-                    <li class="medicine-name"><%= medicine.name %></li>
-                  </div>
-                  <div class="card-content d-flex justify-content-center">
-                    <p class="m-1">Taken at:</p>
-                    <% medicine.reminders.each do |reminder| %>
-                      <p class="m-1"><%= reminder.time_to_taken.strftime("%l:%M %p") %></p>
-                    <% end %>
-                    <a type="button" class="mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">info</a>
-                  </div>
-                </div>
-              <% end %>
+          <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
+            <div class="med-table-card <%= medicine.status %>">
+              <%= cl_image_tag medicine.photo.key, class: 'img', crop: :fill if medicine.photo.key? %>
+              <div class="med-table-content list-unstyled">
+                <li class="med-table-name"><%= medicine.name %></li>
+                <% medicine.reminders.each do |reminder| %>
+                  <p class="m-1">Daily Intake Take:<%= reminder.time_to_taken.strftime("%l:%M %p") %></p>
+                <% end %>
+                <a type="button" class="text-decoration-none details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
         <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 mb-5 go-back-btn' %>
       </ul>
@@ -75,7 +68,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal -->
 <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
