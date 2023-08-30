@@ -1,7 +1,8 @@
 .profile-info-card {
   position: relative;
   margin: 10px 0;
-  width: 330px;
+  min-width: 330px;
+  height: 300px;
   background-color: #023047;
   padding: 1.25rem;
   border-radius: 1rem;

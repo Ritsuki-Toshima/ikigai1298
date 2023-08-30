@@ -4,7 +4,7 @@
     <% appointments = Appointment.where(user_id: current_user.id) %>
     <% @support = Support.find_by(elderly_id: current_user.id) %>
     <%= month_calendar(events: appointments, end_attribute: :end_time) do |date, appointments| %>
-      <div class="appointments-calendar-day">
+      <div class="appointments-calendar-day text-center">
         <%= date %>
         <div class="appointment-icons-container">
           <% appointments.each do |appointment| %>
