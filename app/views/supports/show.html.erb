@@ -32,7 +32,7 @@
               <div class="med-table-content list-unstyled">
                 <li class="med-table-name"><%= medicine.name %></li>
                 <% medicine.reminders.each do |reminder| %>
-                  <p class="m-1">Daily Intake Take:<%= reminder.time_to_taken.strftime("%l:%M %p") %></p>
+                  <p class="m-1">Daily Intake Time:<%= reminder.time_to_taken.strftime("%l%p") %></p>
                 <% end %>
                 <a type="button" class="text-decoration-none details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
               </div>
