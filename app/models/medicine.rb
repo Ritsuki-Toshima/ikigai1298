@@ -5,5 +5,5 @@ class Medicine < ApplicationRecord
   has_many :reminders, dependent: :destroy
   has_one_attached :photo
 
-  validates :name, :description, :dosage, :unit, :start_date, :end_date, :frequency, presence: true
+  validates :name, :start_date, presence: true
 end
