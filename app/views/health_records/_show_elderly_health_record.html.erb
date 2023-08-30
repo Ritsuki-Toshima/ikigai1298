@@ -1,0 +1,88 @@
+<% @health_records = HealthRecord.all %>
+<% @health_record_today = HealthRecord.last %>
+<% @elderly = User.find(@health_record_today.user_id) %>
+<% mood_icons = ["", "fa-regular fa-face-laugh-beam", "fa-regular fa-face-smile", "fa-regular fa-face-meh", "fa-regular fa-face-frown", "fa-regular fa-face-tired"] %>
+<% if @health_record_today %>
+  <div class="d-flex justify-content-between align-items-center mt-2">
+    <h1>Health Records</h1>
+  </div>
+  <div class="health-profile">
+    <span style="font-size: 32px;">
+      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 64px;"/>
+      <%= @elderly.first_name.capitalize %> <%= @elderly.last_name.capitalize %>
+      <i class="<%= mood_icons[@health_record_today.mood_status] %>"></i>
+    </span>
+  </div>
+  <div class="health-record-card" style="font-size: 48px;">
+    <div class="health_info d-flex align-items-center">
+      <i class="fa-solid fa-circle-chevron-up me-3" style="color: #e22f22;"></i>
+      <h2 style="font-size: 40px; margin: 0px;">SYS</h2>
+      <div style="margin-left: auto;"><%= @health_record_today.sys %></div>
+    </div>
+    <div class="health_info d-flex align-items-center">
+      <i class="fa-solid fa-circle-chevron-down me-3" style="color: #0d5be3;"></i>
+      <h2 style="font-size: 40px; margin: 0px;">DIA</h2>
+      <div style="margin-left: auto;"><%= @health_record_today.dia %></div>
+    </div>
+    <div class="health_info d-flex align-items-center">
+      <i class="fa-solid fa-heart-pulse me-3" style="color: #f2392c;"></i>
+      <h2 style="font-size: 40px; margin: 0px;">PULSE</h2>
+      <div style="margin-left: auto;"><%= @health_record_today.pulse %></div>
+    </div>
+  </div>
+  <a class="btn btn-primary mb-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    View Graph
+  </a>
+  <div class="collapse" id="collapseExample">
+    <div style="width: 100%; height: 360px;">
+      <%= render "graph_tabs" %>
+    </div>
+  </div>
+<% else %>
+  <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+    <span><strong>🔔 You don't have any record today</strong>
+    </span>
+    <a data-bs-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
+  <div class="d-flex justify-content-between align-items-center mt-2">
+    <h1>Health Records</h1>
+    <%= link_to new_health_record_path, class: 'btn btn-outline-warning' do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
+  </div>
+  <div class="health-profile">
+    <span style="font-size: 32px;">
+      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 64px;"/>
+      <%= @elderly.first_name.capitalize %> <%= @elderly.last_name.capitalize %> (<%= @elderly.age %>)
+    </span>
+  </div>
+  <div class="health-record-card" style="font-size: 48px;">
+    <div class="health_info d-flex align-items-center my-2">
+      <i class="fa-solid fa-circle-chevron-up me-3" style="color: #e22f22;"></i>
+      <h2 style="font-size: 40px; margin: 0px;">SYS</h2>
+      <div style="margin-left: auto; font-size: 28px;">No data</div>
+    </div>
+    <div class="health_info d-flex align-items-center my-2">
+      <i class="fa-solid fa-circle-chevron-down me-3" style="color: #0d5be3;"></i>
+      <h2 style="font-size: 40px; margin: 0px;">DIA</h2>
+      <div style="margin-left: auto; font-size: 28px;">No data</div>
+    </div>
+    <div class="health_info d-flex align-items-center my-2">
+      <i class="fa-solid fa-heart-pulse me-3" style="color: #f2392c;"></i>
+      <h2 style="font-size: 40px; margin: 0px;">PULSE</h2>
+      <div style="margin-left: auto; font-size: 28px;">No data</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <a class="btn btn-primary mb-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      View Graph
+    </a>
+    <div class="collapse" id="collapseExample">
+      <div style="width: 100%; height: 360px;">
+        <%= render "graph_tabs" %>
+      </div>
+    </div>
+  <% end %>
+</div>
