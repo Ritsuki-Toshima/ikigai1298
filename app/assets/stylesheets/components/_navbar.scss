@@ -4,13 +4,37 @@
   left: 0;
   width: 100%;
   justify-content: space-between;
-  background: white;
+  background: #023047;
+  height: 100px;
 }
+
+// .navbar:before {
+//   content: '';
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: #FFB703;
+//   clip-path: circle(45px at 20% 80%);
+// }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
+// .content {
+//   background-image: url('https://cdn.wallpapersafari.com/98/1/16IbeU.jpg');
+//   background-size: cover;
+//   background-repeat: no-repeat;
+// }

@@ -6,7 +6,7 @@ class HealthRecordsController < ApplicationController
   def show
     @health_record = HealthRecord.find(:id)
     authorize @health_record
-  end
+end
 
   def new
     @health_record = HealthRecord.new

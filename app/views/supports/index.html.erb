@@ -74,27 +74,34 @@
     </div>
   </div>
 <% else %>
-  <div class=" border-bottom border-primary p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
-    <div class="d-flex justify-content-center">
-      <div class="me-3">
-        <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 30px;"/>
-      </div>
-      <div class= "p-0">
-        <h5 class="text-center mb-3 mt-1">Hello <%= current_user.first_name.capitalize %>!</h5>
+  <div class="index-first-session">
+    <div class="p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
+      <div class="d-flex justify-content-center">
+        <div class="me-3">
+          <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" style=" width: 40px, height: 80px"/>
+        </div>
+        <div class= "p-0">
+          <h5 class="text-center mb-3 mt-1">Hello <%= current_user.first_name.capitalize %>!</h5>
+        </div>
       </div>
     </div>
+    <div class="container" style="margin-top: 2rem;">
+      <% @supports.each do |support| %>
+        <div class ="alert">
+          <span class="fas fa-exclamation-circle"></span>
+          <span class="msg">Reminder</span>
+          <span class="msg-info">
+            <p><%= support.elderly.first_name.capitalize %> has <%= support.elderly.appointments.active.count %> appointments today!</p>
+          </span>
+          <span class="close-btn">
+            <a data-bs-dismiss="alert" aria-label="Close" class="close-btn">
+              <i class="fas fa-times"></i>
+            </a>
+          </span>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class= "container mt-3 ">
-    <% @supports.each do |support| %>
-      <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-        <span><strong>Reminder🔔 </strong>
-          <p><%= support.elderly.first_name.capitalize %> has <%= support.elderly.appointments.active.count %> appointments today!</p>
-        </span>
-        <a data-bs-dismiss="alert" aria-label="Close" class="close-btn">
-          <i class="fas fa-times"></i>
-        </a>
-      </div>
-    <% end %>
-    <%= render "list_of_elderlies", supports: @supports%>
-  <% end %>
+  <%= render "list_of_elderlies", supports: @supports%>
+<% end %>
 </div>
