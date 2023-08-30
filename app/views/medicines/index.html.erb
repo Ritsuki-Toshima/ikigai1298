@@ -7,7 +7,24 @@
       <h2 class="mb-0">All your medicines</h2>
     </div>
     <% medicines = Medicine.where(user_id: current_user.id) %>
-    <%= render "supports/elderly_medicines", medicines: medicines %>
+    <ul class="list-unstyled">
+      <div class="cards">
+        <% medicines.order(created_at: :desc).each do |medicine| %>
+          <div class="med-table-card <%= medicine.status %>">
+            <%= cl_image_tag medicine.photo.key, class: 'img', crop: :fill if medicine.photo.key? %>
+            <div class="med-table-content list-unstyled">
+              <li class="med-table-name"><%= medicine.name %></li>
+              <% medicine.reminders.each do |reminder| %>
+                <p class="m-1">Daily Intake Take:<%= reminder.time_to_taken.strftime("%l:%M %p") %></p>
+              <% end %>
+              <a type="button" class="text-decoration-none details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% @support = Support.find_by(elderly_id: current_user.id) %>
+      <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 mb-5 go-back-btn' %>
+    </ul>
   <% else %>
     <% @medicines.each do |medicine| %>
       <%= medicine.name  %><br>

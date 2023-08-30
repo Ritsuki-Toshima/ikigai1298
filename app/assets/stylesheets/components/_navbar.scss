@@ -9,7 +9,7 @@
 // }
 
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -29,18 +29,26 @@
 //   clip-path: circle(45px at 20% 80%);
 // }
 
+.navbar-lewagon {
+  position: relative;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
-  // width: 85%;
-  height: 85%;
-  object-fit: contain;
+  // width: 30%;
+  // height: 85%;
+  // object-fit: contain;
+  // position: absolute;
+  // top: 52%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  height: 80px;
   position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 10%;
+  left: 40%;
 }
 
 // .content {
