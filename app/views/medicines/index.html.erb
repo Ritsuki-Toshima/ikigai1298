@@ -1,10 +1,17 @@
-<% if current_user.elderly? %>
-  <h2>All your medicines</h2>
-  <% medicines = Medicine.where(user_id: current_user.id) %>
-  <%= render "supports/elderly_medicines", medicines: medicines %>
-<% else %>
-  <% @medicines.each do |medicine| %>
-    <%= medicine.name  %><br>
-    <%= medicine.description %>
+<div class="container">
+  <% if current_user.elderly? %>
+    <div class="d-flex align-items-center mt-2">
+      <%= link_to supports_path, class: "btn btn-info me-2", style: "font-size: 24px" do %>
+        <i class="fa-solid fa-arrow-left-long"></i> Back
+      <% end %>
+      <h2 class="mb-0">All your medicines</h2>
+    </div>
+    <% medicines = Medicine.where(user_id: current_user.id) %>
+    <%= render "supports/elderly_medicines", medicines: medicines %>
+  <% else %>
+    <% @medicines.each do |medicine| %>
+      <%= medicine.name  %><br>
+      <%= medicine.description %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
