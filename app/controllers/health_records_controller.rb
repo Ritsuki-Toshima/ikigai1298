@@ -1,12 +1,12 @@
 class HealthRecordsController < ApplicationController
   def index
-    @health_records = policy_scope(HealthRecord).where(user: current_user)
+    @health_records = policy_scope(HealthRecord).where(user_id: current_user.id)
   end
 
   def show
-    @health_record = HealthRecord.last
+    @health_record = @health_records.last
     authorize @health_record
-end
+  end
 
   def new
     @health_record = HealthRecord.new
