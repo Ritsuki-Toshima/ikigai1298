@@ -1,101 +1,73 @@
 <% if current_user.elderly?  %>
   <div class="container" data-controller="notification-subcription">
     <h1>Welcome <%= current_user.first_name.capitalize %>!</h1>
-    <div class="text-center">
-      <div class="d-flex justify-content-center align-items-center">
-        <i class="fa-regular fa-clock me-2" style="font-size: 36px;"></i>
-        <h2 style="font-size: 50px;"><%= Time.now.strftime("%l:%M") %> <span style="font-size: 24px;"><%= Time.now.strftime("%p") %></span></h2>
-      </div>
-      <p><%= Time.now.strftime("%A %d %B") %></p>
-    </div>
-    <div class="bd-callout">
-      <h5>Today's appointment</h5>
-      <% @appointments_today = Appointment.where(user: current_user, start_time: Date.today.beginning_of_day..Date.today.end_of_day) %>
-      <% if @appointments_today != [] %>
-        <ul>
-          <% @appointments_today.each do |appointment_today| %>
-            <li><%= appointment_today.name %> <%= appointment_today.start_time.strftime("%l:%M %p") %></li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p style="margin: 0px;">You don't have any appointment today.</p>
-      <% end %>
-    </div>
-    <div class="bd-callout">
-      <h5>Today's medication</h5>
-      <% @medicine_user = Medicine.where(user: current_user) %>
-      <% @all_user_reminders = [] %>
-      <% @medicine_user.each do |medicine_user| %>
-        <% @all_user_reminders << medicine_user.reminders %>
-      <% end %>
-      <% @reminders_today = @all_user_reminders.flat_map(&:to_a).select do |reminder| %>
-        <% reminder.time_to_taken.to_date == Date.today %>
-      <% end %>
-      <% if @reminders_today != [] %>
-        <ul>
-          <% @reminders_today.each do |reminder_today| %>
-            <li><%= reminder_today.medicine.name %><%= reminder_today.time_to_taken.strftime("%l:%M %p") %></li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p style="margin: 0px;">You don't have any medication today.</p>
-      <% end %>
-    </div>
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-      <div style="display: flex; flex-direction: row;">
-        <div style="margin: 10px; text-align: center;">
-          <%= link_to medicines_path, class: "square-btn", style: "background-color: orange; display: inline-block; text-align: center; padding: 20px;" do %>
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-              <i class="fa-solid fa-capsules" style="font-size: 72px;"></i>
-              <span style="display: block; font-size: 20px;">Medication</span>
-            </div>
-          <% end %>
+    <div style="margin: 10px;">
+      <%= link_to medicines_path, class: "square-btn", style: "background-color: orange; text-align: center; padding: 20px; padding-left: 0px;" do %>
+        <div style="display: flex; align-items: center; justify-content: between;">
+          <i class="fa-solid fa-capsules me-3 pe-1" style="font-size: 72px;"></i>
+          <span style="display: block; font-size: 28px;">Medication</span>
         </div>
-        <div style="margin: 10px; text-align: center;">
-          <%= link_to appointments_path, class: "square-btn", style: "background-color: blue; display: inline-block; text-align: center; padding: 20px;" do %>
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-              <i class="fa-solid fa-calendar-days" style="font-size: 72px;"></i>
-              <span style="display: block; font-size: 20px;">Appointment</span>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div style="display: flex; flex-direction: row;">
-        <div style="margin: 10px; text-align: center;">
-          <%= link_to health_records_path, class: "square-btn", style: "background-color: red; display: inline-block; text-align: center; padding: 20px;" do %>
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-              <i class="fa-solid fa-heart" style="font-size: 72px;"></i>
-              <span style="display: block; font-size: 17px;">Health Record</span>
-            </div>
-          <% end %>
-        </div>
-        <div style="margin: 10px; text-align: center;">
-          <%= link_to appointments_path, class: "square-btn", style: "background-color: green; display: inline-block; text-align: center; padding: 20px;" do %>
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-              <i class="fa-regular fa-message" style="font-size: 72px;"></i>
-              <span style="display: block; font-size: 20px;">Chat</span>
-            </div>
-          <% end %>
-        </div>
+      <% end %>
+      <div class="next-medicine-card">
+        <h5>Next</h5>
+        <% @medicine_user = Medicine.where(user: current_user) %>
+        <% @all_user_reminders = [] %>
+        <% @medicine_user.each do |medicine_user| %>
+          <% @all_user_reminders << medicine_user.reminders %>
+        <% end %>
+        <% @reminders_today = @all_user_reminders.flat_map(&:to_a).select do |reminder| %>
+          <% reminder.time_to_taken.to_date == Date.today %>
+        <% end %>
+        <% if @reminders_today != [] %>
+          <ul style="list-style-type: none;">
+            <% @reminders_today.each do |reminder_today| %>
+              <li><%= reminder_today.medicine.name %><%= reminder_today.time_to_taken.strftime("%l:%M %p") %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p style="margin: 0px;">You don't have any medication today.</p>
+        <% end %>
       </div>
     </div>
-    <ul class="nav tabs-underlined flex-nowrap" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <span class="nav-link tab-underlined active" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="true">MY MEDICINES </span>
-      </li>
-      <li class="nav-item" role="presentation">
-        <span class="nav-link tab-underlined" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments-tab-pane" role="tab" aria-controls="appointments-tab-pane" aria-selected="false">MY APPOINTMENTS</span>
-      </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade py-3 show active" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
-        <%= render "elderly_medicines", medicines: @medicines %>
+    <div style="margin: 10px;">
+      <%= link_to appointments_path, class: "square-btn", style: "background-color: blue; text-align: center; padding: 20px;" do %>
+        <div style="display: flex; align-items: center; justify-content: between;">
+          <i class="fa-solid fa-calendar-days me-3 pe-3" style="font-size: 72px;"></i>
+          <span style="display: block; font-size: 28px;">Appointment</span>
+        </div>
+      <% end %>
+      <div class="next-appointment-card">
+        <h5>Next</h5>
+        <% @appointments_today = Appointment.where(user: current_user, start_time: Date.today.beginning_of_day..Date.today.end_of_day) %>
+        <% if @appointments_today != [] %>
+          <ul style="list-style-type: none;">
+            <% @appointments_today.each do |appointment_today| %>
+              <li><%= appointment_today.name %> <%= appointment_today.start_time.strftime("%l:%M %p") %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p style="margin: 0px;">You don't have any appointment today.</p>
+        <% end %>
       </div>
-      <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
-        <%= render "elderly_appointments", appointments: @appointments %>
+    </div>
+    <div style="margin: 10px; text-align: center;">
+      <%= link_to health_records_path, class: "square-btn", style: "background-color: red; text-align: center; padding: 20px;" do %>
+        <div style="display: flex; align-items: center; justify-content: between;">
+          <i class="fa-solid fa-heart me-3" style="font-size: 72px;"></i>
+          <span style="display: block; font-size: 28px;">Health Record</span>
+        </div>
+      <% end %>
+      <div class="next-health-record-card">
+        <% @health_today = HealthRecord.where(user: current_user, start_time: Date.today.beginning_of_day..Date.today.end_of_day) %>
+        <% if @health_today %>
+          <p>Yeah</p>
+        <% else %>
+          <p>You haven't updated today's health record</p>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
 <% else %>
   <div class="index-first-session">
     <div class="p-1" style="background-color: #FFB703; height: 40px; width: 100%;">

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'notifications/index'
   devise_for :users
-  root to: "supports#index"
+  root to: "pages#home"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
