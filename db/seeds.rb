@@ -234,8 +234,8 @@ alvin_trusted_user = Support.new(
   elderly_id: alvin.id,
   trusted_user_id: ritsuki.id
 )
-file = URI.open('db/images/oldman.jpg')
-alvin_trusted_user.photo.attach(io: file, filename: 'oldman.jpg', content_type: 'image/jpg')
+file = URI.open('db/images/senior-ppl.jpg')
+alvin_trusted_user.photo.attach(io: file, filename: 'senior-ppl.jpg', content_type: 'image/jpg')
 alvin_trusted_user.save!
 
 james_trusted_user = Support.new(

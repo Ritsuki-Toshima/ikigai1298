@@ -12,7 +12,6 @@
       <p><i class="fa-solid fa-house" style="color: #ffffff;"></i>  <%= elderly.address %></p>
     </div>
   </div>
-  <%= link_to "View Health Record", health_record_path, class: "btn btn-promary" %>
   <div class="navigation">
     <ul class="nav tabs-underlined nav-bar d-flex justify-content-center" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
@@ -33,7 +32,7 @@
               <div class="med-table-content list-unstyled">
                 <li class="med-table-name"><%= medicine.name %></li>
                 <% medicine.reminders.each do |reminder| %>
-                  <p class="m-1">Daily Intake Time:<%= reminder.time_to_taken.strftime("%l%p") %></p>
+                  <p class="m-1">Daily Intake Take:<%= reminder.time_to_taken.strftime("%l %p") %></p>
                 <% end %>
                 <a type="button" class="text-decoration-none details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
               </div>
@@ -46,7 +45,7 @@
     <% appointments = Appointment.where(user_id: elderly.id) %>
     <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
       <%= month_calendar(events: appointments, end_attribute: :end_time) do |date, appointments| %>
-        <div class="appointments-calendar-day">
+        <div class="appointments-calendar-day text-center">
           <%= date %>
           <div class="appointment-icons-container">
             <% appointments.each do |appointment| %>
@@ -86,4 +85,3 @@
   </div>
 <% end %>
 <!-- Modal -->
-<%# ELderly Health Record %>

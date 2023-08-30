@@ -1,13 +1,13 @@
-<h5 class="text-center mt-4 index-divider">YOUR LOVED ONES</h5>
+<h5 class="text-center mt-4 index-divider">YOUR LOVED ONES <i class="fa-solid fa-person"></i></h5>
 <div class="container">
   <% supports.each do |support| %>
     <div class="elderly-pro">
+      <p class="elderly-pro-content"><%="#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" %></p>
       <%= link_to support_path(support), class: 'd-block p-0 text-decoration-none' do %>
         <div class="elderly-pro-icon">
           <%= cl_image_tag support.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.photo.key? %>
         </div>
-        <div class="elderly-pro-content">
-          <p class="fs-2 text-black m-0 p-3"><%="#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" %></p>
+        <div class="elderly-pro-info">
         </div>
       <% end %>
     </div>

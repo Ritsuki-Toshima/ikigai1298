@@ -6,6 +6,12 @@
   right: 0px;
   border-radius: 8px;
   overflow: hidden;
+
+  p {
+    margin-bottom: 0.5rem;
+    padding-top: 8px;
+    padding-left: 40px;
+  }
 }
 
 .alert .fa-exclamation-circle {
@@ -51,8 +57,7 @@
 
 .index-first-session {
   background-color: #023047;
-  border-radius: 0 0 32px 32px;
+  border-radius: 0 0 42px 42px;
   padding-bottom: 25px;
   padding-top: 5px;
 }
-
