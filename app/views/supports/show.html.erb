@@ -1,79 +1,77 @@
 <div class="container" data-controller="appointments">
-  <div class="profile-info-card">
-    <%= image_tag 'old-man.jpg', class: 'profile-photo'%>
+  <div class="profile-info-card position-relative">
+    <%= image_tag 'senior-ppl.jpg', class: 'profile-photo' %>
     <% elderly = User.find(@support.elderly_id) %>
     <h1><%= elderly.first_name.capitalize %> <%= elderly.last_name.capitalize %></h1>
-    <%# <p class="card"><%= elderly.username %>
     <div class="d-flex justify-content-between align-items-center">
       <p><i class="fa-solid fa-phone" style="color: #ffffff;"></i> <%= elderly.phone_number %></p>
-      <p><i class="fa-solid fa-cake-candles" style="color: #ffffff;">  </i> <%= elderly.birth_date %></p>
+      <p><i class="fa-solid fa-cake-candles" style="color: #ffffff;"></i> <%= elderly.birth_date %></p>
     </div>
     <div class="d-flex justify-content-start align-items-center">
-      <p><i class="fa-solid fa-house" style="color: #ffffff;"></i>  <%= elderly.address %></p>
+      <p><i class="fa-solid fa-house" style="color: #ffffff;"></i> <%= elderly.address %></p>
     </div>
-  </div>
-  <div class="d-flex justify-content-center mt-4 mb-4">
-    <div>
+    <div class="position-absolute" style="top: 5%; right: 5%;">
       <%= link_to health_records_path(user_id: elderly.id), class: 'd-block p-0 text-decoration-none' do %>
         <i class="fa-solid fa-heart-pulse fa-2xl" style="color: #eb0510;"></i>
       <% end %>
     </div>
   </div>
-  <div class="navigation">
-    <ul class="nav tabs-underlined nav-bar d-flex justify-content-center" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <span class="nav-link tab-underlined active" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="true">MEDICINES</span>
-      </li>
-      <li class="nav-item" role="presentation">
-        <span class="nav-link tab-underlined" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments-tab-pane" role="tab" aria-controls="appointments-tab-pane" aria-selected="false">APPOINTMENTS</span>
-      </li>
-    </ul>
-  </div>
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade py-3 show active" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
-      <ul class="list-unstyled">
-        <div class="cards">
-          <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
-            <div class="med-table-card <%= medicine.status %>">
-              <%= cl_image_tag medicine.photo.key, class: 'img', crop: :fill if medicine.photo.key? %>
-              <div class="med-table-content list-unstyled">
-                <li class="med-table-name"><%= medicine.name %></li>
-                <% medicine.reminders.each do |reminder| %>
-                  <p class="m-1">Daily Intake Take:<%= reminder.time_to_taken.strftime("%l %p") %></p>
-                <% end %>
-                <a type="button" class="text-decoration-none details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
-              </div>
+</div>
+<div class="navigation">
+  <ul class="nav tabs-underlined nav-bar d-flex justify-content-center" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined active" id="medicines-tab" data-bs-toggle="tab" data-bs-target="#medicines-tab-pane" role="tab" aria-controls="medicines-tab-pane" aria-selected="true">MEDICINES</span>
+    </li>
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments-tab-pane" role="tab" aria-controls="appointments-tab-pane" aria-selected="false">APPOINTMENTS</span>
+    </li>
+  </ul>
+</div>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade py-3 show active" id="medicines-tab-pane" role="tabpanel" aria-labelledby="medicines-tab" tabindex="0">
+    <ul class="list-unstyled">
+      <div class="cards">
+        <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
+          <div class="med-table-card <%= medicine.status %>">
+            <%= cl_image_tag medicine.photo.key, class: 'img', crop: :fill if medicine.photo.key? %>
+            <div class="med-table-content list-unstyled">
+              <li class="med-table-name"><%= medicine.name %></li>
+              <% medicine.reminders.each do |reminder| %>
+                <p class="m-1">Daily Intake Time:<%= reminder.time_to_taken.strftime("%l %p") %></p>
+              <% end %>
+              <a type="button" class="text-decoration-none details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
             </div>
-          <% end %>
-        </div>
-        <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 mb-5 go-back-btn' %>
-      </ul>
-    </div>
-    <% appointments = Appointment.where(user_id: elderly.id) %>
-    <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
-      <%= month_calendar(events: appointments, end_attribute: :end_time) do |date, appointments| %>
-        <div class="appointments-calendar-day text-center">
-          <%= date %>
-          <div class="appointment-icons-container">
-            <% appointments.each do |appointment| %>
-              <div class="appointment-icon" data-appointment-id="<%= appointment.id %>">
-                <i class="fa-regular fa-hospital" style="color: #219EBC;"></i>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-      <div class="appointment-details-container mb-5">
-        <% appointments.each do |appointment| %>
-          <div class="appointment-details" data-appointment-id="<%= appointment.id %>" style="display: none;">
-            <p class="appointment-title"><%= appointment.name %></p>
-            <p><%= appointment.start_time.strftime("%b %d %l:%M %p") %> - <%= appointment.end_time.strftime("%l:%M %p") %></p>
-            <p><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></p>
           </div>
         <% end %>
       </div>
+      <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 mb-5 go-back-btn' %>
+    </ul>
+  </div>
+  <% appointments = Appointment.where(user_id: elderly.id) %>
+  <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
+    <%= month_calendar(events: appointments, end_attribute: :end_time) do |date, appointments| %>
+      <div class="appointments-calendar-day text-center">
+        <%= date %>
+        <div class="appointment-icons-container">
+          <% appointments.each do |appointment| %>
+            <div class="appointment-icon" data-appointment-id="<%= appointment.id %>">
+              <i class="fa-regular fa-hospital" style="color: #219EBC;"></i>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="appointment-details-container mb-5">
+      <% appointments.each do |appointment| %>
+        <div class="appointment-details" data-appointment-id="<%= appointment.id %>" style="display: none;">
+          <p class="appointment-title"><%= appointment.name %></p>
+          <p><%= appointment.start_time.strftime("%b %d %l:%M %p") %> - <%= appointment.end_time.strftime("%l:%M %p") %></p>
+          <p><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></p>
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
 <!-- Modal -->
 <% elderly.medicines.order(created_at: :desc).each do |medicine| %>
