@@ -1,5 +1,5 @@
 <% @health_records = HealthRecord.where(user: current_user) %>
-<% @health_record_today = HealthRecord.find_by(user: current_user, date: Date.today) %>
+<% @health_record_today = HealthRecord.last %>
 <% mood_icons = ["", "fa-regular fa-face-laugh-beam", "fa-regular fa-face-smile", "fa-regular fa-face-meh", "fa-regular fa-face-frown", "fa-regular fa-face-tired"] %>
 <% if @health_record_today %>
   <div class="d-flex justify-content-between align-items-center mt-2">
