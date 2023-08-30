@@ -1,3 +1,13 @@
+// .navbar {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   justify-content: space-between;
+//   background: #023047;
+//   height: 100px;
+// }
+
 .navbar {
   position: fixed;
   top: 0;
@@ -5,7 +15,7 @@
   width: 100%;
   justify-content: space-between;
   background: #023047;
-  height: 100px;
+  min-height: 100px;
 }
 
 // .navbar:before {
@@ -24,7 +34,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 85%;
+  // width: 85%;
   height: 85%;
   object-fit: contain;
   position: absolute;

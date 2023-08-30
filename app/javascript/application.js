@@ -8,3 +8,4 @@ import "chartkick"
 import "Chart.bundle"
 // import "./channels/notification_channel"
 import "@rails/actioncable"
+console.log('hiii');
