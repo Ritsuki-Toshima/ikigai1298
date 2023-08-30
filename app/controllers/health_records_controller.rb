@@ -4,7 +4,7 @@ class HealthRecordsController < ApplicationController
   end
 
   def show
-    @health_record = HealthRecord.find(params[:id])
+    @health_record = HealthRecord.last
     authorize @health_record
   end
 
