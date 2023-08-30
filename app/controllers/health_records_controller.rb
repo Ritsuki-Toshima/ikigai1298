@@ -1,6 +1,10 @@
 class HealthRecordsController < ApplicationController
   def index
-    @health_records = policy_scope(HealthRecord).where(user_id: current_user.id)
+    if params[:user_id].nil?
+      @health_records = policy_scope(HealthRecord).where(user_id: current_user.id)
+    else
+      @health_records = policy_scope(HealthRecord).where(user_id: params[:user_id])
+    end
   end
 
   def show
