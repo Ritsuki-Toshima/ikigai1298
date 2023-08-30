@@ -16,8 +16,9 @@
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= render 'shared/ios_pwa_links' %>
   </head>
-  <body>
+  <body class="position-relative">
     <%= render "shared/navbar" %>
+    <div id="notification" class="position-absolute top-50 start-50"></div>
     <%= render "shared/flashes" %>
     <div class="content">
       <%= yield %>

@@ -32,10 +32,17 @@
       <div style="margin-left: auto;"><%= @health_record_today.pulse %></div>
     </div>
   </div>
-  <%= render "graph_tabs" %>
+  <a class="btn btn-primary mb-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    View Graph
+  </a>
+  <div class="collapse" id="collapseExample">
+    <div style="width: 100%; height: 360px;">
+      <%= render "graph_tabs" %>
+    </div>
+  </div>
 <% else %>
   <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-    <span><strong>🔔You don't have any record today</strong>
+    <span><strong>🔔 You don't have any record today</strong>
     </span>
     <a data-bs-dismiss="alert" aria-label="Close">
       <i class="fas fa-times"></i>
@@ -75,9 +82,9 @@
       View Graph
     </a>
     <div class="collapse" id="collapseExample">
-      <div style="width: 100%; height: 360px">
+      <div style="width: 100%; height: 360px;">
         <%= render "graph_tabs" %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

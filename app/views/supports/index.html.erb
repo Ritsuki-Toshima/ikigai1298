@@ -9,19 +9,42 @@
       <p><%= Time.now.strftime("%A %d %B") %></p>
     </div>
     <div class="bd-callout">
-      <% @appointments_today = Appointment.where(user: current_user, start_time: Date.today) %>
+      <h5>Today's appointment</h5>
+      <% @appointments_today = Appointment.where(user: current_user, start_time: Date.today.beginning_of_day..Date.today.end_of_day) %>
       <% if @appointments_today != [] %>
-        <% @appointments_today.each do |appointment_today| %>
-          <%= appointment_today.name %>
-        <% end %>
+        <ul>
+          <% @appointments_today.each do |appointment_today| %>
+            <li><%= appointment_today.name %> <%= appointment_today.start_time.strftime("%l:%M %p") %></li>
+          <% end %>
+        </ul>
       <% else %>
-        <p>You don't have any appointment today.</p>
+        <p style="margin: 0px;">You don't have any appointment today.</p>
+      <% end %>
+    </div>
+    <div class="bd-callout">
+      <h5>Today's medication</h5>
+      <% @medicine_user = Medicine.where(user: current_user) %>
+      <% @all_user_reminders = [] %>
+      <% @medicine_user.each do |medicine_user| %>
+        <% @all_user_reminders << medicine_user.reminders %>
+      <% end %>
+      <% @reminders_today = @all_user_reminders.flat_map(&:to_a).select do |reminder| %>
+        <% reminder.time_to_taken.to_date == Date.today %>
+      <% end %>
+      <% if @reminders_today != [] %>
+        <ul>
+          <% @reminders_today.each do |reminder_today| %>
+            <li><%= reminder_today.medicine.name %><%= reminder_today.time_to_taken.strftime("%l:%M %p") %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p style="margin: 0px;">You don't have any medication today.</p>
       <% end %>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
       <div style="display: flex; flex-direction: row;">
         <div style="margin: 10px; text-align: center;">
-          <%= link_to supports_path, class: "square-btn", style: "background-color: orange; display: inline-block; text-align: center; padding: 20px;" do %>
+          <%= link_to medicines_path, class: "square-btn", style: "background-color: orange; display: inline-block; text-align: center; padding: 20px;" do %>
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
               <i class="fa-solid fa-capsules" style="font-size: 72px;"></i>
               <span style="display: block; font-size: 20px;">Medication</span>
@@ -29,7 +52,7 @@
           <% end %>
         </div>
         <div style="margin: 10px; text-align: center;">
-          <%= link_to supports_path, class: "square-btn", style: "background-color: blue; display: inline-block; text-align: center; padding: 20px;" do %>
+          <%= link_to appointments_path, class: "square-btn", style: "background-color: blue; display: inline-block; text-align: center; padding: 20px;" do %>
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
               <i class="fa-solid fa-calendar-days" style="font-size: 72px;"></i>
               <span style="display: block; font-size: 20px;">Appointment</span>
@@ -47,7 +70,7 @@
           <% end %>
         </div>
         <div style="margin: 10px; text-align: center;">
-          <%= link_to supports_path, class: "square-btn", style: "background-color: green; display: inline-block; text-align: center; padding: 20px;" do %>
+          <%= link_to appointments_path, class: "square-btn", style: "background-color: green; display: inline-block; text-align: center; padding: 20px;" do %>
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
               <i class="fa-regular fa-message" style="font-size: 72px;"></i>
               <span style="display: block; font-size: 20px;">Chat</span>
