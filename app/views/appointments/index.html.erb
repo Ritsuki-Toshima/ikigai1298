@@ -24,7 +24,7 @@
       <% appointments.each do |appointment| %>
         <div class="appointment-details" data-appointment-id="<%= appointment.id %>" style="display: none;">
           <p class="appointment-title"><%= appointment.name %></p>
-          <p><%= appointment.start_time.strftime("%b %d %l:%M %p") %> - <%= appointment.end_time.strftime("%l:%M %p") %></p>
+          <p><i class="fa-solid fa-clock"></i> <%= appointment.start_time.strftime("%b %d, %l:%M %p") %> - <%= appointment.end_time.strftime("%l:%M %p") %></p>
           <p><i class="fa-solid fa-location-pin"></i> <%= link_to appointment.address, appointment_path(appointment) %></p>
         </div>
       </div>
