@@ -1,5 +1,5 @@
 <% if current_user.elderly? %>
-  <div class="container">
+  <div class="container" data-controller="appointments">
     <div>Your appointments</div>
     <% appointments = Appointment.where(user_id: current_user.id) %>
     <% @support = Support.find_by(elderly_id: current_user.id) %>
@@ -26,7 +26,7 @@
     <% end %>
   </div>
 <% else %>
-  <div class="container">
+  <div class="container" data-controller="appointments">
     <h1>My charges' appointments</h1>
     <% @appointments.each do |appointment| %>
       <% user = appointment.user %>
