@@ -285,7 +285,7 @@ alvin_appointment2.save!
 
 alvin_appointment3 = Appointment.new(
   name: "Chiropractor",
-  description: "Teeth Whitening",
+  description: "For aches in back",
   start_time: long_start_time,
   end_time: long_start_time + rand(1..2).hours,
   address: "3-15-7 Shinjuku, Tokyo-to, Tokyo",
