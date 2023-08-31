@@ -1,29 +1,33 @@
 <div class="container">
   <% user = User.find(@appointment.user_id) %>
-  <%# <div class="text-center mt-5">
-    <div class="d-flex justify-content-center align-items-center">
-      <i class="fa-regular fa-clock" style="font-size: 36px;"></i>
-      <%# <h2 style="font-size: 50px;"><%= Time.now.in_time_zone.strftime("%l:%M") <span style="font-size: 24px;"><%= Time.now.in_time_zone.strftime("%p")</span></h2> %>
-  <%# </div> %>
-  <%# <p><%= Time.now.in_time_zone.strftime("%A %d %B") %>
-  <%# </div> %>
-  <h1 class="card-header"> <%=@appointment.name.split.map(&:capitalize).join(' ') %>
-    <div class="card">
-    </h3>
-    <div class="card-body">
-      <h2 class="card-title"><%="#{@appointment.start_time.strftime("%b %e, %l:%M %p")}" %></h2>
-      <h3 class="card-text"><%= "#{@appointment.description}" %></h3>
-      <h3 class="card-text">Location: <%= "#{@appointment.address}" %></h3>
-      <a class="btn btn-primary mb-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        View on Map
-      </a>
-      <div class="collapse" id="collapseExample">
-        <div style="width: 100%; height: 360px;"
+  <div class="d-flex align-items-center mt-2">
+    <%= link_to appointments_path, class: "btn btn-info me-2", style: "font-size: 24px" do %>
+      <i class="fa-solid fa-arrow-left-long"></i> Back
+    <% end %>
+    <h2 class="mb-0"> <%=@appointment.name.split.map(&:capitalize).join(' ') %> Location</h2>
+  </div>
+  <div style="width: 100%; height: 360px;"
           data-controller="map"
           data-map-marker-value="<%= @marker.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
-      </div>
-    </div>
+  </div>
+  <div class="card">
+  </h3>
+  <div class="card-body">
+    <h4 class="mb-0"><%="#{@appointment.start_time.strftime("%b %e, %l:%M %p")}" %></h4>
+    <h4 class="mb-0"><%= "#{@appointment.description}" %></h4>
+    <h4 class="mb-0">Location: <%= "#{@appointment.address}" %></h4>
   </div>
 </div>
+</div>
+<%# old style ---------------------------- %>
+<%# <a class="btn btn-primary mb-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> %>
+<%# View on Map %>
+<%# </a> %>
+<%# <div class="collapse" id="collapseExample"> %>
+<%# <div style="width: 100%; height: 360px;" %>
+<%# data-controller="map" %>
+<%# data-map-marker-value="<%= @marker.to_json %>
+<%# data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>
+<%# </div> %>
+<%# </div> %>
