@@ -9,7 +9,11 @@
     <% medicines = Medicine.where(user_id: current_user.id) %>
     <ul class="list-unstyled">
       <div class="cards">
-        <% medicines.order(created_at: :desc).each do |medicine| %>
+        <% sorted_medicines = medicines.sort_by do |medicine| %>
+          <% closest_reminder = medicine.reminders.min_by { |reminder| (reminder.time_to_taken - Time.now).abs } %>
+          <% (closest_reminder.time_to_taken - Time.now).abs %>
+        <% end %>
+        <% sorted_medicines.each do |medicine| %>
           <div class="med-table-card <%= medicine.status %> row">
             <%= cl_image_tag medicine.photo.key, class: 'img m-1 col-2', crop: :fill if medicine.photo.key? %>
             <div class="col-8 px-0">
