@@ -6,8 +6,8 @@
     <%= f.input :dosage,
                   label: "Dosage (per day)",
                   input_html: { min: 0 } %>
-    <%= f.input :unit, collection: [ "g", "ml", "tablet"],
-                  selected: "g",
+    <%= f.input :unit, collection: [ "tablet", "g", "ml"],
+                  selected: "tablet",
                   class: "form-control" %>
   </div>
   <div data-controller="medicinedatepicker">

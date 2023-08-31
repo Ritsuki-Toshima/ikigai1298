@@ -252,20 +252,48 @@ puts "Created #{Support.count} Supports"
 puts "----------------------------------------------"
 puts "Creating Medical Appointments"
 
-start_time = DateTime.now + rand(1..24).hours
+start_time = DateTime.now + rand(72..144).hours
+specific_start_time = DateTime.now + 43.hours
+long_start_time = DateTime.now + rand(240..360).hours
 start_time = [start_time.change(hour: 9, min: 0, sec: 0), start_time.change(hour: 18, min: 0, sec: 0)].max
+specific_start_time = [specific_start_time.change(hour: 9, min: 0, sec: 0), specific_start_time.change(hour: 18, min: 0, sec: 0)].max
+long_start_time = [long_start_time.change(hour: 9, min: 0, sec: 0), long_start_time.change(hour: 18, min: 0, sec: 0)].max
 
 alvin_appointment = Appointment.new(
   name: "Medical Check-up",
   description: "Full body check annually. In particular if any significant changes regarding diabetes",
-  start_time: start_time,
-  end_time: start_time + rand(1..2).hours,
+  start_time: specific_start_time,
+  end_time: specific_start_time + rand(1..2).hours,
   address: "1-291-8 Sarugakucho, Chiyoda ku, Tokyo to",
   latitude: 35.629519458799976,
   longitude: 139.6844641164838,
   user_id: alvin.id
 )
 alvin_appointment.save!
+
+alvin_appointment2 = Appointment.new(
+  name: "Visit Dentist",
+  description: "Teeth Whitening",
+  start_time: start_time,
+  end_time: start_time + rand(1..2).hours,
+  address: "2-11-3 Meguro, Meguro-ku, Tokyo",
+  latitude: 35.6406769304616,
+  longitude: 139.6991768776612,
+  user_id: alvin.id
+)
+alvin_appointment2.save!
+
+alvin_appointment3 = Appointment.new(
+  name: "Chiropractor",
+  description: "For aches in back",
+  start_time: long_start_time,
+  end_time: long_start_time + rand(1..2).hours,
+  address: "3-15-7 Shinjuku, Tokyo-to, Tokyo",
+  latitude: 35.68663519546136,
+  longitude: 139.69116210775576,
+  user_id: alvin.id
+)
+alvin_appointment3.save!
 
 jenny_appointment = Appointment.new(
 name: "Medical Check-up",
@@ -282,8 +310,8 @@ jenny_appointment.save!
 jenny_appointment2 = Appointment.new(
   name: "Visit Dentist",
   description: "Teeth Whitening",
-  start_time: start_time,
-  end_time: start_time + rand(1..4).hours,
+  start_time: long_start_time,
+  end_time: long_start_time + rand(1..4).hours,
   address: "1-291-8 Sarugakucho, Chiyoda ku, Tokyo to",
   latitude: 35.63659824150726,
   longitude: 139.6906442178495,
@@ -333,40 +361,40 @@ puts "----------------------------------------------"
 puts "Creating Reminders"
 
 alvin_reminder_1 = Reminder.new(
-  time_to_taken: DateTime.new(2023, 8, 24, 10, 15),
-  dosage: 2,
+  time_to_taken: DateTime.new(2023, 9, 1, 8, 15),
+  dosage: alvin_medicine_1.dosage,
   taken: true,
   medicine_id: alvin_medicine_1.id
 )
 alvin_reminder_1.save!
 
 alvin_reminder_2 = Reminder.new(
-  time_to_taken: DateTime.new(2023, 8, 24, 10, 15),
-  dosage: 2,
+  time_to_taken: DateTime.new(2023, 9, 1, 12, 15),
+  dosage: alvin_medicine_2.dosage,
   taken: true,
   medicine_id: alvin_medicine_2.id
 )
 alvin_reminder_2.save!
 
 alvin_reminder_3 = Reminder.new(
-  time_to_taken: DateTime.new(2023, 8, 24, 14, 15),
-  dosage: 2,
+  time_to_taken: DateTime.new(2023, 9, 1, 18, 15),
+  dosage: alvin_medicine_3.dosage,
   taken: true,
   medicine_id: alvin_medicine_3.id
 )
 alvin_reminder_3.save!
 
 alvin_reminder_4 = Reminder.new(
-  time_to_taken: DateTime.new(2023, 8, 24, 14, 15),
-  dosage: 2,
+  time_to_taken: DateTime.new(2023, 9, 1, 22, 15),
+  dosage: alvin_medicine_4.dosage,
   taken: true,
   medicine_id: alvin_medicine_4.id
 )
 alvin_reminder_4.save!
 
 alvin_reminder_5 = Reminder.new(
-  time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  time_to_taken: DateTime.new(2023, 8, 24, 22, 15),
+  dosage: alvin_medicine_5.dosage,
   taken: true,
   medicine_id: alvin_medicine_5.id
 )
@@ -374,7 +402,7 @@ alvin_reminder_5.save!
 
 jenny_reminder_1 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  dosage: jenny_medicine_1.dosage,
   taken: false,
   medicine_id: jenny_medicine_1.id
 )
@@ -382,7 +410,7 @@ jenny_reminder_1.save!
 
 jenny_reminder_2 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  dosage: jenny_medicine_2.dosage,
   taken: false,
   medicine_id: jenny_medicine_2.id
 )
@@ -390,25 +418,23 @@ jenny_reminder_2.save!
 
 jenny_reminder_3 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  dosage: jenny_medicine_3.dosage,
   taken: false,
   medicine_id: jenny_medicine_3.id
 )
 jenny_reminder_3.save!
 
-
 jenny_reminder_4 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  dosage: jenny_medicine_4.dosage,
   taken: false,
   medicine_id: jenny_medicine_4.id
 )
 jenny_reminder_4.save!
 
-
 jenny_reminder_5 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  dosage: jenny_medicine_5.dosage,
   taken: false,
   medicine_id: jenny_medicine_5.id
 )

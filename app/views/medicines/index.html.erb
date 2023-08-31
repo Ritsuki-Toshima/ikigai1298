@@ -9,35 +9,41 @@
     <% medicines = Medicine.where(user_id: current_user.id) %>
     <ul class="list-unstyled">
       <div class="cards">
-        <% medicines.order(created_at: :desc).each do |medicine| %>
-          <div class="med-table-card <%= medicine.status %>">
-            <%= cl_image_tag medicine.photo.key, class: 'img', crop: :fill if medicine.photo.key? %>
-            <div class="med-table-content list-unstyled">
-              <li class="med-table-name"><%= medicine.name.split.map(&:capitalize).join(' ') %></li>
-              <% medicine.reminders.each do |reminder| %>
-                <p class="m-1">Daily Intake Take:<%= reminder.time_to_taken.strftime("%l:%M %p") %></p>
-              <% end %>
-              <a type="button" class="text-decoration-none details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
+        <% sorted_medicines = medicines.sort_by do |medicine| %>
+          <% closest_reminder = medicine.reminders.min_by { |reminder| (reminder.time_to_taken - Time.now).abs } %>
+          <% (closest_reminder.time_to_taken - Time.now).abs %>
+        <% end %>
+        <% sorted_medicines.each do |medicine| %>
+          <div class="med-table-card <%= medicine.status %> row">
+            <%= cl_image_tag medicine.photo.key, class: 'img m-1 col-2', crop: :fill if medicine.photo.key? %>
+            <div class="col-8 px-0">
+              <li class="med-table-name mt-3"><%= medicine.name.split.map(&:capitalize).join(' ') %></li>
+              <div class="d-flex align-items-start">
+                <div class="med-table-content list-unstyled" style="padding: 0px;">
+                  <% medicine.reminders.each do |reminder| %>
+                    <p class="m-1" style="font-size: 40px;"><%= reminder.time_to_taken.strftime("%l %p") %></p>
+                  <% end %>
+                  <a type="button" class="text-decoration-none details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
+                </div>
+                <div class="col-3 d-flex justify-content-between align-items-center">
+                  <% if medicine.status == "pending" %>
+                    <%= simple_form_for medicine do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'taken'} %>
+                      <button type="submit" class="btn taken pb-3">
+                        <i class="fa-solid fa-square-check" style="font-size: 80px"></i>
+                      </button>
+                    <% end %>
+                  <% else %>
+                    <%= simple_form_for medicine do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'pending'} %>
+                      <button type="submit" class="btn reset pb-3">
+                        <i class="fa-solid fa-square-check" style="font-size: 80px; color: #039903;"></i>
+                      </button>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
             </div>
-            <% if medicine.status == "pending" %>
-              <div class="d-flex justify-content-between align-items-center">
-                <%= simple_form_for medicine do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'taken'} %>
-                  <%= f.submit 'TAKEN', class: 'btn taken mx-3'%>
-                <% end %>
-                <%= simple_form_for medicine do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'lost'} %>
-                  <%= f.submit 'LOST', class: 'btn lost mx-3'%>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="d-flex justify-content-between align-items-center">
-                <%= simple_form_for medicine do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'pending'} %>
-                  <%= f.submit 'RESET', class: 'btn btn-warning mx-3'%>
-                <% end %>
-              </div>
-            <% end %>
           </div>
         <% end %>
       </div>
@@ -51,3 +57,20 @@
     <% end %>
   <% end %>
 </div>
+<!-- Modal -->
+<% current_user.medicines.order(created_at: :desc).each do |medicine| %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm"> <!-- Added modal-lg class for larger size -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <li class="medicine-dosage"><%= medicine.dosage %> <%= medicine.unit %> per day</li>
+          <li class="medicine-frequency mb-5"><%= medicine.frequency %> times per day</li>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<!-- Modal -->

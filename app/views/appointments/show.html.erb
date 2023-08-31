@@ -4,21 +4,20 @@
     <%= link_to appointments_path, class: "btn btn-info me-2", style: "font-size: 24px" do %>
       <i class="fa-solid fa-arrow-left-long"></i> Back
     <% end %>
-    <h2 class="mb-0"> <%=@appointment.name.split.map(&:capitalize).join(' ') %> Location</h2>
+    <h2 class="mb-0"> <%=@appointment.name.split.map(&:capitalize).join(' ') %></h2>
+  </div>
+  <div class="mt-4 mb-4">
+    <div class="card-body" style="color: #219EBC;">
+      <h4 class="mb-0"><i class="fa-solid fa-clock"></i> <%= "#{@appointment.start_time.strftime("%b %e, %l:%M %p")}" %> - <%= @appointment.end_time.strftime("%l:%M %p") %></h4>
+      <h4 class="mb-0"><i class="fa-solid fa-circle-info"></i> <%= "#{@appointment.description}" %></h4>
+      <h4 class="mb-0"><i class="fa-solid fa-location-pin"></i> <%= "#{@appointment.address}" %></h4>
+    </div>
   </div>
   <div style="width: 100%; height: 360px;"
           data-controller="map"
           data-map-marker-value="<%= @marker.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <div class="card">
-  </h3>
-  <div class="card-body">
-    <h4 class="mb-0"><%="#{@appointment.start_time.strftime("%b %e, %l:%M %p")}" %></h4>
-    <h4 class="mb-0"><%= "#{@appointment.description}" %></h4>
-    <h4 class="mb-0">Location: <%= "#{@appointment.address}" %></h4>
-  </div>
-</div>
 </div>
 <%# old style ---------------------------- %>
 <%# <a class="btn btn-primary mb-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> %>
