@@ -30,7 +30,7 @@ class MedicinesController < ApplicationController
 
   def update
     if @medicine.update(medicine_params)
-      redirect_to root_path
+      redirect_to medicines_path
       @supports = Support.where(elderly_id: current_user.id)
       @support = @supports.first
       @trusted_users = User.where(id: @support.trusted_user_id)
