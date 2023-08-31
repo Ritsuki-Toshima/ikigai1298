@@ -1,5 +1,5 @@
 <% if current_user.elderly? %>
-  <div class="container">
+  <div class="container" data-controller="appointments">
     <div class="d-flex align-items-center mt-2">
       <%= link_to supports_path, class: "btn btn-info me-2", style: "font-size: 24px" do %>
         <i class="fa-solid fa-arrow-left-long"></i> Back
@@ -25,13 +25,13 @@
         <div class="appointment-details" data-appointment-id="<%= appointment.id %>" style="display: none;">
           <p class="appointment-title"><%= appointment.name %></p>
           <p><%= appointment.start_time.strftime("%b %d %l:%M %p") %> - <%= appointment.end_time.strftime("%l:%M %p") %></p>
-          <p><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></p>
+          <p><i class="fa-solid fa-location-pin"></i> <%= link_to appointment.address, appointment_path(appointment) %></p>
         </div>
       </div>
     <% end %>
   </div>
 <% else %>
-  <div class="container">
+  <div class="container" data-controller="appointments">
     <h1>My charges' appointments</h1>
     <% @appointments.each do |appointment| %>
       <% user = appointment.user %>
