@@ -32,9 +32,9 @@
 }
 
 .next-medicine-card {
-  border-right: solid 3px orange;
-  border-left: solid 3px orange;
-  border-bottom: solid 3px orange;
+  border-right: solid 4px #f7c72eff;
+  border-left: solid 4px #f7c72eff;
+  border-bottom: solid 4px #f7c72eff;
   border-radius: 0 0 10px 10px;
   padding: 10px;
   background-color: var(--bd-callout-bg, var(--bs-gray-100));
@@ -42,9 +42,9 @@
 }
 
 .next-appointment-card {
-  border-right: solid 3px blue;
-  border-left: solid 3px blue;
-  border-bottom: solid 3px blue;
+  border-right: solid 4px #0088ab;
+  border-left: solid 4px #0088ab;
+  border-bottom: solid 4px #0088ab;
   border-radius: 0 0 10px 10px;
   padding: 10px;
   background-color: var(--bd-callout-bg, var(--bs-gray-100));
@@ -52,9 +52,9 @@
 }
 
 .next-health-record-card {
-  border-right: solid 3px red;
-  border-left: solid 3px red;
-  border-bottom: solid 3px red;
+  border-right: solid 4px #38a385;
+  border-left: solid 4px #38a385;
+  border-bottom: solid 4px #38a385;
   border-radius: 0 0 10px 10px;
   padding: 10px;
   background-color: var(--bd-callout-bg, var(--bs-gray-100));
@@ -69,5 +69,5 @@
   margin-bottom: 1.25rem;
   color: var(--bd-callout-color, inherit);
   background-color: var(--bd-callout-bg, var(--bs-gray-100));
-  border-left: 0.25rem solid var(--bd-callout-border, var(--bs-gray-300));
+  border-left: 0.25rem solid var(--bd-callout-border, var(--bs-gray-400));
 }

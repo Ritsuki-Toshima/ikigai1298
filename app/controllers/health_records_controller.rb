@@ -32,9 +32,9 @@ class HealthRecordsController < ApplicationController
       @health_record.save
       redirect_to health_records_path
       if @health_record.mood_status > 3
-        SendSmsService.new(@trusted_user, "Dear #{@trusted_user.first_name.capitalize}, #{current_user.first_name.capitalize} updated their health records, but is not feeling great today. Check out the Ikigai app at: https://ikigai1298-c2bc721aa13b.herokuapp.com").call
+        SendSmsService.new(@trusted_user, "Dear #{@trusted_user.first_name.capitalize}, #{current_user.first_name.capitalize} updated their health records, but is not feeling great today. Check out the Ikigai app at: http://www.ikigai.bond").call
       else
-        SendSmsService.new(@trusted_user, "Dear #{@trusted_user.first_name.capitalize}, #{current_user.first_name.capitalize} updated their health records. Check out the Ikigai app at: https://ikigai1298-c2bc721aa13b.herokuapp.com").call
+        SendSmsService.new(@trusted_user, "Dear #{@trusted_user.first_name.capitalize}, #{current_user.first_name.capitalize} updated their health records. Check out the Ikigai app at: http://www.ikigai.bond").call
       end
     else
       render :new, status: :unprocessable_entity

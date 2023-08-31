@@ -13,7 +13,7 @@
           <div class="med-table-card <%= medicine.status %>">
             <%= cl_image_tag medicine.photo.key, class: 'img', crop: :fill if medicine.photo.key? %>
             <div class="med-table-content list-unstyled">
-              <li class="med-table-name"><%= medicine.name %></li>
+              <li class="med-table-name"><%= medicine.name.split.map(&:capitalize).join(' ') %></li>
               <% medicine.reminders.each do |reminder| %>
                 <p class="m-1">Daily Intake Take:<%= reminder.time_to_taken.strftime("%l:%M %p") %></p>
               <% end %>
@@ -23,11 +23,11 @@
               <div class="d-flex justify-content-between align-items-center">
                 <%= simple_form_for medicine do |f| %>
                   <%= f.input :status, as: :hidden, input_html: { value: 'taken'} %>
-                  <%= f.submit 'TAKEN', class: 'btn btn-primary mx-3'%>
+                  <%= f.submit 'TAKEN', class: 'btn taken mx-3'%>
                 <% end %>
                 <%= simple_form_for medicine do |f| %>
                   <%= f.input :status, as: :hidden, input_html: { value: 'lost'} %>
-                  <%= f.submit 'LOST', class: 'btn btn-danger mx-3'%>
+                  <%= f.submit 'LOST', class: 'btn lost mx-3'%>
                 <% end %>
               </div>
             <% else %>
