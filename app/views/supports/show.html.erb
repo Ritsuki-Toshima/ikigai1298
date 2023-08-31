@@ -43,8 +43,8 @@
             </div>
           </div>
         <% end %>
+        <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-info btn-block mt-2 mb-5 go-back-btn' %>
       </div>
-      <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 mb-5 go-back-btn' %>
     </ul>
   </div>
   <% appointments = Appointment.where(user_id: elderly.id) %>
