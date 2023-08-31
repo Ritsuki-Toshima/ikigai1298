@@ -100,9 +100,13 @@
   background-color: #8ECAE6;
 }
 
-.taken {
-  background-color: lightgreen !important;
-  opacity: 0.85;
+// .taken {
+//   background-color: lightgreen !important;
+//   opacity: 0.85;
+// }
+
+.btn.taken {
+  opacity: 0.15;
 }
 
 .lost {
