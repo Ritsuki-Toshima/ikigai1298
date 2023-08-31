@@ -35,7 +35,7 @@ alvin.save!
 james = User.new(
   email: "hkjl87@hotmail.co.uk",
   password: "123456",
-  first_name: "james",
+  first_name: "flora",
   last_name: "lau",
   gender: "male",
   address: "Big Ben Westminster, London SW1A 0AA, UK",
