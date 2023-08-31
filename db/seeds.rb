@@ -361,40 +361,40 @@ puts "----------------------------------------------"
 puts "Creating Reminders"
 
 alvin_reminder_1 = Reminder.new(
-  time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  time_to_taken: DateTime.new(2023, 9, 1, 8, 15),
+  dosage: alvin_medicine_1.dosage,
   taken: true,
   medicine_id: alvin_medicine_1.id
 )
 alvin_reminder_1.save!
 
 alvin_reminder_2 = Reminder.new(
-  time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  time_to_taken: DateTime.new(2023, 9, 1, 12, 15),
+  dosage: alvin_medicine_2.dosage,
   taken: true,
   medicine_id: alvin_medicine_2.id
 )
 alvin_reminder_2.save!
 
 alvin_reminder_3 = Reminder.new(
-  time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  time_to_taken: DateTime.new(2023, 9, 1, 18, 15),
+  dosage: alvin_medicine_3.dosage,
   taken: true,
   medicine_id: alvin_medicine_3.id
 )
 alvin_reminder_3.save!
 
 alvin_reminder_4 = Reminder.new(
-  time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  time_to_taken: DateTime.new(2023, 9, 1, 22, 15),
+  dosage: alvin_medicine_4.dosage,
   taken: true,
   medicine_id: alvin_medicine_4.id
 )
 alvin_reminder_4.save!
 
 alvin_reminder_5 = Reminder.new(
-  time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  time_to_taken: DateTime.new(2023, 8, 24, 22, 15),
+  dosage: alvin_medicine_5.dosage,
   taken: true,
   medicine_id: alvin_medicine_5.id
 )
@@ -402,7 +402,7 @@ alvin_reminder_5.save!
 
 jenny_reminder_1 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  dosage: jenny_medicine_1.dosage,
   taken: false,
   medicine_id: jenny_medicine_1.id
 )
@@ -410,7 +410,7 @@ jenny_reminder_1.save!
 
 jenny_reminder_2 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  dosage: jenny_medicine_2.dosage,
   taken: false,
   medicine_id: jenny_medicine_2.id
 )
@@ -418,25 +418,23 @@ jenny_reminder_2.save!
 
 jenny_reminder_3 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  dosage: jenny_medicine_3.dosage,
   taken: false,
   medicine_id: jenny_medicine_3.id
 )
 jenny_reminder_3.save!
 
-
 jenny_reminder_4 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  dosage: jenny_medicine_4.dosage,
   taken: false,
   medicine_id: jenny_medicine_4.id
 )
 jenny_reminder_4.save!
 
-
 jenny_reminder_5 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
-  dosage: 2,
+  dosage: jenny_medicine_5.dosage,
   taken: false,
   medicine_id: jenny_medicine_5.id
 )
