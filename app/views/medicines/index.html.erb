@@ -53,3 +53,20 @@
     <% end %>
   <% end %>
 </div>
+<!-- Modal -->
+<% current_user.medicines.order(created_at: :desc).each do |medicine| %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm"> <!-- Added modal-lg class for larger size -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <li class="medicine-dosage"><%= medicine.dosage %> <%= medicine.unit %> per day</li>
+          <li class="medicine-frequency mb-5"><%= medicine.frequency %> times per day</li>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<!-- Modal -->
