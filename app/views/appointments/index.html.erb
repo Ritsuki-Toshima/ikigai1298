@@ -1,6 +1,11 @@
 <% if current_user.elderly? %>
   <div class="container">
-    <div>Your appointments</div>
+    <div class="d-flex align-items-center mt-2">
+      <%= link_to supports_path, class: "btn btn-info me-2", style: "font-size: 24px" do %>
+        <i class="fa-solid fa-arrow-left-long"></i> Back
+      <% end %>
+      <h2 class="mb-0">All your appointment</h2>
+    </div>
     <% appointments = Appointment.where(user_id: current_user.id) %>
     <% @support = Support.find_by(elderly_id: current_user.id) %>
     <%= month_calendar(events: appointments, end_attribute: :end_time) do |date, appointments| %>
