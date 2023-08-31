@@ -21,7 +21,11 @@
               <div class="d-flex align-items-start">
                 <div class="med-table-content list-unstyled" style="padding: 0px;">
                   <% medicine.reminders.each do |reminder| %>
-                    <p class="m-1" style="font-size: 40px;"><%= reminder.time_to_taken.strftime("%l").to_i < 10 ? " " : ""%><%= reminder.time_to_taken.strftime("%l %p").rjust(2, ' ') %></p>
+                    <% if reminder.time_to_taken.strftime("%l").to_i < 10 %>
+                      <p class="m-1" style="font-size: 40px; padding-left: 24px;"><%=reminder.time_to_taken.strftime("%l %p")%></p>
+                    <% else %>
+                      <p class="m-1" style="font-size: 40px;"><%=reminder.time_to_taken.strftime("%l %p")%></p>
+                    <% end %>
                   <% end %>
                   <a type="button" class="text-decoration-none details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
                 </div>
