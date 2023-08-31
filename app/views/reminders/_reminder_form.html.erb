@@ -1,17 +1,15 @@
 <h2 class= "mt-5">Set the reminder</h2>
 <%= simple_form_for [@medicine, @reminder] do |f| %>
-<%= f.input :time_to_taken, label: "To be taken at:", as: :time, discard_minute: true, class: "form-control" %>
+  <%= f.input :time_to_taken, label: "To be taken at:", as: :time, discard_minute: true, class: "form-control" %>
   <%= f.button :submit, "ADD", class: 'btn btn-info btn-block mt-3 mb-5 w-100' %>
 <% end %>
 <ul>
   <% @reminders.sort_by(&:time_to_taken).each do |reminder| %>
     <li class= "fs-4">
-
       <%= "<strong>Time:</strong>  #{reminder.time_to_taken.strftime("%H: o'clock")}".html_safe %>
     </li>
   <% end %>
 </ul>
-
-<%= link_to "Completed", support_path(@support), class: 'text-decoration-none btn btn-primary reminder-complete'%>
-
+<%# <%= link_to "Completed", support_path(@support), class: 'text-decoration-none btn btn-primary reminder-complete'%>
+<%= button_to 'Completed', { controller: 'reminders', action: 'send_sms', id: @support.id }, method: :post, class: 'text-decoration-none btn btn-primary reminder-complete' %>
 <%#= link_to "Go Back",root_path, class: 'text-decoration-none text-black'%>

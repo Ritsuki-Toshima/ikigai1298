@@ -10,6 +10,10 @@ class ReminderPolicy < ApplicationPolicy
     create?
   end
 
+  def send_sms?
+    true
+  end
+
   def create?
     true
   end

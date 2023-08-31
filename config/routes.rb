@@ -13,8 +13,13 @@ Rails.application.routes.draw do
   end
 
   resources :medicines, only: [:update] do
-    resources :reminders, only: [:new, :create]
+    resources :reminders, only: [:new, :create] do
+      member do
+        post :send_sms
+      end
+    end
   end
+
 
   resources :appointments, only: [:index, :show]
   resources :health_records

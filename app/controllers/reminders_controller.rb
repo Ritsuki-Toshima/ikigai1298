@@ -19,9 +19,19 @@ class RemindersController < ApplicationController
     authorize @reminder
     if @reminder.save
       redirect_to new_medicine_reminder_path(@medicine), notice: 'Reminder added successfully.'
+      # SendSmsService.new(@medicine.user, "Dear #{@medicine.user.first_name.capitalize}, #{current_user.first_name.capitalize} added a new medicine for you. Check out the Ikigai app at: https://www.ikigai.bond").call
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def send_sms
+    @medicine = Medicine.find(params[:medicine_id])
+    @support = Support.find(params[:id])
+    authorize @medicine
+    authorize @support
+    SendSmsService.new(@medicine.user, "Dear #{@medicine.user.first_name.capitalize}, #{current_user.first_name.capitalize} added a new medicine for you. Check out the Ikigai app at: https://www.ikigai.bond").call
+    redirect_to support_path(@support)
   end
 
   def edit
