@@ -13,7 +13,7 @@
           <div class="med-table-card <%= medicine.status %>">
             <%= cl_image_tag medicine.photo.key, class: 'img', crop: :fill if medicine.photo.key? %>
             <div class="med-table-content list-unstyled">
-              <li class="med-table-name"><%= medicine.name %></li>
+              <li class="med-table-name"><%= medicine.name.split.map(&:capitalize).join(' ') %></li>
               <% medicine.reminders.each do |reminder| %>
                 <p class="m-1">Daily Intake Take:<%= reminder.time_to_taken.strftime("%l:%M %p") %></p>
               <% end %>
