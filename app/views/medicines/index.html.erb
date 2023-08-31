@@ -21,7 +21,7 @@
               <div class="d-flex align-items-start">
                 <div class="med-table-content list-unstyled" style="padding: 0px;">
                   <% medicine.reminders.each do |reminder| %>
-                    <p class="m-1" style="font-size: 40px;"><%= reminder.time_to_taken.strftime("%l %p") %></p>
+                    <p class="m-1" style="font-size: 40px;"><%= reminder.time_to_taken.strftime("%l %p").rjust(2, ' ') %></p>
                   <% end %>
                   <a type="button" class="text-decoration-none details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
                 </div>
@@ -48,7 +48,7 @@
         <% end %>
       </div>
       <% @support = Support.find_by(elderly_id: current_user.id) %>
-      <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 mb-5 go-back-btn' %>
+      <%# <%= link_to "Add Medicine", new_support_medicine_path(@support), class:'btn btn-outline-info btn-block mt-2 mb-5 go-back-btn' %>
     </ul>
   <% else %>
     <% @medicines.each do |medicine| %>
