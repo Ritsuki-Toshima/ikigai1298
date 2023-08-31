@@ -1,7 +1,16 @@
 <% if current_user.elderly?  %>
-  <div class="containe" style="margin-bottom: 50px;" data-controller="notification-subcription">
-    <h1>Hello <%= current_user.first_name.capitalize %>!</h1>
-    <div style="margin: 10px;">
+  <div class="containe" style="margin-bottom: 84px;" data-controller="notification-subcription">
+    <div class="p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
+      <div class="d-flex justify-content-center">
+        <div class="me-3">
+          <img class="avatar-large" alt="avatar-large" src="https://img.freepik.com/premium-photo/asian-senior-man-old-man-giving-thumb-up-feel-happy-good-health-white-background-lifestyle-senior-success-business-personal-life-concept_34263-736.jpg"/>
+        </div>
+        <div class= "p-0">
+          <h5 class="text-center mb-3 mt-1">Hello <%= current_user.first_name.capitalize %>!</h5>
+        </div>
+      </div>
+    </div>
+    <div style="margin: 10px; margin-top: 32px;">
       <%= link_to appointments_path, class: "square-btn", style: "background-color: #0088ab; text-align: center; padding: 20px;" do %>
         <div style="display: flex; align-items: center; justify-content: between;">
           <i class="fa-solid fa-calendar-days me-3 pe-3" style="font-size: 72px;"></i>
