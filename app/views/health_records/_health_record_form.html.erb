@@ -1,4 +1,4 @@
-<h2 class= "mt-5" >New health Record</h2>
+<h2 class= "mt5" >New health Record</h2>
 <%= simple_form_for [@support, @health_record] do |f| %>
   <%= f.input :mood_status,
               label: "How are you feeling today?",
@@ -6,7 +6,7 @@
               collection_wrapper_tag: 'div',
               collection_wrapper_class: 'category-wrapper',
               item_wrapper_class: 'category-item my-1',
-              input_html: {class: 'bigger-font '},
+              input_html: {class: 'category-selector'},
               collection: [
               [raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-laugh-beam'></i></div>"), "1"],
               [raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-smile'></i></div>"), "2"],
@@ -19,11 +19,15 @@
   <%# <%= f.input :pulse, input_html: { min: 0 } %>
   <%# <%= f.input :weight, input_html: { min: 0 } %>
   <%#= f.input :photo, as: :file %>
-<%= f.input :photo, input_html: { class: 'd-none' }, label: false %>
-<label class="upload-photo">
-  <i class="fa-solid fa-heart-pulse" style="color: #ff0000;"></i>
-  Upload blood pressure
-</label>  <div class="d-flex mt-4 mb-3">
+  <%= f.input :photo, input_html: { class: 'd-none' }, label: false %>
+  <label class="upload-photo">
+    <div class="d-flex align-items-center justify-content-center">
+      <i class="fa-solid fa-heart-pulse" style="color: #ff0000; margin-right: 5px;"></i>
+    </div>
+    <br>
+    Upload blood pressure
+  </label>
+  <div class="d-flex mt-4 mb-3">
     <%= link_to "Go Back", health_records_path, class:'btn btn-outline-info btn-block mt-2 go-back-btn' %>
     <%= f.submit "Submit", class:'btn btn-info btn-block mt-2 mx-3' %>
   </div>
