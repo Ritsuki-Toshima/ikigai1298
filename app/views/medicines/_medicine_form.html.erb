@@ -4,7 +4,7 @@
   <%= f.input :description, placeholder: 'What is the medicine about?' %>
   <div class="d-flex justify-content-start">
     <%= f.input :dosage,
-                  label: "Dosage",
+                  label: "Dosage (per day)",
                   input_html: { min: 0 } %>
     <%= f.input :unit, collection: [ "tablet", "g", "ml"],
                   selected: "tablet",

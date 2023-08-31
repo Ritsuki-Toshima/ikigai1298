@@ -3,7 +3,7 @@
   margin: 10px 0;
   min-width: 330px;
   height: 280px;
-  background-color: #023047;
+  background-color: rgba(2, 48, 71, 0.9);
   padding: 1.25rem;
   border-radius: 1rem;
   text-align: center;
@@ -40,4 +40,12 @@
   font-size: 0.6em;
   font-weight: 400;
   margin: 0px;
+}
+
+.descriptive-info-wrapper {
+  margin: 5px 0;
+}
+
+.descriptive-info {
+  text-align: left;
 }

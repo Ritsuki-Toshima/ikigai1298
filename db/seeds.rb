@@ -24,7 +24,7 @@ alvin = User.new(
   last_name: "yau",
   gender: "male",
   address: "G/F, 20 Spring Garden Ln, Wan Chai, Hong Kong",
-  phone_number: "+818060262293",
+  phone_number: "+817044676711",
   birth_date: "22/12/1945",
   height: rand(140..200),
   latitude: -90 + (180 * rand),
@@ -82,23 +82,23 @@ puts "----------------------------------------------"
 puts "Creating Medicines"
 
 alvin_medicine_1 = Medicine.new(
-  name: "Chloesterol",
-  description: "Chloeserol",
+  name: "Liver Support",
+  description: "Liver Support",
   dosage: 1,
-  dosage_remaining: 38,
+  dosage_remaining: 72,
   unit: "tablets",
   start_date: DateTime.now - Random.rand(10..24),
   end_date: DateTime.now + Random.rand(365..730),
   frequency: 1,
   user_id: alvin.id
   )
-  file = File.open("db/images/chloesterol.jpg")
-  alvin_medicine_1.photo.attach(io: file, filename: "chloesterol.jpg")
-  alvin_medicine_1.save!
+file = File.open("db/images/liver_support.jpg")
+alvin_medicine_1.photo.attach(io: file, filename: "liver_support.jpg")
+alvin_medicine_1.save!
 
 alvin_medicine_2 = Medicine.new(
-  name: "Liver Support",
-  description: "For Liver Support",
+  name: "Multivitamins",
+  description: "For Basic Health",
   dosage: 2,
   dosage_remaining: 102,
   unit: "tablets",
@@ -107,13 +107,13 @@ alvin_medicine_2 = Medicine.new(
   frequency: 2,
   user_id: alvin.id
   )
-file = File.open("db/images/liver_support.jpg")
-alvin_medicine_2.photo.attach(io: file, filename: "liver_support.jpg")
+file = File.open("db/images/vitamin-pho.jpg")
+alvin_medicine_2.photo.attach(io: file, filename: "vitamin-pho.jpg")
 alvin_medicine_2.save!
 
 alvin_medicine_3 = Medicine.new(
-  name: "Astaxanthin",
-  description: "For feed supplement as food colorant for salmon, crabs, shrimp, chickens and egg production",
+  name: "Fish Oil & D3",
+  description: "Fish Oil & D3",
   dosage: 1,
   dosage_remaining: 56,
   unit: "tablets",
@@ -122,12 +122,12 @@ alvin_medicine_3 = Medicine.new(
   frequency: 1,
   user_id: alvin.id
   )
-file = File.open("db/images/Astaxanthin.jpg")
-alvin_medicine_3.photo.attach(io: file, filename: "Astaxanthin.jpg")
+file = File.open("db/images/fishoil.jpg")
+alvin_medicine_3.photo.attach(io: file, filename: "fishoil.jpg")
 alvin_medicine_3.save!
 
 alvin_medicine_4 = Medicine.new(
-  name: "Bone Strength",
+  name: "Heart Supplement",
   description: "For Bone Strength",
   dosage: 1,
   dosage_remaining: 83,
@@ -137,24 +137,24 @@ alvin_medicine_4 = Medicine.new(
   frequency: 1,
   user_id: alvin.id
   )
-file = File.open("db/images/bone_strength.jpg")
-alvin_medicine_4.photo.attach(io: file, filename: "bone_strength.jpg")
+file = File.open("db/images/heart.jpg")
+alvin_medicine_4.photo.attach(io: file, filename: "heart.jpg")
 alvin_medicine_4.save!
 
 alvin_medicine_5 = Medicine.new(
-  name: "Calcium & Magnesium",
-  description: "General Health",
+  name: "Blood Sugar",
+  description: "Blood Sugar",
   dosage: 1,
-  dosage_remaining: 72,
+  dosage_remaining: 38,
   unit: "tablets",
   start_date: DateTime.now - Random.rand(10..24),
   end_date: DateTime.now + Random.rand(365..730),
   frequency: 1,
   user_id: alvin.id
   )
-file = File.open("db/images/cal_mg.jpg")
-alvin_medicine_5.photo.attach(io: file, filename: "cal_mg.jpg")
-alvin_medicine_5.save!
+  file = File.open("db/images/blood-sugar.jpg")
+  alvin_medicine_5.photo.attach(io: file, filename: "blood-sugar.jpg")
+  alvin_medicine_5.save!
 
 jenny_medicine_1 = Medicine.new(
   name: "Warfarin",
