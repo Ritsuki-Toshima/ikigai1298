@@ -69,6 +69,14 @@
   <h1 class= "col-12 mt-3">Weekly</h1>
   <%= render "graph_tabs" %>
 <% end %>
+
+  <div class="d-flex justify-content-between align-items-center mt-2">
+
+ <%= link_to supports_path, class: "btn btn-info me-2 mb-5", style: "font-size: 24px" do %>
+        <i class="fa-solid fa-arrow-left-long"></i> Back
+      <% end %>
+
 <div class="d-flex justify-content-center align-items-center">
   <%= link_to "+", new_health_record_path, class: 'add-b' %>
+</div>
 </div>
