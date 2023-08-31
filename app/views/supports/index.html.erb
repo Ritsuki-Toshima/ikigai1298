@@ -81,7 +81,10 @@
           <span class="fas fa-exclamation-circle"></span>
           <span class="msg">Reminder</span>
           <span class="msg-info">
-            <p><%= support.elderly.first_name.capitalize %> has <%= support.elderly.appointments.active.count %> appointments today!</p>
+            <p>
+              <%= support.elderly.first_name.capitalize %> has
+              <%= pluralize(support.elderly.appointments.active.count, 'appointment') %> today!
+            </p>
           </span>
           <span class="close-btn">
             <a data-bs-dismiss="alert" aria-label="Close" class="close-btn">
