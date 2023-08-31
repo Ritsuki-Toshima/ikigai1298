@@ -277,8 +277,8 @@ alvin_appointment2 = Appointment.new(
   start_time: start_time,
   end_time: start_time + rand(1..2).hours,
   address: "2-11-3 Meguro, Meguro-ku, Tokyo",
-  latitude: 35.63396813225883,
-  longitude: 139.7081045392303,
+  latitude: 35.6406769304616,
+  longitude: 139.6991768776612,
   user_id: alvin.id
 )
 alvin_appointment2.save!
@@ -286,11 +286,11 @@ alvin_appointment2.save!
 alvin_appointment3 = Appointment.new(
   name: "Chiropractor",
   description: "Teeth Whitening",
-  start_time: start_time,
-  end_time: start_time + rand(1..2).hours,
+  start_time: long_start_time,
+  end_time: long_start_time + rand(1..2).hours,
   address: "3-15-7 Shinjuku, Tokyo-to, Tokyo",
-  latitude: 35.68854350576217,
-  longitude: 139.69589350787263,
+  latitude: 35.68663519546136,
+  longitude: 139.69116210775576,
   user_id: alvin.id
 )
 alvin_appointment3.save!
