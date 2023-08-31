@@ -27,7 +27,7 @@ class RemindersController < ApplicationController
 
   def send_sms
     @medicine = Medicine.find(params[:medicine_id])
-    @support = Support.find(params[:id])
+    @support = Support.where(elderly_id: @medicine.user_id).first
     authorize @medicine
     authorize @support
     SendSmsService.new(@medicine.user, "Dear #{@medicine.user.first_name.capitalize}, #{current_user.first_name.capitalize} added a new medicine for you. Check out the Ikigai app at: https://www.ikigai.bond").call
