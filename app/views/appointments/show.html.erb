@@ -7,9 +7,8 @@
   <%# </div> %>
   <%# <p><%= Time.now.in_time_zone.strftime("%A %d %B") %>
   <%# </div> %>
-  <div class="card">
-    <h3 class="card-header">
-      <%=@appointment.name.split.map(&:capitalize).join(' ') %>
+  <h1 class="card-header"> <%=@appointment.name.split.map(&:capitalize).join(' ') %>
+    <div class="card">
     </h3>
     <div class="card-body">
       <h2 class="card-title"><%="#{@appointment.start_time.strftime("%b %e, %l:%M %p")}" %></h2>
