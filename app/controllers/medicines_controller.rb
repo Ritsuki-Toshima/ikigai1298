@@ -19,7 +19,7 @@ class MedicinesController < ApplicationController
     authorize @medicine
     if @medicine.save
       redirect_to new_medicine_reminder_path(@medicine)
-      SendSmsService.new(@medicine.user, "Dear #{@medicine.user.first_name.capitalize}, #{@trusted_user.first_name.capitalize} added a new medicine for you. Check out the Ikigai app at: http://www.ikigai.bond").call
+      SendSmsService.new(@medicine.user, "Dear #{@medicine.user.first_name.capitalize}, #{@trusted_user.first_name.capitalize} added a new medicine for you. Check out the Ikigai app at: https://www.ikigai.bond").call
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class MedicinesController < ApplicationController
       @support = @supports.first
       @trusted_users = User.where(id: @support.trusted_user_id)
       @trusted_user = @trusted_users.first
-      SendSmsService.new(@trusted_user, "Dear #{@trusted_user.first_name.capitalize}, #{current_user.first_name.capitalize} has lost one of their medicines. Check out the Ikigai app at: http://www.ikigai.bond").call if @medicine.status == 'lost'
+      SendSmsService.new(@trusted_user, "Dear #{@trusted_user.first_name.capitalize}, #{current_user.first_name.capitalize} has lost one of their medicines. Check out the Ikigai app at: https://www.ikigai.bond").call if @medicine.status == 'lost'
     else
       render :edit, status: :unprocessable_entity
     end
