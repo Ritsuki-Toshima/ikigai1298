@@ -38,15 +38,11 @@
       <% end %>
       <div class="next-appointment-card">
         <h5>Next</h5>
-        <% @appointments_today = Appointment.where(user: current_user, start_time: Date.today.beginning_of_day..Date.today.end_of_day) %>
+        <% @appointments_today = Appointment.where(user: current_user, start_time: Date.today.beginning_of_day..Date.today.end_of_day).order(start_time: :asc) %>
         <% if @appointments_today != [] %>
-          <ul style="list-style-type: none;">
-            <% @appointments_today.each do |appointment_today| %>
-              <li><%= appointment_today.name %> <%= appointment_today.start_time.strftime("%l:%M %p") %></li>
-            <% end %>
-          </ul>
+          <div class="text-center"><%= @appointments_today.first.name %> <%= @appointments_today.first.start_time.strftime("%l:%M %p")%></div>
         <% else %>
-          <p style="margin: 0px;">You don't have any appointment today.</p>
+          <p calss="text-center" style="margin: 0px;">You don't have any appointment today.</p>
         <% end %>
       </div>
     </div>
@@ -57,17 +53,16 @@
           <span style="display: block; font-size: 28px;">Health Record</span>
         </div>
       <% end %>
-      <div class="next-health-record-card">
-        <% @health_today = HealthRecord.where(user: current_user, start_time: Date.today.beginning_of_day..Date.today.end_of_day) %>
-        <% if @health_today %>
-          <p>Input your record today.</p>
+      <div class="next-health-record-card d-flex justify-content-center align-items-center">
+        <% @health_today = HealthRecord.where(user: current_user, created_at: Date.today.beginning_of_day..Date.today.end_of_day) %>
+        <% if @health_today != [] %>
+          <p>You've completed today's health record.</p>
         <% else %>
-          <p>You haven't updated today's health record</p>
+          <p>You don't have today's health record</p>
         <% end %>
       </div>
     </div>
   </div>
-</div>
 <% else %>
   <div class="index-first-session">
     <div class="p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
@@ -99,4 +94,3 @@
   </div>
   <%= render "list_of_elderlies", supports: @supports%>
 <% end %>
-</div>
