@@ -9,19 +9,23 @@
       <p class="elderly-pro-content"><%="#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" %></p>
       <div class="elderly-pro-info">
         <% mood_status = support.elderly.health_records.last.mood_status %>
-        <% case mood_status.to_i %>
-        <% when 1 %>
-        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-laugh-beam'></i></div>") %>
-        <% when 2 %>
-        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-smile'></i></div>") %>
-        <% when 3 %>
-        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-meh'></i></div>") %>
-        <% when 4 %>
-        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-frown'></i></div>") %>
-        <% when 5 %>
-        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-tired'></i></div>") %>
+        <% if support.elderly.health_records.exists?(date: Date.today) %>
+          <% case mood_status.to_i %>
+          <% when 1 %>
+          <%= raw("<div class='category-icon fa-3x'><i class='fa-solid fa-face-laugh-beam' style='color: rgba(20, 92, 10, 0.85);'></i></i></div>") %>
+          <% when 2 %>
+          <%= raw("<div class='category-icon fa-3x'><i class='fa-solid fa-face-smile' style='color: rgba(20, 92, 10, 0.85);'></i></div>") %>
+          <% when 3 %>
+          <%= raw("<div class='category-icon fa-3x'><i class='fa-solid fa-face-meh'style='color: rgba(02, 30, 47, 0.85);'></i></div>") %>
+          <% when 4 %>
+          <%= raw("<div class='category-icon fa-3x'><i class='fa-solid fa-face-frown' style='color: rgba(205, 38, 19, 0.85);'></i></div>") %>
+          <% when 5 %>
+          <%= raw("<div class='category-icon fa-3x'><i class='fa-solid fa-face-tired' style='color: rgba(205, 38, 19, 0.85);'></i></div>") %>
+        <% else %>
+          <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-meh-blank'></i></div>") %>
+        <% end %>
       <% else %>
-        <%= raw("<div class='category-icon fa-3x'><i class='fa-regular fa-face-meh-blank'></i></div>") %>
+        <div class="category-icon fa-3x"><i class="fa-solid fa-circle-question" style="color: #75777a;"></i></div>
       <% end %>
     </div>
     <%= link_to support_path(support), class: 'd-block p-0 text-decoration-none' do %>
@@ -31,16 +35,16 @@
       <div class="health-record-status">
         <div class="mt-5 mb-3">
           <% if statuses.empty? || statuses.any?('pending') %>
-            <span class="missing-medicine-record text-center">Missing Medicine Record</span>
+            <span class="missing-medicine-record text-center"><i class="fa-solid fa-x" style="color: rgba(205, 38, 19, 0.85);"></i> Missing Medicine Record</span>
           <% elsif statuses.all?('taken') %>
-            <span class="medicine-completed text-center">Medicine Completed</span>
+            <span class="medicine-completed text-center"><i class="fa-solid fa-check" style="color: rgba(20, 92, 10, 0.85);"></i> Medicine Completed</span>
           <% end %>
         </div>
         <div>
           <% if support.elderly.health_records.last.date == Date.today %>
-            <span class="health-record-completed text-center">Health Record Completed</span>
+            <span class="health-record-completed text-center"><i class="fa-solid fa-check" style="color: rgba(20, 92, 10, 0.85);"></i> Health Record Completed</span>
           <% else %>
-            <span class="missing-health-record text-center">Missing Health Record</span>
+            <span class="missing-medicine-record text-center"><i class="fa-solid fa-x" style="color: rgba(205, 38, 19, 0.85);"></i> Missing Health Record</span>
           <% end %>
         </div>
       </div>
