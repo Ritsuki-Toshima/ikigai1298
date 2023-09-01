@@ -253,7 +253,7 @@ puts "----------------------------------------------"
 puts "Creating Medical Appointments"
 
 start_time = DateTime.now + rand(72..144).hours
-specific_start_time = DateTime.now + 43.hours
+specific_start_time = DateTime.now + 23.hours
 long_start_time = DateTime.now + rand(240..360).hours
 start_time = [start_time.change(hour: 9, min: 0, sec: 0), start_time.change(hour: 18, min: 0, sec: 0)].max
 specific_start_time = [specific_start_time.change(hour: 9, min: 0, sec: 0), specific_start_time.change(hour: 18, min: 0, sec: 0)].max
@@ -261,12 +261,12 @@ long_start_time = [long_start_time.change(hour: 9, min: 0, sec: 0), long_start_t
 
 alvin_appointment = Appointment.new(
   name: "Medical Check-up",
-  description: "Full body check annually. In particular if any significant changes regarding diabetes",
+  description: "Full body check annually. Diabetes monitoring.",
   start_time: specific_start_time,
   end_time: specific_start_time + rand(1..2).hours,
-  address: "1-291-8 Sarugakucho, Chiyoda ku, Tokyo to",
-  latitude: 35.629519458799976,
-  longitude: 139.6844641164838,
+  address: "30 Gascoigne Road, Yau Ma Tei, Hong Kong",
+  latitude: 22.309330466082702,
+  longitude: 114.1744068830591,
   user_id: alvin.id
 )
 alvin_appointment.save!
