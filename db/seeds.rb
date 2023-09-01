@@ -24,11 +24,11 @@ alvin = User.new(
   last_name: "yau",
   gender: "male",
   address: "G/F, 20 Spring Garden Ln, Wan Chai, Hong Kong",
-  phone_number: "+817044676711", # +817044676711",
+  phone_number: "+818048168800", # "+817044676711", # +817044676711",
   birth_date: "22/12/1945",
   height: rand(140..200),
   latitude: -90 + (180 * rand),
-  longtitude: -180 + (360 * rand),
+  longtitude: -180 + (360 * rand)
 )
 alvin.save!
 
