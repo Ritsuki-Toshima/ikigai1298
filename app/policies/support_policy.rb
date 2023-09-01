@@ -9,4 +9,8 @@ class SupportPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def send_sms?
+    true
+  end
 end

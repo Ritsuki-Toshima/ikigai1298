@@ -21,4 +21,8 @@ class MedicinePolicy < ApplicationPolicy
   def update?
     true
   end
+
+  def send_sms?
+    true
+  end
 end
