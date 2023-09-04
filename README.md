@@ -3,7 +3,12 @@ Project description goes here
 
 This app was created as part of a final project for the Le Wagon Tokyo Web Development Bootcamp. The project is a health status tracking app that allows caregivers to track the health status of their elderly loved ones.  Caregivers can add medicines and appointments for their elderly relatives. This will then notify the elderly relative by SMS that they have a new medicine/appointment. Elderly users can submit their health status report and vital statistics, which will notify the caregiver by SMS that this has been completed. The elderly user can view their appointment location on a map and has their vital statistics computed into a weekly chart - which can also be viewed by a caregiver. 
 
-_DROP SCREENSHOT HERE_
+<img width="286" alt="Screenshot 2023-09-04 at 15 18 38" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/76d6ca97-0e51-46cc-b508-9b089648117b">
+<img width="319" alt="Screenshot 2023-09-04 at 15 14 54" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/72b23e3c-c968-4b1b-8442-7b93ad10d226">
+<img width="318" alt="Screenshot 2023-09-04 at 15 15 19" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/feae99d0-33f3-4920-8211-a95ebc94a95c">
+<img width="315" alt="Screenshot 2023-09-04 at 15 16 26" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/6bd91ca4-6756-4606-b116-0a6a95d01f1c">
+<img width="315" alt="Screenshot 2023-09-04 at 15 17 33" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/b40d595f-5155-4de7-92d1-488a320eaec5">
+
 <br>
 App home: https://www.ikigai.bond
    
