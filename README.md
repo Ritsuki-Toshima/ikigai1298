@@ -5,10 +5,10 @@ This app was created as part of a final project for the Le Wagon Tokyo Web Devel
 
 <img width="315" alt="Screenshot 2023-09-04 at 15 18 38" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/76d6ca97-0e51-46cc-b508-9b089648117b">
 <br>
-<img width="240" alt="Screenshot 2023-09-04 at 15 14 54" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/72b23e3c-c968-4b1b-8442-7b93ad10d226">
-<img width="240" alt="Screenshot 2023-09-04 at 15 15 19" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/feae99d0-33f3-4920-8211-a95ebc94a95c">
-<img width="240" alt="Screenshot 2023-09-04 at 15 16 26" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/6bd91ca4-6756-4606-b116-0a6a95d01f1c">
-<img width="240" alt="Screenshot 2023-09-04 at 15 17 33" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/b40d595f-5155-4de7-92d1-488a320eaec5">
+<img width="210" alt="Screenshot 2023-09-04 at 15 14 54" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/72b23e3c-c968-4b1b-8442-7b93ad10d226">
+<img width="210" alt="Screenshot 2023-09-04 at 15 15 19" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/feae99d0-33f3-4920-8211-a95ebc94a95c">
+<img width="210" alt="Screenshot 2023-09-04 at 15 16 26" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/6bd91ca4-6756-4606-b116-0a6a95d01f1c">
+<img width="210" alt="Screenshot 2023-09-04 at 15 17 33" src="https://github.com/Ritsuki-Toshima/ikigai1298/assets/138346709/b40d595f-5155-4de7-92d1-488a320eaec5">
 
 <br>
 App home: https://www.ikigai.bond
