@@ -14,17 +14,17 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  # validates :email, :first_name, :last_name, :gender, :address, :phone_number, presence: true
+  validates :email, :first_name, :last_name, presence: true # :gender, :address, :phone_number,
   # validates :gender, presence: true, inclusion: { in: ["M", "F"] }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # after_create_commit :send_comment_notification
 
-  after_create do
-    cable_ready["visitors"].console_log(message: "Welcome to the site!")
-    cable_ready.broadcast # send queued console_log operation to all ExampleChannel subscribers
-  end
+  # after_create do
+  #   cable_ready["visitors"].console_log(message: "Welcome to the site!")
+  #   cable_ready.broadcast # send queued console_log operation to all ExampleChannel subscribers
+  # end
 
   def elderly?
     if self.trusted_users != []
