@@ -21,7 +21,7 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :elderly? %>
+    <%= f.input :elderly, as: :boolean %>
   </div>
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
