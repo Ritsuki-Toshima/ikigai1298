@@ -28,7 +28,8 @@ alvin = User.new(
   birth_date: "22/12/1945",
   height: rand(140..200),
   latitude: -90 + (180 * rand),
-  longtitude: -180 + (360 * rand)
+  longtitude: -180 + (360 * rand),
+  elderly: true
 )
 alvin.save!
 
@@ -43,7 +44,8 @@ jenny = User.new(
   birth_date: "11/05/1955",
   height: rand(140..200),
   latitude: -90 + (180 * rand),
-  longtitude: -180 + (360 * rand)
+  longtitude: -180 + (360 * rand),
+  elderly: true
 )
 jenny.save!
 
@@ -57,7 +59,8 @@ ritsuki = User.new(
   gender: "male",
   address: "2 Chome-11-3 Meguro, Meguro City, Tokyo 153-0063",
   phone_number: "+818060262293", # "+818048168800",
-  birth_date: "12/09/1997"
+  birth_date: "12/09/1997",
+  elderly: false
 )
 ritsuki.save!
 
@@ -70,6 +73,7 @@ gary = User.new(
   address: "2-24-12 Shibuya, Shibuya-ku, Tokyo",
   phone_number: "+817031380309",
   birth_date: "15/08/1989",
+  elderly: false
 )
 gary.save!
 
