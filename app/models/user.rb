@@ -27,11 +27,12 @@ class User < ApplicationRecord
   # end
 
   def elderly?
-    if self.trusted_users != []
-      true
-    else
-      false
-    end
+    self.elderly
+    # if self.trusted_users != []
+    #   true
+    # else
+    #   false
+    # end
   end
 
   def age
@@ -40,7 +41,7 @@ class User < ApplicationRecord
     age
   end
 
-  private
+  # private
 
   # def send_comment_notification
   #   ActionCable.server.broadcast("notification_channel", {
