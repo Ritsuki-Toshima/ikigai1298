@@ -1,5 +1,9 @@
-<% @elderly = User.find(params[:user_id]) if params[:user_id] %>
-<% if @health_records.last.date == Date.today %>
+<% if current_user.elderly? %>
+  <% @elderly = current_user %>
+<% else %>
+  <% @elderly = User.find(params[:user_id]) if params[:user_id] %>
+<% end %>
+<% if @health_records.present? && @health_records.last.date == Date.today %>
   <% mood_icons = ["", "fa-regular fa-face-laugh-beam", "fa-regular fa-face-smile", "fa-regular fa-face-meh", "fa-regular fa-face-frown", "fa-regular fa-face-tired"] %>
   <div class="d-flex justify-content-center align-items-center mt-2">
     <h1 class= "col-10">Health Record - <%= @health_records.last.date.strftime('%b %d') %></h1>
@@ -34,15 +38,15 @@
     </div>
     <div class="health-info align-items-center">
       <div class="d-flex align-items-center ms-3">
-      <i class="fa-solid fa-heart-pulse me-3" style="color: #f2392c;"></i>
-      <h2 style="margin: 0px;">PULSE</h2>
+        <i class="fa-solid fa-heart-pulse me-3" style="color: #f2392c;"></i>
+        <h2 style="margin: 0px;">PULSE</h2>
       </div>
       <div style="margin-left: auto;" class="health-card-data"><%= @health_records.last.pulse %></div>
     </div>
   </div>
   <h1 class= "col-12 mt-3">Weekly</h1>
   <%= render "graph_tabs" %>
-<% else %>
+<% elsif @health_records.present? %>
   <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
     <span><strong>🔔 <%= params[:user_id].nil? ? "You" : @elderly.first_name.capitalize %> don't have any record today</strong>
     </span>
@@ -57,7 +61,7 @@
       <%= link_to "+", new_health_record_path, class: 'add-b' %>
     </div>
   </div>
-    <div class="health-record-cards">
+  <div class="health-record-cards">
     <div class="health-info align-items-center">
       <div class="d-flex align-items-center ms-3">
         <i class="fa-regular fa-face-meh-blank me-3" style="color: #FFB703;"></i>
@@ -84,14 +88,27 @@
     </div>
     <div class="health-info align-items-center">
       <div class="d-flex align-items-center ms-3">
-      <i class="fa-solid fa-heart-pulse me-3" style="color: #f2392c;"></i>
-      <h2 style="margin: 0px;">PULSE</h2>
+        <i class="fa-solid fa-heart-pulse me-3" style="color: #f2392c;"></i>
+        <h2 style="margin: 0px;">PULSE</h2>
       </div>
       <div style="margin-left: auto;" class="health-card-data"><%= @health_records.last.pulse %></div>
     </div>
   </div>
   <h1 class= "col-12 mt-3">Weekly</h1>
   <%= render "graph_tabs" %>
+<% else %>
+  <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+    <span><strong>🔔 <%= params[:user_id].nil? ? "Please" : "#{@elderly.first_name.capitalize} should"%> enter a health record </strong>
+    </span>
+    <a data-bs-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
+  <div class="d-flex justify-content-center align-items-center mt-2">
+    <div class="d-flex justify-content-center align-items-center">
+      <%= link_to "+", new_health_record_path, class: 'add-b' %>
+    </div>
+  </div>
 <% end %>
 <div class="d-flex justify-content-between align-items-center mt-2">
   <%= link_to supports_path, class: "btn btn-info me-2 mb-5", style: "font-size: 24px" do %>
