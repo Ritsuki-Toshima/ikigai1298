@@ -10,6 +10,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get '/search_elderlies', to: 'supports#search_elderlies'
+
+  resources :supports, only: [:new, :create]
+
   resources :supports, only: [:index, :show] do
     resources :medicines
     resources :appointments

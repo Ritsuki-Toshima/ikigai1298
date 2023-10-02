@@ -1,5 +1,8 @@
-<h5 class="text-center mt-4 index-divider">YOUR LOVED ONES  <i class="fa-solid fa-person"></i></h5>
 <div class="container" style="margin-bottom: 80px;">
+  <div class="d-flex justify-content-center align-items-center mt-4">
+    <h5 class="text-center index-divider">YOUR LOVED ONES  <i class="fa-solid fa-person"></i></h5>
+    <%= link_to "Add", new_support_path, class:"btn btn-primary mx-2"%>
+  </div>
   <% supports.each do |support| %>
     <% statuses = [] %>
     <%  support.elderly.medicines.each do |medicine| %>
@@ -8,8 +11,8 @@
     <div class="elderly-pro <%=statuses.all?('taken')%>">
       <p class="elderly-pro-content"><%="#{support.elderly.first_name.capitalize} #{support.elderly.last_name.capitalize}" %></p>
       <div class="elderly-pro-info">
-        <% mood_status = support.elderly.health_records.last.mood_status %>
         <% if support.elderly.health_records.exists?(date: Date.today) %>
+          <% mood_status = support.elderly.health_records.last.mood_status %>
           <% case mood_status.to_i %>
           <% when 1 %>
           <%= raw("<div class='category-icon fa-3x'><i class='fa-solid fa-face-laugh-beam' style='color: rgba(20, 92, 10, 0.85);'></i></i></div>") %>
@@ -41,7 +44,7 @@
           <% end %>
         </div>
         <div>
-          <% if support.elderly.health_records.last.date == Date.today %>
+          <% if support.elderly.health_records.exists?(Date.today) %>
             <span class="health-record-completed text-center"><i class="fa-solid fa-check" style="color: rgba(20, 92, 10, 0.85);"></i> Health Record Completed</span>
           <% else %>
             <span class="missing-medicine-record text-center"><i class="fa-solid fa-x" style="color: rgba(205, 38, 19, 0.85);"></i> Missing Health Record</span>

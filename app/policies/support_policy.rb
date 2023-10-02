@@ -13,4 +13,12 @@ class SupportPolicy < ApplicationPolicy
   def send_sms?
     true
   end
+
+  def new?
+    create?
+  end
+
+  def create?
+    true
+  end
 end

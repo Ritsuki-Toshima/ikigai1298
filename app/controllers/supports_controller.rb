@@ -35,4 +35,33 @@ class SupportsController < ApplicationController
       end
     end
   end
+
+  def new
+    authorize Support
+    @elderly_search_results = [] # Initialize an empty array to store search results
+    if params[:search_query].present?
+      # Perform a search based on the email parameter
+      @elderly_search_results = User.where(elderly: true).where("email LIKE ?", "%#{params[:search_query]}%")
+    end
+  end
+
+  def create
+    @elderly_user = User.find(params[:elderly_id])
+    @support = Support.new(elderly: @elderly_user, trusted_user: current_user)
+    authorize @support
+    if @support.save
+      # Handle successful creation (e.g., redirect to a different page)
+      redirect_to supports_path, notice: "Support created successfully."
+    else
+      # Handle validation errors or other issues
+      flash.now[:alert] = "Support creation failed."
+      render :new
+    end
+  end
+
+  private
+
+  def support_params
+    params.require(:support).permit(:elderly_id, :trusted_user_id)
+  end
 end
