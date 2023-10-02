@@ -1,0 +1,20 @@
+<h1>Create a New Support</h1>
+<%= form_tag new_support_path, method: :get do %>
+  <label for="search_query">Search for Elderly Users by Email:</label>
+  <%= text_field_tag :search_query, params[:search_query] %>
+  <%= submit_tag "Search" %>
+<% end %>
+<% if @elderly_search_results.any? %>
+  <h2>Search Results:</h2>
+  <ul>
+    <% @elderly_search_results.each do |elderly| %>
+      <li>
+        <%= "#{elderly.first_name} #{elderly.last_name} (#{elderly.email})" %>
+        <%= form_tag supports_path, method: :post do %>
+          <%= hidden_field_tag :elderly_id, elderly.id %>
+          <%= submit_tag "Add", class: "add-button" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
