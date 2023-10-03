@@ -41,7 +41,8 @@ class SupportsController < ApplicationController
     @elderly_search_results = [] # Initialize an empty array to store search results
     if params[:search_query].present?
       # Perform a search based on the email parameter
-      @elderly_search_results = User.where(elderly: true).where("email LIKE ?", "%#{params[:search_query]}%")
+      @elderly_search_results = User.where(elderly: true, email: params[:search_query])
+      # @elderly_search_results = User.where(elderly: true).where("email LIKE ?", "%#{params[:search_query]}%")
     end
   end
 
