@@ -1,7 +1,9 @@
 <div class="container" style="margin-bottom: 80px;">
-  <div class="d-flex justify-content-center align-items-center mt-4">
-    <h5 class="text-center index-divider">YOUR LOVED ONES  <i class="fa-solid fa-person"></i></h5>
-    <%= link_to "Add", new_support_path, class:"btn btn-primary mx-2"%>
+  <div class="d-flex justify-content-center mt-4">
+    <h5 class="text-center index-divider m-0">YOUR LOVED ONES <i class="fa-solid fa-person"></i></h5>
+    <%= link_to new_support_path, class: "btn btn-outline-primary btn-sm mx-2" do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
   </div>
   <% supports.each do |support| %>
     <% statuses = [] %>
