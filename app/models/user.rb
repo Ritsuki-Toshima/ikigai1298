@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
   has_many :health_records, dependent: :destroy
+  has_one_attached :photo
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
