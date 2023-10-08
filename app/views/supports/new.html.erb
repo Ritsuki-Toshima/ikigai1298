@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 class="text-center mt-3">User Search</h1>
+  <%= form_tag new_support_path, method: :get do %>
+    <div class="input-group">
+      <%= text_field_tag :search_query, params[:search_query], placeholder: "Enter email address", class:"form-control form-outline" %>
+      <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @elderly_search_results.any? %>
+    <% elderly = @elderly_search_results.first %>
+    <div class="mt-5">
+      <div class="text-center">
+        <img class="avatar-result" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+      </div>
+      <div class="text-center m-2">
+        <h5 class="card-title"><%= "#{elderly.first_name.capitalize} #{elderly.last_name.capitalize}" %></h5>
+      </div>
+      <div class="text-center">
+        <%= form_tag supports_path, method: :post do %>
+          <%= hidden_field_tag :elderly_id, elderly.id %>
+          <%= submit_tag "Add", class: "add-button btn btn-outline-success" %>
+        <% end %>
+      </div>
+    </div>
+  <% elsif params[:search_query] %>
+    <p class="text-center" style="margin-top: 80px;">User not found</p>
+  <% end %>
+</div>

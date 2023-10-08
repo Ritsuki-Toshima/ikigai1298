@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :users, only: %i[show edit update]
 
+  get '/search_elderlies', to: 'supports#search_elderlies'
+
+  resources :supports, only: [:new, :create]
+
   resources :supports, only: [:index, :show] do
     resources :medicines
     resources :appointments

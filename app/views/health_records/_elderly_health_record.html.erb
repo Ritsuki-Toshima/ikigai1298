@@ -5,11 +5,17 @@
 <% end %>
 <% if @health_records.present? && @health_records.last.date == Date.today %>
   <% mood_icons = ["", "fa-regular fa-face-laugh-beam", "fa-regular fa-face-smile", "fa-regular fa-face-meh", "fa-regular fa-face-frown", "fa-regular fa-face-tired"] %>
-  <div class="d-flex justify-content-center align-items-center mt-2">
-    <h1 class= "col-10">Health Record - <%= @health_records.last.date.strftime('%b %d') %></h1>
-    <div class="d-flex justify-content-center align-items-center">
-      <%= link_to "+", new_health_record_path, class: 'add-b' %>
+  <div class="d-flex align-items-center mt-2 mb-3">
+    <%= link_to supports_path, class: "btn btn-info me-2", style: "font-size: 24px" do %>
+      <i class="fa-solid fa-arrow-left-long"></i>Back
+    <% end %>
+    <h1 class="mb-0">Health Record</h1>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <div style='font-size: 24px;'>
+      <%= @health_records.last.date.strftime('%b %d, %Y') %>
     </div>
+    <%= link_to "+", new_health_record_path, class: 'add-b ms-3' %>
   </div>
   <div class="health-record-cards">
     <div class="health-info align-items-center">
@@ -31,17 +37,17 @@
     </div>
     <div class="health-info align-items-center">
       <div class="d-flex align-items-center ms-3">
-        <i class="fa-solid fa-circle-chevron-down me-3" style="color: #0d5be3;"></i>
-        <h2 style="margin: 0px;">DIA</h2>
-      </div>
-      <div style="margin-left: auto;" class="health-card-data"><%= @health_records.last.dia %></div>
-    </div>
-    <div class="health-info align-items-center">
-      <div class="d-flex align-items-center ms-3">
         <i class="fa-solid fa-heart-pulse me-3" style="color: #f2392c;"></i>
         <h2 style="margin: 0px;">PULSE</h2>
       </div>
       <div style="margin-left: auto;" class="health-card-data"><%= @health_records.last.pulse %></div>
+    </div>
+    <div class="health-info align-items-center">
+      <div class="d-flex align-items-center ms-3">
+        <i class="fa-solid fa-circle-chevron-down me-3" style="color: #0d5be3;"></i>
+        <h2 style="margin: 0px;">DIA</h2>
+      </div>
+      <div style="margin-left: auto;" class="health-card-data"><%= @health_records.last.dia %></div>
     </div>
   </div>
   <h1 class= "col-12 mt-3">Weekly</h1>
@@ -55,11 +61,17 @@
     </a>
   </div>
   <% mood_icons = ["", "fa-regular fa-face-laugh-beam", "fa-regular fa-face-smile", "fa-regular fa-face-meh", "fa-regular fa-face-frown", "fa-regular fa-face-tired"] %>
-  <div class="d-flex justify-content-center align-items-center mt-2">
-    <h1 class= "col-10">Health Record - <%= @health_records.last.date.strftime('%b %d') %></h1>
-    <div class="d-flex justify-content-center align-items-center">
-      <%= link_to "+", new_health_record_path, class: 'add-b' %>
+  <div class="d-flex align-items-center mt-2 mb-3">
+    <%= link_to supports_path, class: "btn btn-info me-2", style: "font-size: 24px" do %>
+      <i class="fa-solid fa-arrow-left-long"></i>Back
+    <% end %>
+    <h1 class="mb-0">Health Record</h1>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <div style='font-size: 24px;'>
+      <%= @health_records.last.date.strftime('%b %d, %Y') %>
     </div>
+    <%= link_to "+", new_health_record_path, class: 'add-b ms-3' %>
   </div>
   <div class="health-record-cards">
     <div class="health-info align-items-center">
@@ -81,17 +93,17 @@
     </div>
     <div class="health-info align-items-center">
       <div class="d-flex align-items-center ms-3">
-        <i class="fa-solid fa-circle-chevron-down me-3" style="color: #0d5be3;"></i>
-        <h2 style="margin: 0px;">DIA</h2>
-      </div>
-      <div style="margin-left: auto;" class="health-card-data"><%= @health_records.last.dia %></div>
-    </div>
-    <div class="health-info align-items-center">
-      <div class="d-flex align-items-center ms-3">
         <i class="fa-solid fa-heart-pulse me-3" style="color: #f2392c;"></i>
         <h2 style="margin: 0px;">PULSE</h2>
       </div>
       <div style="margin-left: auto;" class="health-card-data"><%= @health_records.last.pulse %></div>
+    </div>
+    <div class="health-info align-items-center">
+      <div class="d-flex align-items-center ms-3">
+        <i class="fa-solid fa-circle-chevron-down me-3" style="color: #0d5be3;"></i>
+        <h2 style="margin: 0px;">DIA</h2>
+      </div>
+      <div style="margin-left: auto;" class="health-card-data"><%= @health_records.last.dia %></div>
     </div>
   </div>
   <h1 class= "col-12 mt-3">Weekly</h1>
@@ -110,8 +122,3 @@
     </div>
   </div>
 <% end %>
-<div class="d-flex justify-content-between align-items-center mt-2">
-  <%= link_to supports_path, class: "btn btn-info me-2 mb-5", style: "font-size: 24px" do %>
-    <i class="fa-solid fa-arrow-left-long"></i> Back
-  <% end %>
-</div>
