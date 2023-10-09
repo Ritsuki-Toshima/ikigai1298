@@ -1,9 +1,15 @@
 <div class="index-first-session">
   <div class="p-1" style="background-color: #FFB703; height: 40px; width: 100%;">
     <div class="d-flex justify-content-center">
-      <div class="me-3">
-        <img class="avatar-large" alt="avatar-large" src="https://t4.ftcdn.net/jpg/03/02/94/53/360_F_302945354_dqIiUiITKpard7fBVKDLtffIqnkDbyo4.jpg"/>
-      </div>
+      <% if @user.photo.key.present? %>
+        <div class="me-3">
+          <%= cl_image_tag @user.photo.key, class: "avatar-large" %>
+        </div>
+      <% else %>
+        <div class="me-3">
+          <img class="avatar-large" alt="avatar-large" src="https://t4.ftcdn.net/jpg/03/02/94/53/360_F_302945354_dqIiUiITKpard7fBVKDLtffIqnkDbyo4.jpg"/>
+        </div>
+      <% end %>
       <div class= "p-0">
         <h5 class="text-center mb-3 mt-1">Edit My Profile</h5>
       </div>

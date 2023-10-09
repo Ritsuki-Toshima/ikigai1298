@@ -11,9 +11,15 @@
   <% if @elderly_search_results.any? %>
     <% elderly = @elderly_search_results.first %>
     <div class="mt-5">
-      <div class="text-center">
-        <img class="avatar-result" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-      </div>
+      <% if elderly.photo.key.present? %>
+        <div class="text-center">
+          <%= cl_image_tag elderly.photo.key, height: 50, width: 50, crop: :fill %>
+        </div>
+      <% else %>
+        <div class="text-center">
+          <img class="avatar-result" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+        </div>
+      <% end %>
       <div class="text-center m-2">
         <h5 class="card-title"><%= "#{elderly.first_name.capitalize} #{elderly.last_name.capitalize}" %></h5>
       </div>

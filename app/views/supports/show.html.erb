@@ -1,7 +1,11 @@
 <div class="container" data-controller="appointments">
   <div class="profile-info-card position-relative">
-    <%= image_tag 'senior-ppl.jpg', class: 'profile-photo' %>
     <% elderly = User.find(@support.elderly_id) %>
+    <% if elderly.photo.key.present? %>
+      <%= cl_image_tag elderly.photo.key, class: "profile-photo" %>
+    <% else %>
+      <%= image_tag 'senior-ppl.jpg', class: 'profile-photo' %>
+    <% end %>
     <h1><%= elderly.first_name.capitalize %> <%= elderly.last_name.capitalize %></h1>
     <div class="d-flex justify-content-between align-items-center">
       <p><i class="fa-solid fa-phone" style="color: #ffffff;"></i> <%= elderly.phone_number %></p>
@@ -49,27 +53,31 @@
   </div>
   <% appointments = Appointment.where(user_id: elderly.id) %>
   <div class="tab-pane fade py-3" id="appointments-tab-pane" role="tabpanel" aria-labelledby="appointments-tab" tabindex="0">
-    <%= month_calendar(events: appointments, end_attribute: :end_time) do |date, appointments| %>
-      <div class="appointments-calendar-day text-center">
-        <%= date %>
-        <div class="appointment-icons-container">
-          <% appointments.each do |appointment| %>
-            <div class="appointment-icon" data-appointment-id="<%= appointment.id %>">
-              <i class="fa-regular fa-hospital" style="color: #219EBC;"></i>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-    <div class="appointment-details-container mb-5">
-      <% appointments.each do |appointment| %>
-        <div class="appointment-details" data-appointment-id="<%= appointment.id %>" style="display: none;">
-          <p class="appointment-title"><%= appointment.name %></p>
-          <p><%= appointment.start_time.strftime("%b %d %l:%M %p") %> - <%= appointment.end_time.strftime("%l:%M %p") %></p>
-          <p><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></p>
+    <% if appointments.present? %>
+      <%= month_calendar(events: appointments, end_attribute: :end_time) do |date, appointments| %>
+        <div class="appointments-calendar-day text-center">
+          <%= date %>
+          <div class="appointment-icons-container">
+            <% appointments.each do |appointment| %>
+              <div class="appointment-icon" data-appointment-id="<%= appointment.id %>">
+                <i class="fa-regular fa-hospital" style="color: #219EBC;"></i>
+              </div>
+            <% end %>
+          </div>
         </div>
       <% end %>
-    </div>
+      <div class="appointment-details-container mb-5">
+        <% appointments.each do |appointment| %>
+          <div class="appointment-details" data-appointment-id="<%= appointment.id %>" style="display: none;">
+            <p class="appointment-title"><%= appointment.name %></p>
+            <p><%= appointment.start_time.strftime("%b %d %l:%M %p") %> - <%= appointment.end_time.strftime("%l:%M %p") %></p>
+            <p><i class="fa-solid fa-location-pin"></i> <%= appointment.address %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-center">No appointments yet.</p>
+    <% end %>
   </div>
 </div>
 </div>
