@@ -34,9 +34,15 @@
       <% end %>
     </div>
     <%= link_to support_path(support), class: 'd-block p-0 text-decoration-none' do %>
-      <div class="elderly-pro-icon">
-        <%= cl_image_tag support.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.photo.key? %>
-      </div>
+      <% if support.elderly.photo.key.present? %>
+        <div class="elderly-pro-icon">
+          <%= cl_image_tag support.elderly.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.elderly.photo.key? %>
+        </div>
+      <% else %>
+        <div class="elderly-pro-icon">
+          <%= cl_image_tag support.photo.key, class: 'img', crop: :fill, width: 150, gravity: :face, height: 200 if support.photo.key? %>
+        </div>
+      <% end %>
       <div class="health-record-status">
         <div class="mt-5 mb-3">
           <% if statuses.empty? || statuses.any?('pending') %>
