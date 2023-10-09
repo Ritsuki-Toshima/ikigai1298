@@ -11,41 +11,43 @@
   </div>
 </div>
 <div class="container">
-  <div class="user-parameters">
-    <div class="parameter-box">
-      <h3>First Name:</h3>
-      <p><%= @user.first_name.present? ? @user.first_name.capitalize : "Please update your profile" %></p>
-    </div>
-    <div class="parameter-box">
-      <h3>Last Name:</h3>
-      <p><%= @user.last_name.present? ? @user.last_name.capitalize : "Please update your profile" %></p>
-    </div>
-    <div class="parameter-box">
-      <h3>Gender:</h3>
-      <p><%= @user.gender.present? ? @user.gender.capitalize : "Please update your profile" %></p>
-    </div>
-    <div class="parameter-box">
-      <h3>Address:</h3>
-      <p><%= @user.address.present? ? @user.address : "Please update your profile" %></p>
-    </div>
-    <div class="parameter-box">
-      <h3>Phone Number:</h3>
-      <p><%= @user.phone_number.present? ? @user.phone_number : "Please update your profile" %></p>
-    </div>
-    <div class="parameter-box">
-      <h3>Email:</h3>
-      <p><%= @user.email.present? ? @user.email : "Please update your profile" %></p>
-    </div>
-    <div class="parameter-box">
-      <h3>Height:</h3>
-      <p><%= @user.height.present? ? @user.height : "Please update your profile" %></p>
-    </div>
-    <div class="parameter-box">
-      <h3>Birth Date:</h3>
-      <p><%= @user.birth_date.present? ? @user.birth_date : "Please update your profile" %></p>
-    </div>
-    <div class="parameter-box">
-      <%= link_to "Update Profile", edit_user_path(@user), class: "btn btn-primary" %>
+  <div class="mb-2 mt-2">
+    <div class="user-parameters">
+      <div class="parameter-box">
+        <h3>First Name:</h3>
+        <p><%= @user.first_name.present? ? @user.first_name.capitalize : "Please update your profile" %></p>
+      </div>
+      <div class="parameter-box">
+        <h3>Last Name:</h3>
+        <p><%= @user.last_name.present? ? @user.last_name.capitalize : "Please update your profile" %></p>
+      </div>
+      <div class="parameter-box">
+        <h3>Gender:</h3>
+        <p><%= @user.gender.present? ? @user.gender.capitalize : "Please update your profile" %></p>
+      </div>
+      <div class="parameter-box">
+        <h3>Address:</h3>
+        <p><%= @user.address.present? ? @user.address : "Please update your profile" %></p>
+      </div>
+      <div class="parameter-box">
+        <h3>Phone Number:</h3>
+        <p><%= @user.phone_number.present? ? @user.phone_number : "Please update your profile" %></p>
+      </div>
+      <div class="parameter-box">
+        <h3>Email:</h3>
+        <p><%= @user.email.present? ? @user.email : "Please update your profile" %></p>
+      </div>
+      <div class="parameter-box">
+        <h3>Height:</h3>
+        <p><%= @user.height.present? ? @user.height : "Please update your profile" %></p>
+      </div>
+      <div class="parameter-box">
+        <h3>Birth Date:</h3>
+        <p><%= @user.birth_date.present? ? @user.birth_date : "Please update your profile" %></p>
+      </div>
+      <div class="parameter-box">
+        <%= link_to "Update Profile", edit_user_path(@user), class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
 </div>
