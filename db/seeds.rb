@@ -17,30 +17,30 @@ puts "----------------------------------------------"
 puts "Creating Users"
 
 #elderlies
-alvin = User.new(
-  email: "ayaualvin@gmail.com",
+john = User.new(
+  email: "displayelderly@test.com",
   password: "123456",
-  first_name: "alvin",
-  last_name: "yau",
+  first_name: "John",
+  last_name: "Smith",
   gender: "male",
-  address: "G/F, 20 Spring Garden Ln, Wan Chai, Hong Kong",
-  phone_number: "+818048168800", # "+817044676711", # +817044676711",
+  address: "G/F, 38 Autumn Garden Ln, Kow Loon, Hong Kong",
+  phone_number: "+818012345678",
   birth_date: "22/12/1945",
   height: rand(140..200),
   latitude: -90 + (180 * rand),
   longtitude: -180 + (360 * rand),
   elderly: true
 )
-alvin.save!
+john.save!
 
 jenny = User.new(
-  email: "hkjl87@hotmail.co.uk",
+  email: "sandboxelderly@test.com",
   password: "123456",
-  first_name: "jenny",
-  last_name: "lau",
-  gender: "male",
+  first_name: "Jenny",
+  last_name: "Smith",
+  gender: "female",
   address: "Big Ben Westminster, London SW1A 0AA, UK",
-  phone_number: "+817044676711",
+  phone_number: "+817012345678",
   birth_date: "11/05/1955",
   height: rand(140..200),
   latitude: -90 + (180 * rand),
@@ -51,31 +51,31 @@ jenny.save!
 
 #caregivers
 
-ritsuki = User.new(
-  email: "ricky0912t@gmail.com",
+david = User.new(
+  email: "displaycaregiver@test.com",
   password: "123456",
-  first_name: "ritsuki",
-  last_name: "toshima",
+  first_name: "David",
+  last_name: "Brown",
   gender: "male",
   address: "2 Chome-11-3 Meguro, Meguro City, Tokyo 153-0063",
-  phone_number: "+818060262293", # "+818048168800",
+  phone_number: "+818012345678",
   birth_date: "12/09/1997",
   elderly: false
 )
-ritsuki.save!
+david.save!
 
-gary = User.new(
-  email: "toppinggary@hotmail.com",
+chris = User.new(
+  email: "sandboxcaregiver@test.com",
   password: "123456",
-  first_name: "gary",
-  last_name: "topping",
+  first_name: "Chris",
+  last_name: "Summers",
   gender: "male",
   address: "2-24-12 Shibuya, Shibuya-ku, Tokyo",
-  phone_number: "+817031380309",
+  phone_number: "+817012345678",
   birth_date: "15/08/1989",
   elderly: false
 )
-gary.save!
+chris.save!
 
 puts "Created #{User.count} Users"
 puts "----------------------------------------------"
@@ -85,7 +85,7 @@ puts "----------------------------------------------"
 # Creating the medicines
 puts "Creating Medicines"
 
-alvin_medicine_1 = Medicine.new(
+john_medicine_1 = Medicine.new(
   name: "Liver Support",
   description: "Liver Support",
   dosage: 1,
@@ -94,13 +94,13 @@ alvin_medicine_1 = Medicine.new(
   start_date: DateTime.now - Random.rand(10..24),
   end_date: DateTime.now + Random.rand(365..730),
   frequency: 1,
-  user_id: alvin.id
+  user_id: john.id
   )
 file = File.open("db/images/liver_support.jpg")
-alvin_medicine_1.photo.attach(io: file, filename: "liver_support.jpg")
-alvin_medicine_1.save!
+john_medicine_1.photo.attach(io: file, filename: "liver_support.jpg")
+john_medicine_1.save!
 
-alvin_medicine_2 = Medicine.new(
+john_medicine_2 = Medicine.new(
   name: "Multivitamins",
   description: "For Basic Health",
   dosage: 2,
@@ -109,13 +109,13 @@ alvin_medicine_2 = Medicine.new(
   start_date: DateTime.now - Random.rand(10..24),
   end_date: DateTime.now + Random.rand(365..730),
   frequency: 2,
-  user_id: alvin.id
+  user_id: john.id
   )
 file = File.open("db/images/vitamin-pho.jpg")
-alvin_medicine_2.photo.attach(io: file, filename: "vitamin-pho.jpg")
-alvin_medicine_2.save!
+john_medicine_2.photo.attach(io: file, filename: "vitamin-pho.jpg")
+john_medicine_2.save!
 
-alvin_medicine_3 = Medicine.new(
+john_medicine_3 = Medicine.new(
   name: "Fish Oil & D3",
   description: "Fish Oil & D3",
   dosage: 1,
@@ -124,13 +124,13 @@ alvin_medicine_3 = Medicine.new(
   start_date: DateTime.now - Random.rand(10..24),
   end_date: DateTime.now + Random.rand(365..730),
   frequency: 1,
-  user_id: alvin.id
+  user_id: john.id
   )
 file = File.open("db/images/fishoil.jpg")
-alvin_medicine_3.photo.attach(io: file, filename: "fishoil.jpg")
-alvin_medicine_3.save!
+john_medicine_3.photo.attach(io: file, filename: "fishoil.jpg")
+john_medicine_3.save!
 
-alvin_medicine_4 = Medicine.new(
+john_medicine_4 = Medicine.new(
   name: "Heart Supplement",
   description: "For Bone Strength",
   dosage: 1,
@@ -139,13 +139,13 @@ alvin_medicine_4 = Medicine.new(
   start_date: DateTime.now - Random.rand(10..24),
   end_date: DateTime.now + Random.rand(365..730),
   frequency: 1,
-  user_id: alvin.id
+  user_id: john.id
   )
 file = File.open("db/images/heart.jpg")
-alvin_medicine_4.photo.attach(io: file, filename: "heart.jpg")
-alvin_medicine_4.save!
+john_medicine_4.photo.attach(io: file, filename: "heart.jpg")
+john_medicine_4.save!
 
-alvin_medicine_5 = Medicine.new(
+john_medicine_5 = Medicine.new(
   name: "Blood Sugar",
   description: "Blood Sugar",
   dosage: 1,
@@ -154,11 +154,11 @@ alvin_medicine_5 = Medicine.new(
   start_date: DateTime.now - Random.rand(10..24),
   end_date: DateTime.now + Random.rand(365..730),
   frequency: 1,
-  user_id: alvin.id
+  user_id: john.id
   )
   file = File.open("db/images/blood-sugar.jpg")
-  alvin_medicine_5.photo.attach(io: file, filename: "blood-sugar.jpg")
-  alvin_medicine_5.save!
+  john_medicine_5.photo.attach(io: file, filename: "blood-sugar.jpg")
+  john_medicine_5.save!
 
 jenny_medicine_1 = Medicine.new(
   name: "Warfarin",
@@ -234,17 +234,17 @@ puts "Creating Supports"
 
 # has_many :trusted_users, through: :supports_as_elderly, class_name: "User", foreign_key: :elderly_id
 
-alvin_trusted_user = Support.new(
-  elderly_id: alvin.id,
-  trusted_user_id: ritsuki.id
+john_trusted_user = Support.new(
+  elderly_id: john.id,
+  trusted_user_id: david.id
 )
 file = URI.open('db/images/senior-ppl.jpg')
-alvin_trusted_user.photo.attach(io: file, filename: 'senior-ppl.jpg', content_type: 'image/jpg')
-alvin_trusted_user.save!
+john_trusted_user.photo.attach(io: file, filename: 'senior-ppl.jpg', content_type: 'image/jpg')
+john_trusted_user.save!
 
 jenny_trusted_user = Support.new(
   elderly_id: jenny.id,
-  trusted_user_id: ritsuki.id
+  trusted_user_id: david.id
 )
 file = URI.open('db/images/oldwoman.jpg')
 jenny_trusted_user.photo.attach(io: file, filename: 'oldwoman.jpg', content_type: 'image/jpg')
@@ -263,7 +263,7 @@ start_time = [start_time.change(hour: 9, min: 0, sec: 0), start_time.change(hour
 specific_start_time = [specific_start_time.change(hour: 9, min: 0, sec: 0), specific_start_time.change(hour: 18, min: 0, sec: 0)].max
 long_start_time = [long_start_time.change(hour: 9, min: 0, sec: 0), long_start_time.change(hour: 18, min: 0, sec: 0)].max
 
-alvin_appointment = Appointment.new(
+john_appointment = Appointment.new(
   name: "Medical Check-up",
   description: "Full body check annually. Diabetes monitoring.",
   start_time: specific_start_time,
@@ -271,11 +271,11 @@ alvin_appointment = Appointment.new(
   address: "30 Gascoigne Road, Yau Ma Tei, Hong Kong",
   latitude: 22.309330466082702,
   longitude: 114.1744068830591,
-  user_id: alvin.id
+  user_id: john.id
 )
-alvin_appointment.save!
+john_appointment.save!
 
-alvin_appointment2 = Appointment.new(
+john_appointment2 = Appointment.new(
   name: "Visit Dentist",
   description: "Teeth Whitening",
   start_time: start_time,
@@ -283,11 +283,11 @@ alvin_appointment2 = Appointment.new(
   address: "2-11-3 Meguro, Meguro-ku, Tokyo",
   latitude: 35.6406769304616,
   longitude: 139.6991768776612,
-  user_id: alvin.id
+  user_id: john.id
 )
-alvin_appointment2.save!
+john_appointment2.save!
 
-alvin_appointment3 = Appointment.new(
+john_appointment3 = Appointment.new(
   name: "Chiropractor",
   description: "For aches in back",
   start_time: long_start_time,
@@ -295,9 +295,9 @@ alvin_appointment3 = Appointment.new(
   address: "3-15-7 Shinjuku, Tokyo-to, Tokyo",
   latitude: 35.68663519546136,
   longitude: 139.69116210775576,
-  user_id: alvin.id
+  user_id: john.id
 )
-alvin_appointment3.save!
+john_appointment3.save!
 
 jenny_appointment = Appointment.new(
 name: "Medical Check-up",
@@ -331,16 +331,16 @@ puts "Creating Health Records"
 # Creating the health records
 7.times do |i|
   date = Date.today - (i + 1).days
-  alvin_health_record = HealthRecord.new(
+  john_health_record = HealthRecord.new(
     mood_status: rand(1..5),
     weight: rand(45..120),
     sys: rand(100..140),
     dia: rand(60..120),
     pulse: rand(40..80),
-    user_id: alvin.id,
+    user_id: john.id,
     date: date
   )
-  alvin_health_record.save!
+  john_health_record.save!
 end
 
 7.times do |i|
@@ -364,45 +364,45 @@ puts "Created #{HealthRecord.count} Health Records"
 puts "----------------------------------------------"
 puts "Creating Reminders"
 
-alvin_reminder_1 = Reminder.new(
+john_reminder_1 = Reminder.new(
   time_to_taken: DateTime.new(2023, 9, 1, 8, 15),
-  dosage: alvin_medicine_1.dosage,
+  dosage: john_medicine_1.dosage,
   taken: true,
-  medicine_id: alvin_medicine_1.id
+  medicine_id: john_medicine_1.id
 )
-alvin_reminder_1.save!
+john_reminder_1.save!
 
-alvin_reminder_2 = Reminder.new(
+john_reminder_2 = Reminder.new(
   time_to_taken: DateTime.new(2023, 9, 1, 12, 15),
-  dosage: alvin_medicine_2.dosage,
+  dosage: john_medicine_2.dosage,
   taken: true,
-  medicine_id: alvin_medicine_2.id
+  medicine_id: john_medicine_2.id
 )
-alvin_reminder_2.save!
+john_reminder_2.save!
 
-alvin_reminder_3 = Reminder.new(
+john_reminder_3 = Reminder.new(
   time_to_taken: DateTime.new(2023, 9, 1, 18, 15),
-  dosage: alvin_medicine_3.dosage,
+  dosage: john_medicine_3.dosage,
   taken: true,
-  medicine_id: alvin_medicine_3.id
+  medicine_id: john_medicine_3.id
 )
-alvin_reminder_3.save!
+john_reminder_3.save!
 
-alvin_reminder_4 = Reminder.new(
+john_reminder_4 = Reminder.new(
   time_to_taken: DateTime.new(2023, 9, 1, 22, 15),
-  dosage: alvin_medicine_4.dosage,
+  dosage: john_medicine_4.dosage,
   taken: true,
-  medicine_id: alvin_medicine_4.id
+  medicine_id: john_medicine_4.id
 )
-alvin_reminder_4.save!
+john_reminder_4.save!
 
-alvin_reminder_5 = Reminder.new(
+john_reminder_5 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 22, 15),
-  dosage: alvin_medicine_5.dosage,
+  dosage: john_medicine_5.dosage,
   taken: true,
-  medicine_id: alvin_medicine_5.id
+  medicine_id: john_medicine_5.id
 )
-alvin_reminder_5.save!
+john_reminder_5.save!
 
 jenny_reminder_1 = Reminder.new(
   time_to_taken: DateTime.new(2023, 8, 24, 18, 15),
